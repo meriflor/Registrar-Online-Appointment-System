@@ -61,9 +61,6 @@ Route::middleware([AuthCheck::class, AdminCheck::class])->prefix('dashboard-admi
     
 });
 
-    //User Main Links
-    Route::get('/appointment-records', [UserController::class, 'viewUserAppointments']);
-
     //Login and Registraion - Personal Information
     Route::post('/registration-user',[CustomAuthController::class,'registerUser'])->name('registration-user');  
     Route::post('/login-user',[CustomAuthController::class,'loginUser'])->name('login-user');
