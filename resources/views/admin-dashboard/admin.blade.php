@@ -384,6 +384,7 @@
         @include('admin-dashboard.modal.faqs.add-faqs')
         @include('admin-dashboard.modal.faqs.delete-faqs')
         @include('admin-dashboard.modal.faqs.edit-faqs')
+        @include('admin-dashboard.modal.remarks')
 
     </body>
 </html>

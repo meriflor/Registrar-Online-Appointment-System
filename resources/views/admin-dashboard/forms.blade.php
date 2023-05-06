@@ -81,21 +81,39 @@
                                         </div>
                                     </div>
                                     <hr class="font-88">
+                                    <!-- review form -->
+                                    @if($form->fee > 0)
                                     <div class="row w-100 p-0 my-2">
                                         <div class="col-md-6">
                                             <p class="info-title">Document Fee: </p>
                                         </div>
                                         <div class="col-md-6">
-                                            <p class="info-content">{{ $form->fee }}</p>
+                                            <p class="info-content">PHP {{ $form->fee }}.00 
+                                            @if($form->fee_type != "None")
+                                            <span class="info-content">{{ $form->fee_type }}</span>
+                                            @endif
+                                            </p>
                                         </div>
                                     </div>
                                     <hr class="font-88">
+                                    @endif
+                                    @if($form->pages > 1)
+                                    <div class="row w-100 p-0 my-2">
+                                        <div class="col-md-6">
+                                            <p class="info-title">Pages: </p>
+                                        </div>
+                                        <div class="col-md-6">
+                                            <p class="info-content">At least {{ $form->pages }}</p>
+                                        </div>
+                                    </div>
+                                    <hr class="font-88">
+                                    @endif
                                     <div class="row w-100 p-0 my-2">
                                         <div class="col-md-6">
                                             <p class="info-title">Maximum Time to Claim</p>
                                         </div>
                                         <div class="col-md-6">
-                                            <p class="info-content"> {{ $form->form_max_time }}</p>
+                                            <p class="info-content">{{ $form->form_max_time }} after the request if filed</p>
                                         </div>
                                     </div>
                                 </div>

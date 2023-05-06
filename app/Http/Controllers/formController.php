@@ -33,10 +33,13 @@ class formController extends Controller
         $form -> name = $request -> name;
         $form -> form_requirements = $request -> form_requirements;
         $form -> form_process = $request -> form_process;
-        $form -> fee = $request -> fee;
         $form -> form_avail = $request -> form_avail;
         $form -> form_who_avail = $request -> form_who_avail;
         $form -> form_max_time = $request -> form_max_time;
+
+        $form -> fee = $request -> fee;
+        $form -> fee_type = $request -> fee_type;
+        $form -> pages = $request -> pages;
         $form = $form -> save();
         if($form){
               return back()-> with ('success','Form created successfully');

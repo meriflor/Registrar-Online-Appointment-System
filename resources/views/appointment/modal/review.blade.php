@@ -6,8 +6,9 @@
             <button type="button" class="btn-close btn-close-white" data-bs-dismiss="modal" aria-label="Close"></button>
         </div>
         <div class="modal-body p-5">
-            <!-- fix reminder -->
+            <!-- review hidden inputs -->
             <input type="hidden" id="proof_of_payment_01">
+            <input type="hidden" id="num_copies_02">
                 <div class="form-group row">
                     <div class="col-md-3">
                         <label for="">First Name</label>
@@ -89,22 +90,27 @@
                         <input type="text" class="form-control" id="inputBTransferInfo" value="" disabled>
                     </div>
                 </div>
-                <div class="form-group row">
-                    <div class="col-md-4">
+                <div class="form-group row mt-2">
+                    <div class="col-md-6">
                         <label for="">Purpose</label>
                         <textarea id="app_purpose01" class="form-control" type="text" aria-label="default input example" disabled></textarea>
                     </div>  
-                    <div class="col-md-4">
+                    <div class="col-md-6">
                         <label for="">Appointment Date</label>
                         <input class="form-control" type="text" placeholder="" id="appointment_date" aria-label="default input example" value="" disabled>
                     </div>
-                    <div class="col-md-4">
-                        <b>Payment Method: </b>
-                        <p class="fs-6 font-mont" id="payment_method_01"></p>
+                </div>
+                <div class="form-group row mt-2">
+                    <div class="col-md-6 d-flex flex-row flex-wrap">
+                        <span><b>Payment Method: </b> <span id="payment_method_01"></span></span> 
+                    </div>
+                    <div class="col-md-6 d-flex flex-row flex-wrap">
+                        <span><b>Number of Copy: </b> <span id="num_copies_01"></span></span> 
                     </div>
                 </div>
         </div>
         <div class="modal-footer">
+            <small class="font-maroon d-flex flex-row justify-content-start" style="flex: 1;">*You can change your personal information located at the Edit Profile section.</small>
             <button type="button" class="btn btn-appoint" data-bs-toggle="modal" data-bs-target="#appointmentModal">Back</button>
             <button type="submit" id="submitButton" class="btn btn-appoint">Submit</button>
             <!-- data-bs-toggle="modal" data-bs-target="#confirmedModal" -->

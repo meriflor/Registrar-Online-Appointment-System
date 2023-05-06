@@ -1,14 +1,17 @@
 <div class="modal fade" id="cancelAppointmentModal" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-hidden="true">
     <div class="modal-dialog modal-lg modal-dialog-scrollable modal-dialog-centered">
-        <div class="modal-content modal-dialog-confirm modal-confirm-padding">
-            <div class="modal-body text-center">
+        <div class="modal-content modal-dialog-confirm modal-confirm-padding text-center">
+            <!-- <div class="modal-body"> -->
                 <input type="hidden" id="app_id">
                 <p class="h5 font-bold-font-mont">Are you sure you want to cancel your appointment?</p>
-                <a type="button" class="btn btn-confirm mt-3" data-bs-dismiss="modal">Dismiss</a>
+                <div class="d-flex flex-row justify-content-center">
+                    <a type="button" class="btn btn-confirm mt-3" data-bs-dismiss="modal">Dismiss</a>
                 <a type="button" class="btn btn-confirm mt-3 ms-3" id="cancel_app_confirm">
                     Confirm
                 </a>
-            </div>
+                </div>
+                
+            <!-- </div> -->
         </div>
     </div>
 </div>

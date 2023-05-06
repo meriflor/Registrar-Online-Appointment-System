@@ -195,6 +195,7 @@ class CustomAuthController extends Controller
             $appointment->b_transfer_school = $request ->b_transfer_school;
 
             $appointment->status = "Pending";
+            $appointment->num_copies = $request ->num_copies;
 
             $appointment->user_id = $user_id;
             $appointment->form_id = $form->id;

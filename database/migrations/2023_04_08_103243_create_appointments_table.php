@@ -15,7 +15,7 @@ class CreateAppointmentsTable extends Migration
     {
         Schema::create('appointments', function (Blueprint $table) {
             $table->increments('id');
-            $table->string('app_purpose');
+            $table->text('app_purpose');
             $table->string('acad_year')->nullable();
             $table->string('appointment_date');
             $table->string('payment_method');
@@ -27,6 +27,8 @@ class CreateAppointmentsTable extends Migration
             $table->string('b_transfer_school')->nullable();
 
             $table->string('status');
+            $table->integer('num_copies');
+            $table->text('remarks')->nullable();
             
             $table->string('booking_number')->unique()->nullable();
             $table->unsignedInteger('user_id');

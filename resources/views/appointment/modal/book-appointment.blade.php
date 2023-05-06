@@ -10,12 +10,27 @@
                 <div class="row">
                     <div class="col-md-5">
                         <div class="mb-3">
-                            <label for="app_purpose">Purpose</label>
+                            <label for="app_purpose">Purpose: </label>
                             <textarea placeholder="Enter your purpose here" class="form-control form-control" id="app_purpose" name="app_purpose" style="height: 150px;" type="text" placeholder="" aria-label="default input example"></textarea>
                         </div>
                         <div class="mb-3" id="app-acad-year">
-                            <label for="inputDocAcadYear">Academic Year</label>
+                            <label for="inputDocAcadYear">Academic Year: </label>
                             <input class="form-control form-control" type="text" name="acad_year" id="acad_year" placeholder="Academic Year" aria-label="default input example">
+                        </div>
+                        <div class="mb-3">
+                            <label for="num_copies">Number of Copy: </label>
+                            <select class="form-control" name="num_copies" id="num_copies">
+                                <option value="1">1</option>
+                                <option value="2">2</option>
+                                <option value="3">3</option>
+                                <option value="4">4</option>
+                                <option value="5">5</option>
+                                <option value="6">6</option>
+                                <option value="7">7</option>
+                                <option value="8">8</option>
+                                <option value="9">9</option>
+                                <option value="10">10</option>
+                            </select>
                         </div>
                         <div class="form-group mt-3" id="college-form">
                             <div class="d-flex flex-column justify-content-start custom-form-group">
@@ -84,7 +99,7 @@
                             <b>Selected Date:</b><p id="app_date" class="ms-2">Select a date first.</p>
                         </div>
                         <div class="d-flex flex-row notice-box p-3" id="exp_sect">
-                            <p class="m-0"><b>Reminder: </b>The <span id="form-name"></span>'s maximum time to claim is <span id="exp_date"></span></p>
+                            <p class="m-0"><b>Reminder: </b>The <span id="form-name"></span> maximum time to claim is <span id="exp_date"></span> upon approving the request</p>
                         </div>
                         <div class="d-flex flex-row flex-wrap justify-content-end mt-2">
                             <div class="full-sect mx-2 d-flex flex-row align-items-center">
