@@ -315,6 +315,7 @@
             }
             
             modal.find('#exp_date').text(form_max_time);
+            modal.find('#form-name').text(form_name);
             modal.find('#form_name').text(form_name);
             modal.find('#doc_fee').text(form_fee);
             modal.find('#form_id').val(form_id);
@@ -331,6 +332,7 @@
             var form_id = $('#form_id').val();
             var app_purpose = $('#app_purpose').val();
             var acad_year = $('#acad_year').val();
+            var num_copies = parseInt(document.querySelector('select[name="num_copies"]').value);
             var payment_method = $('input[name=payment_method]:checked').val();
             var proof_of_payment = $('#proof_of_payment')[0].files[0];
 
@@ -356,6 +358,14 @@
                 $('#app_purpose01').val(app_purpose);
                 $('#appointment_date').val(appointment_date);
                 $('#payment_method_01').text(payment_method);
+                if(num_copies == 1){
+                    $('#num_copies_01').text(num_copies + " copy");
+                    $('#num_copies_02').val(num_copies);
+                }else{
+                    $('#num_copies_01').text(num_copies + " copies");
+                    $('#num_copies_02').val(num_copies);
+                }
+                
 
                 //todo
                 if(a_transfer == "Yes"){
@@ -378,6 +388,7 @@
                 console.log(app_purpose);
                 console.log(acad_year);
                 console.log(appointment_date);
+                console.log(num_copies);
             }
         });
 
@@ -388,6 +399,8 @@
             var payment_method = $('#payment_method_01').text();
             var proof_of_payment = $('#proof_of_payment').prop('files')[0];
             var appointment_date = $('#appointment_date').val();
+            var num_copies = $('#num_copies_02').val();
+            console.log(num_copies);
             if(a_transfer === "yes"){
                 a_transfer = 1;
                 a_transfer_school = $('#inputATransferSchool').val();
@@ -410,6 +423,7 @@
             console.log(appointment_date);
             console.log(a_transfer);
             console.log(b_transfer);
+            console.log(num_copies);
             $('#reviewModal').modal('hide');
             $('#confirmedModal').modal('show');
             
@@ -425,6 +439,7 @@
             formData.append('b_transfer_school', b_transfer_school);
             formData.append('payment_method', payment_method);
             formData.append('proof_of_payment', proof_of_payment);
+            formData.append('num_copies', num_copies);
 
             $.ajax({
                 url: "{{ route('bookAppointment') }}",

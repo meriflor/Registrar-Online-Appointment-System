@@ -12,27 +12,15 @@ use App\Models\Booking;
 class AppointmentSlotController extends Controller
 {
     public function store(Request $request){
-
         $appointmentSlot = new AppointmentSlot();
-        $slot_date = $request->slot_date;
-        $exist_slot = AppointmentSlot::where('slot_date', $slot_date);
-
-        $appointmentSlot->slot_date = $slot_date;
-        $temp_slots = $request->available_slots;
-        $disabled = $request -> disabled;
-        if($temp_slots === null){
-            $appointmentSlot->available_slots = 0;
-        }else{
-            $appointmentSlot->available_slots = $temp_slots;
-        }if($disabled === "yes"){
-            $appointmentSlot->is_disabled = 1;
-        }else{
-            $appointmentSlot->is_disabled = 0;
-        }
-
+        $appointmentSlot->slot_date = $request->slot_date;
+        $appointmentSlot->available_slots = $request->available_slots;
+        $appointmentSlot->is_disabled = $request->disabled;
+        
         $appointmentSlot->save();
         return back()->with('success', 'Appointment slot created successfully.');
     }
+
 
     //review ========================delete appointment slot==============================
     public function destroy(Request $request, $id)
@@ -102,17 +90,11 @@ class AppointmentSlotController extends Controller
     }
     //review ============================ edit slot ==================================
     public function edit(Request $request, $id){
-        // $appointmentSlot = AppointmentSlot::find($id);
-        // $slot = $request->slot;
-        // $disable = $request->disable;
-        // // dd($disable);
-        // if($slot === 0 || $disable === 0){
-        //     $appointmentSlot->available_slots = 0;
-        //     $appointmentSlot->is_disabled = 1;
-        // }else{
-        //     $appointmentSlot->available_slots = $slot;
-        //     $appointmentSlot->is_disabled = $disable;
-        // }
-        // $appointmentSlot->save();
+        $appointmentSlot = AppointmentSlot::find($id);
+        $appointmentSlot->available_slots = $request->slot;
+        $appointmentSlot->is_disabled = $request->disable;
+        $appointmentSlot->save();
+        return back()->with('success', 'Appointment slot updated successfully.');
     }
+
 }

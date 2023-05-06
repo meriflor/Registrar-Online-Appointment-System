@@ -34,7 +34,7 @@
         </div> -->
         @if(count($pending)>0)
         <div class="table-rounded">
-            <table id="pendingRequests" class="table table-bordered table-sm font-nun table-striped">
+            <table id="pendingRequests" class="table font-nun">
                 <thead class="table-head text-center">
                     <tr>
                         <th>Appointment Number</th>
@@ -46,10 +46,11 @@
                         <th>Status</th>
                         <th>Action</th>
                         <th></th>
+                        <th></th>
                     </tr>
                 </thead>
                 <tbody class="table-group-divider">
-                        @foreach ($pending as $booking)
+                    @foreach ($pending as $booking)
                         <tr class="text-center">
                             <td>{{ $booking->appointment->booking_number }}</td>
                             <td>{{ $booking->user->school_id }}</td>
@@ -74,9 +75,13 @@
                                     View
                                 </a>
                             </td>
+                            <td class="td-view">
+                                <a type="button" class="btn view-request p-0 remarks-btn" id="{{ $booking->id }}" data-remarks-id="{{ $booking->id }}" data-remarks-first="{{ $booking->user->firstName }}" data-remarks-last="{{ $booking->user->lastName }}">
+                                    Remarks
+                                </a>
+                            </td>
                         </tr>
-                        @endforeach
-                        
+                    @endforeach
                 </tbody>
             </table>
         </div>
@@ -253,96 +258,98 @@
 
 <button id="back-to-top-btn" class="btn btn-custom show" style="color: #131313;">Back to top</button>
 
-    <!-- review -->
+<!-- review -->
 
-    <script src="{{ asset('js/admin/appointment/status-button.js') }}"></script>
-    <script src="{{ asset('js/admin/appointment/info-display.js') }}"></script>
-    <script>
-        var url = "{{ url('') }}";
-        // review
-        $.ajaxSetup({
-            headers: {
-                'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
-            }
-        });
-        $(document).ready(function(){
-            $('#acceptApp').on('click', function(event){
-                var id = $('#app_id').val();
-                var status = $('#accept_status').val();
-                console.log(id);
-                console.log(status);
-                
-                $.ajax({
-                    url: "{{ url('acceptStatus') }}",
-                    method: "PUT",
-                    data: { 
-                        id: id,
-                        status: status
-                    },
-                    success: function(response){
-                        // do something on success
-                        console.log(response);
-                        location.reload();
-                    },
-                    error: function(xhr){
-                        // do something on error
-                        console.log(xhr.responseText);
-                    }
-                });
-                $('#status_appointment_modal').modal('hide');
+<script src="{{ asset('js/admin/appointment/status-button.js') }}"></script>
+<script src="{{ asset('js/admin/appointment/info-display.js') }}"></script>
+<script src="{{ asset('js/admin/appointment/remarks.js') }}"></script>
+<script>
+    var url = "{{ url('') }}";
+    // review
+    $.ajaxSetup({
+        headers: {
+            'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
+        }
+    });
+    $(document).ready(function(){
+        $('#acceptApp').on('click', function(event){
+            var id = $('#app_id').val();
+            var status = $('#accept_status').val();
+            console.log(id);
+            console.log(status);
+            
+            $.ajax({
+                url: "{{ url('acceptStatus') }}",
+                method: "PUT",
+                data: { 
+                    id: id,
+                    status: status
+                },
+                success: function(response){
+                    // do something on success
+                    console.log(response);
+                    location.reload();
+                },
+                error: function(xhr){
+                    // do something on error
+                    console.log(xhr.responseText);
+                }
             });
+            $('#status_appointment_modal').modal('hide');
         });
-        $(document).ready(function(){
-            $('#doneApp').on('click', function(event){
-                var id = $('#app_id').val();
-                var status = $('#done_status').val();
-                console.log(id);
-                console.log(status);
-                $.ajax({
-                    url: "{{ url('doneStatus') }}",
-                    method: "PUT",
-                    data: { 
-                        id: id,
-                        status: status
-                    },
-                    success: function(response){
-                        // do something on success
-                        console.log(response);
-                        location.reload();
-                    },
-                    error: function(xhr){
-                        // do something on error
-                        console.log(xhr.responseText);
-                    }
-                });
-                $('#status_appointment_modal').modal('hide');
+    });
+    $(document).ready(function(){
+        $('#doneApp').on('click', function(event){
+            var id = $('#app_id').val();
+            var status = $('#done_status').val();
+            console.log(id);
+            console.log(status);
+            $.ajax({
+                url: "{{ url('doneStatus') }}",
+                method: "PUT",
+                data: { 
+                    id: id,
+                    status: status
+                },
+                success: function(response){
+                    // do something on success
+                    console.log(response);
+                    location.reload();
+                },
+                error: function(xhr){
+                    // do something on error
+                    console.log(xhr.responseText);
+                }
             });
+            $('#status_appointment_modal').modal('hide');
         });
-        $(document).ready(function(){
-            $('#claimedApp').on('click', function(event){
-                var id = $('#app_id').val();
-                var status = $('#claimed_status').val();
-                console.log(id);
-                console.log(status);
-                $.ajax({
-                    url: "{{ url('claimedStatus') }}",
-                    method: "PUT",
-                    data: { 
-                        id: id,
-                        status: status
-                    },
-                    success: function(response){
-                        // do something on success
-                        console.log(response);
-                        location.reload();
-                    },
-                    error: function(xhr){
-                        // do something on error
-                        console.log(xhr.responseText);
-                    }
-                });
-                $('#status_appointment_modal').modal('hide');
+    });
+    $(document).ready(function(){
+        $('#claimedApp').on('click', function(event){
+            var id = $('#app_id').val();
+            var status = $('#claimed_status').val();
+            console.log(id);
+            console.log(status);
+            $.ajax({
+                url: "{{ url('claimedStatus') }}",
+                method: "PUT",
+                data: { 
+                    id: id,
+                    status: status
+                },
+                success: function(response){
+                    // do something on success
+                    console.log(response);
+                    location.reload();
+                },
+                error: function(xhr){
+                    // do something on error
+                    console.log(xhr.responseText);
+                }
             });
+            $('#status_appointment_modal').modal('hide');
         });
-    </script>
+    });
+</script>
+
 @endsection

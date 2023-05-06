@@ -72,16 +72,20 @@ class UserController extends Controller
         if (Session::has('loginId')) {
         $user = User::where('id','=',Session::get('loginId'))->first();
         $user_id = session('loginId');
-        $appointments = Appointment::where('user_id', $user_id)
-              ->orderBy('created_at', 'desc')
-              ->with(['user' => function ($query) {
-                    $query->select('id', 'firstName','lastName','middleName','email','suffix');
-              }, 'form' => function ($query) {
-                    $query->select('id', 'name','fee');
-              }])
-              ->get();
-        }
-
+      //   $appointments = Appointment::where('user_id', $user_id)
+      //         ->orderBy('created_at', 'desc')
+      //         ->with(['user' => function ($query) {
+      //               $query->select('id', 'firstName','lastName','middleName','email','suffix');
+      //         }, 'form' => function ($query) {
+      //               $query->select('id', 'name','fee');
+      //         }])
+      //         ->get();
+      //   }
+            $appointments = Appointment::with('user', 'form')
+                  ->where('user_id', $user_id)
+                  ->orderBy('created_at', 'desc')
+                  ->get();
+            }
         $firstName = $user ? $user->firstName : null;
         $lastName = $user ? $user->lastName : null;
         $middleName = $user ? $user->middleName : null;

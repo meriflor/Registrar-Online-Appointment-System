@@ -16,9 +16,8 @@
                         </h2>
                         <div id="app-rec-{{ $appointment->id }}"  class="accordion-collapse collapse" data-bs-parent="#appointment_record_list" >
                             <div class="accordion-body">
-                                <div class="d-flex flex-row align-items-center">
-                                    <div class="purpose" style="flex: 1;">
-                                        
+                                <div class="d-flex flex-row align-items-center row">
+                                    <div class="col-md-6" style="flex: 1;">
                                         <p class="fs-6 m-0"><b>Status: </b>
                                         @if($appointment->status == 'Pending')
                                             <span style="color: #4a7453;"><i><b> Pending</b></i></span>
@@ -33,7 +32,7 @@
                                         </p>
                                     </div>
                                     @if ($appointment->status === 'Pending')
-                                    <button id="cancel_app" class="btn cancel_app d-flex flex-row align-items-center" type="button" data-bs-toggle="modal" data-bs-target="#cancelAppointmentModal" data-app-id="{{ $appointment->id }}">
+                                    <button id="cancel_app" class="btn cancel_app d-flex flex-row align-items-center col-md-6 w-auto flex-auto" type="button" data-bs-toggle="modal" data-bs-target="#cancelAppointmentModal" data-app-id="{{ $appointment->id }}">
                                         <img src="images/cancel.png" alt="cancel appointment">
                                         <p class="p-0 m-0">Cancel Appointment</p>
                                     </button>
@@ -71,20 +70,37 @@
                                                 <small class="font-bold me-1">Document Requested: </small>
                                                 <small class="">{{ $appointment->form->name }}</small>
                                             </div>
-                                            <!-- <div class="d-flex flex-wrap m-0 p-0">
-                                                <small class="font-bold me-1">Estimated wait time: </small>
-                                                <small class="">{{ $appointment->form->form_avail }}</small>
-                                            </div> -->
+                                            @if($appointment->form->pages > 1)
                                             <div class="d-flex flex-wrap m-0 p-0">
+                                                <small class="font-bold me-1">Pages: </small>
+                                                <small class="">At least {{ $appointment->form->pages }} pages</small>
+                                            </div>
+                                            @endif
+                                            @if($appointment->num_copies > 1)
+                                            <div class="d-flex flex-wrap m-0 p-0">
+                                                <small class="font-bold me-1">Copies Requested: </small>
+                                                <small class="">{{ $appointment->num_copies }} pages</small>
+                                            </div>
+                                            @endif
+                                            <div class="d-flex flex-wrap m-0 p-0">
+                                                <small class="font-bold me-1">Tentative time to claim: </small>
+                                                <small class="">{{ $appointment->form->form_max_time }} upon approving the request</small>
+                                            </div>
+                                            <div class="d-flex flex-wrap m-0 p-0">
+                                                @if($appointment->form->pages > 1)
+                                                <small class="font-bold me-1">Tentative Total Amount: </small>
+                                                <small>PHP {{ $appointment->form->fee * $appointment->form->pages * $appointment->num_copies }}.00</small>
+                                                @else
                                                 <small class="font-bold me-1">Total Amount: </small>
-                                                <small>{{ $appointment->form->fee }}</small>
+                                                <small>PHP {{ $appointment->form->fee * $appointment->num_copies }}.00</small>
+                                                @endif
                                             </div>
                                         </div>
                                         <div class="content-foot mt-5 d-flex flex-row align-items-center">
                                             <img src="/images/qrcode.png" alt="">
                                             <div class="d-flex flex-column m-0 p-0">
-                                                <small style="font-size: 11px;">*Bring the total amount and the requeirements</small>
-                                                <small style="color: red;font-size: 11px;">Please take a screenshot of the receipt or open this account to present this on registrar personnel.</small>
+                                                <small style="font-size: 11px;">*Bring the necessary requirements and additional funds to cover the total amount</small>
+                                                <small style="color: red;font-size: 11px;">Kindly take a screenshot of the receipt or access your account to present it to the registrar personnel. Alternatively, you may download and print the document for your reference.</small>
                                             </div>
                                         </div>
                                     </div>

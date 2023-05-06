@@ -242,33 +242,34 @@
                                 }
                             });
                         });$('#appointment_slot_modal #edit_slot').click(function(e) {
-                            e.preventDefault();
                             var slot = $('#available_slots').val();
-                            var disable = $('#disable_check').val();
+                            var disable = $('#disable_check').is(':checked');
+                            if(disable === true){
+                                disable = 1;
+                                slot = 0;
+                            }else{
+                                if(slot === null || slot === "" || slot === undefined){
+                                    console.log('this is null');
+                                    alert("Please enter a slot.");
+                                    return false;
+                                }
+                                else if(slot == 0){
+                                    disable = 1;
+                                }
+                                else{
+                                    disable = 0;
+                                }
+                            }
+                            console.log(event.id);
                             console.log(slot);
                             console.log(disable);
-                            if ($('#disable_check').is(":checked")){
-                                slot = 0;
-                                disable = 1;
-                            }else{
-                                disable = 0;
-                                console.log(slot);
-                                console.log(disable);
-
-                                
-                                // console.log(slot);
-                                // console.log(disable);
-                            }
-                            
-                            console.log(slot);
-                                console.log(disable);
                             $.ajax({
-                                type: 'PUT',
-                                url: "{{ route('slot.edit', '') }}/" + event.id,
+                                url: '/appointment_slots/edit/' + event.id,
+                                type: 'POST',
                                 data:{
-                                    id: event.id,
                                     slot: slot,
-                                    disable: disable
+                                    disable: disable,
+                                    _method: 'PUT'
                                 },
                                 success: function(response) {
                                     window.location.reload();
@@ -277,15 +278,18 @@
                                     // handle error response
                                 }
                             });
-                        });$('#dismiss_cal').click(function(){
+                        });
+                        $('#dismiss_cal').click(function(){
                             $('#delete_check').prop('checked', false);
                             $('#edit_check').prop('checked', false);
                             $('#hr_insert').hide();
+                            $('#available_slots').val("");
                             $('#pending-text').text("");
                             $('#onProcess-text').text("");
                             $('#readyToClaim-text').text("");
                             $('#claimed-text').text("");
                         });
+
                         
                     }
                 },
@@ -380,6 +384,7 @@
         @include('admin-dashboard.modal.faqs.add-faqs')
         @include('admin-dashboard.modal.faqs.delete-faqs')
         @include('admin-dashboard.modal.faqs.edit-faqs')
+        @include('admin-dashboard.modal.remarks')
 
     </body>
 </html>

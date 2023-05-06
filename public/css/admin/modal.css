@@ -77,7 +77,8 @@
 #editFaqsModal .modal-content, 
 #deleteFaqsModal .modal-content, 
 
-#status_appointment_modal .modal-content{
+#status_appointment_modal .modal-content,
+#remarks_modal .modal-content{
     background-color: white;
     color: #131313;
 }#addFormModal, 
@@ -94,7 +95,8 @@
 #editFaqsModal,
 #deleteFaqsModal,
 
-#status_appointment_modal{
+#status_appointment_modal,
+#remarks_modal{
     --bs-modal-header-border-color: none;
     --bs-modal-footer-border-color: none;
     /* color: #131313 !important; */
@@ -106,7 +108,8 @@
 #addAnnouncementModal input, #addAnnouncementModal textarea,
 #editAnnouncementModal input, #editAnnouncementModal textarea,
 #addFaqsModal input, #addFaqsModal textarea,
-#editFaqsModal input, #editFaqsModal textarea{
+#editFaqsModal input, #editFaqsModal textarea,
+#remarks_modal input, #remarks_modal textarea{
     background-color: #f3f3f3;
     border: 0;
     border-bottom: 2px solid #131313;
@@ -124,7 +127,8 @@
 #editFaqsModal .modal-header,
 #deleteFaqsModal .modal-header,
 
-#status_appointment_modal .modal-header{
+#status_appointment_modal .modal-header,
+#remarks_modal .modal-header{
     background-color: #131313;
 }#addFormModal .btn-custom,
 #editFormModal .btn-custom,
@@ -140,7 +144,8 @@
 #editFaqsModal .btn-custom,
 #deleteFaqsModal .btn-custom,
 
-#status_appointment_modal .btn-custom{
+#status_appointment_modal .btn-custom,
+#remarks_modal .btn-custom{
     border: 2px solid #131313;
     font-weight: bold;
 }

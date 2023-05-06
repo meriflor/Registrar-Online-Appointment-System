@@ -18,10 +18,14 @@ class CreateFormsTable extends Migration
             $table->string('name');
             $table->text('form_requirements');
             $table->string('form_process');
-            $table->string('fee');
             $table->text('form_avail');
             $table->text('form_who_avail');
             $table->text('form_max_time');
+
+            //additional
+            $table->integer('fee'); //document fee
+            $table->text('fee_type'); //fee type like per page, collected aspart of graduation fee or none
+            $table->text('pages');
             $table->timestamps();
         });
     }

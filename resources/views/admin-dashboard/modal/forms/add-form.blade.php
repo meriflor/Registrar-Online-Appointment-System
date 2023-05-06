@@ -1,40 +1,60 @@
 <div class="modal fade" id="addFormModal" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="addModalTitle" aria-hidden="true">
-    <div class="modal-dialog modal-lg modal-dialog-scrollable  modal-dialog-centered">
+    <div class="modal-dialog modal-xl modal-dialog-scrollable  modal-dialog-centered">
         <div class="modal-content">
             <div class="modal-header">
                 <h1 class="modal-title fs-5 font-nun font-white" id="addModalTitle">Add Form</h1>
-                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                <button type="button" class="btn-close btn-close-white" data-bs-dismiss="modal" aria-label="Close"></button>
             </div>
-            <div class="modal-body px-5">
+            <div class="modal-body px-5 font-nun">
                 <form action="{{ route('create-form') }}" method="POST">
                     @csrf
                     <div class="mb-3">
                         <label for="addFormName" class="form-label">Form Name</label>
-                        <input type="text" class="form-control" name="name"  id="addFormName" placeholder="">
+                        <input type="text" class="form-control" name="name"  id="addFormName"  placeholder="Type Here . . .">
                     </div>
                     <div class="mb-3">
                         <label for="addAvailability" class="form-label">Availability of the Service</label>
-                        <textarea class="form-control" name="form_avail" id="addAvailability" rows="3"></textarea>
+                        <textarea class="form-control" name="form_avail" id="addAvailability" rows="3"  placeholder="Type Here . . ."></textarea>
                     </div>
                     <div class="mb-3">
                         <label for="addAvailService" class="form-label">Who may Avail the Service</label>
-                        <textarea class="form-control" name="form_who_avail" id="addAvailService" rows="3"></textarea>
+                        <textarea class="form-control" name="form_who_avail" id="addAvailService" rows="3"  placeholder="Type Here . . ."></textarea>
                     </div>
                     <div class="mb-3">
                         <label for="addReq" class="form-label">What are the Requirements</label>
-                        <textarea class="form-control" name="form_requirements" id="addReq" rows="3"></textarea>
+                        <textarea class="form-control" name="form_requirements" id="addReq" rows="3"  placeholder="Type Here . . ."></textarea>
                     </div>
                     <div class="mb-3">
                         <label for="addProcessingTime" class="form-label">Complete Processing Time</label>
-                        <textarea class="form-control" name="form_process" id="addProcessingTime" rows="3"></textarea>
+                        <textarea class="form-control" name="form_process" id="addProcessingTime" rows="3"  placeholder="Type Here . . ."></textarea>
+                    </div>
+                    <div class="mb-3 form-group row">
+                        <div class="col-md-3">
+                            <label for="addDocFee" class="form-label">Document Fee</label>
+                            <div class="d-flex flex-row align-items-center">   
+                                <p class="p-0 m-0 me-2 font-bold">PHP </p>
+                                <input type="number" class="form-control" style="flex: 1;" name="fee"  id="addDocFee" placeholder="ex. 50 or 0 for No Payment">
+                                <p class="p-0 m-0 ms-2 font-bold"> .00</p>
+                            </div>
+                        </div>
+                        <div class="col-md-6">
+                            <label for="addDocFee" class="form-label">Collection Type</label>
+                            <div class="d-flex flex-row align-items-center">
+                                <input type="text" class="form-control" style="flex: 1;" name="fee_type"  id="addDocFeeType" placeholder="ex. Per Page, None or (Collected as part of graduation fee)">
+                            </div>
+                        </div>
+                        <div class="col-md-3">
+                            <label for="addDocFee" class="form-label">Pages</label>
+                            <div class="d-flex flex-row align-items-center">
+                                <p class="p-0 m-0 me-2 font-bold">At least </p>
+                                <input type="number" class="form-control" style="flex: 1;" name="pages"  id="addDocPages" placeholder="ex. 4">
+                                <p class="p-0 m-0 ms-2 font-bold"> Pages</p>
+                            </div>
+                        </div>
                     </div>
                     <div class="mb-3">
-                        <label for="addDocFee" class="form-label">Document Fee</label>
-                        <textarea class="form-control" name="fee" id="addDocFee" rows="3"></textarea>
-                    </div>
-                    <div class="mb-3">
-                        <label for="addMaxTimeClaim" class="form-label">Maximum Time to Claim</label>
-                        <textarea class="form-control" name="form_max_time" id="addMaxTimeClaim" rows="3"></textarea>
+                        <label for="addMaxTimeClaim" class="form-label">Maximum Time to Claim (After the request is filed)</label>
+                        <textarea class="form-control" name="form_max_time" id="addMaxTimeClaim" rows="3"  placeholder="ex. 15 working days, 30 minutes"></textarea>
                     </div>
                 </div> 
                 <div class="modal-footer">

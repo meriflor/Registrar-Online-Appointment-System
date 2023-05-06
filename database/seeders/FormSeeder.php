@@ -17,10 +17,12 @@ class FormSeeder extends Seeder
             'name' => 'Issuance of Transcript of Records',
             'form_requirements' => 'Clearance Form ',
             'form_process' => '30 minutes',
-            'fee' => 'Php50.00 / page',
             'form_avail'=> 'Monday to Friday (8:00 AM to 5:00 PM) ',
             'form_who_avail'=> 'Graduates, Students, Their Parents or Duly Authorized Representative ',
-            'form_max_time'=> '15 working days after request is filed',
+            'form_max_time'=> '15 working days',
+            'fee' => '50',
+            'fee_type' => 'per page',
+            'pages' => '4',
         ]);
         $form -> save();
 
@@ -28,10 +30,12 @@ class FormSeeder extends Seeder
             'name' => 'Issuance of Honorable Dismissal or Transfer Credentials',
             'form_requirements' => 'Clearance Form ',
             'form_process' => '30 minutes',
-            'fee' => 'Php50.00 / page',
             'form_avail'=> 'Monday to Friday (8:00 AM to 5:00 PM) ',
             'form_who_avail'=> 'Graduates, Students, Their Parents or Duly Authorized Representative  ',
-            'form_max_time'=> '3 working days after request is filed',
+            'form_max_time'=> '3 working days',
+            'fee' => '50',
+            'fee_type' => 'per page',
+            'pages' => '4',
         ]);
         $form -> save();
 
@@ -39,21 +43,25 @@ class FormSeeder extends Seeder
             'name' => 'CAV',
             'form_requirements' => 'TOR/ Diploma (Original and Photocopy) ',
             'form_process' => '30 minutes',
-            'fee' => 'Php50.00',
             'form_avail'=> 'Monday to Friday (8:00 AM to 5:00 PM) ',
             'form_who_avail'=> 'Graduates, Their Parents or Duly Authorized Representative ',
-            'form_max_time'=> '3 working days after request is filed',
+            'form_max_time'=> '3 working days',
+            'fee' => '50',
+            'fee_type' => 'None',
+            'pages' => '1',
         ]);
         $form -> save();
 
         $form = new \App\Models\Form([
             'name' => 'Issuance of Certification',
-            'form_requirements' => 'Clearance Form ) ',
+            'form_requirements' => 'Clearance Form',
             'form_process' => '30 minutes',
-            'fee' => 'Php50.00',
             'form_avail'=> 'Monday to Friday (8:00 AM to 5:00 PM) ',
             'form_who_avail'=> 'Graduates, Their Parents or Duly Authorized Representative ',
-            'form_max_time'=> '3 working days after request is filed',
+            'form_max_time'=> '3 working days',
+            'fee' => '50',
+            'fee_type' => 'None',
+            'pages' => '1',
         ]);
         $form -> save();
 
@@ -61,23 +69,38 @@ class FormSeeder extends Seeder
             'name' => 'Authentication',
             'form_requirements' => 'Clearance Form and Documents for Authentication ',
             'form_process' => '30 minutes',
-            'fee' => 'Php20.00',
             'form_avail'=> 'Monday to Friday (8:00 AM to 5:00 PM) ',
             'form_who_avail'=> 'Graduates, Their Parents or Duly Authorized Representative ',
-            'form_max_time'=> '1 working days after request is filed',
+            'form_max_time'=> '1 working days',
+            'fee' => '20',
+            'fee_type' => 'None',
+            'pages' => '1',
         ]);
         $form -> save();
 
         $form = new \App\Models\Form([
-            'name' => 'Issuance of Form 137',
+            'name' => 'Issuance of Form 137 (For Employment)',
             'form_requirements' => 'Clearance Form and Request Form issued by the Requesting School ',
             'form_process' => '30 minutes',
-            'fee' => 'Php50.00 (if Form 137 is for employment)
-            None (if Form 137 is for use as transfer credential
-            ',
             'form_avail'=> 'Monday to Friday (8:00 AM to 5:00 PM) ',
             'form_who_avail'=> 'Graduates, Their Parents or Duly Authorized Representative ',
-            'form_max_time'=> '5 working days after request is filed',
+            'form_max_time'=> '5 working days',
+            'fee' => '50',
+            'fee_type' => 'None',
+            'pages' => '1',
+        ]);
+        $form -> save();
+
+        $form = new \App\Models\Form([
+            'name' => 'Issuance of Form 137 (For Transfer Credential)',
+            'form_requirements' => 'Clearance Form and Request Form issued by the Requesting School ',
+            'form_process' => '30 minutes',
+            'form_avail'=> 'Monday to Friday (8:00 AM to 5:00 PM) ',
+            'form_who_avail'=> 'Graduates, Their Parents or Duly Authorized Representative ',
+            'form_max_time'=> '5 working days',
+            'fee' => '0',
+            'fee_type' => 'None',
+            'pages' => '1',
         ]);
         $form -> save();
 
@@ -85,10 +108,12 @@ class FormSeeder extends Seeder
             'name' => 'Issuance of Form 138',
             'form_requirements' => 'Clearance Form',
             'form_process' => '30 minutes',
-            'fee' => 'None',
             'form_avail'=> 'Monday to Friday (8:00 AM to 5:00 PM) ',
             'form_who_avail'=> 'Graduates, Their Parents or Duly Authorized Representative ',
             'form_max_time'=> '30 minutes',
+            'fee' => '0',
+            'fee_type' => 'None',
+            'pages' => '1',
         ]);
         $form -> save();
 
@@ -96,10 +121,12 @@ class FormSeeder extends Seeder
             'name' => 'Issuance of Diploma',
             'form_requirements' => 'Clearance Form',
             'form_process' => '30 minutes',
-            'fee' => 'Php50.00 (collected as part of graduation fee)',
             'form_avail'=> 'Monday to Friday (8:00 AM to 5:00 PM) ',
             'form_who_avail'=> 'Graduates, Their Parents or Duly Authorized Representative ',
             'form_max_time'=> '30 minutes (if diploma is already available)',
+            'fee' => '50',
+            'fee_type' => 'Collected as part of graduation fee',
+            'pages' => '1',
         ]);
         $form -> save();
 
@@ -107,10 +134,12 @@ class FormSeeder extends Seeder
             'name' => 'Issuance of Yearbook',
             'form_requirements' => 'Clearance Form',
             'form_process' => '30 minutes',
-            'fee' => '(collected as part of graduation fee)',
             'form_avail'=> 'Monday to Friday (8:00 AM to 5:00 PM) ',
             'form_who_avail'=> 'Graduates, Their Parents or Duly Authorized Representative ',
             'form_max_time'=> '30 minutes (if yearbook is already available)',
+            'fee' => '0',
+            'fee_type' => 'Collected as part of graduation fee',
+            'pages' => '1',
         ]);
         $form -> save();
 
@@ -118,23 +147,38 @@ class FormSeeder extends Seeder
             'name' => 'Re-issuance of Diploma',
             'form_requirements' => 'Affidavit of Loss',
             'form_process' => '15 minutes',
-            'fee' => 'Php250.00',
             'form_avail'=> 'Monday to Friday (8:00 AM to 5:00 PM) ',
             'form_who_avail'=> 'Graduates, Their Parents or Duly Authorized Representative ',
-            'form_max_time'=> '15 minutes (if yearbook is already available',
+            'form_max_time'=> '15 minutes (if yearbook is already available)',
+            'fee' => '250',
+            'fee_type' => 'None',
+            'pages' => '1',
         ]);
         $form -> save();
 
         $form = new \App\Models\Form([
-            'name' => 'Re-issuance of COR / ID Card',
+            'name' => 'Re-issuance of COR',
             'form_requirements' => 'Affidavit of Loss',
             'form_process' => '15 minutes',
-            'fee' => 'Php20.00 for the COR;
-            Php125 for the ID Card
-            ',
             'form_avail'=> 'Monday to Friday (8:00 AM to 5:00 PM) ',
             'form_who_avail'=> 'Students',
             'form_max_time'=> '15 minutes',
+            'fee' => '20',
+            'fee_type' => 'None',
+            'pages' => '1',
+        ]);
+        $form -> save();
+
+        $form = new \App\Models\Form([
+            'name' => 'Re-issuance of ID Card',
+            'form_requirements' => 'Affidavit of Loss',
+            'form_process' => '15 minutes',
+            'form_avail'=> 'Monday to Friday (8:00 AM to 5:00 PM) ',
+            'form_who_avail'=> 'Students',
+            'form_max_time'=> '15 minutes',
+            'fee' => '125',
+            'fee_type' => 'None',
+            'pages' => '1',
         ]);
         $form -> save();
 
