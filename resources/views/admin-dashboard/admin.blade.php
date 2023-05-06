@@ -49,7 +49,7 @@
                     />
                 </div>
                 <p class="text-wrap fs-6 font-corm font-white ps-3 m-0">
-                    MSU-MSAT Registrar
+                    University Registrar
                 </p>
             </div>
             <ul class="navbar-nav d-flex flex-column mt-3 w-100">
