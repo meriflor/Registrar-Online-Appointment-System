@@ -62,7 +62,15 @@
                 <div class="form-group row">
                     <div class="col-lg-4">
                         <label for="">Status</label>
-                        <input class="form-control form-control" type="text" value="{{ $status }}" aria-label="default input example" disabled>
+                        <select class="form-control" disabled>
+                            <option value="junior_high_student"  {{ $status == 'junior_high_student' ? 'selected' : '' }}>Junior High School Student (Grades 7-10)</option>
+                            <option value="senior_high_student" {{ $status == 'senior_high_student' ? 'selected' : '' }}>Senior High School Student (Grades 11-12)</option>
+                            <option value="senior_high_graduate" {{ $status == 'senior_high_graduate' ? 'selected' : '' }}>Senior High School Graduate (High School Diploma)</option>
+                            <option value="undergraduate_student" {{ $status == 'undergraduate_student' ? 'selected' : '' }}>Undergraduate College Student (Bachelor's Degree Program)</option>
+                            <option value="undergraduate_alumni" {{ $status == 'undergraduate_alumni' ? 'selected' : '' }}>Undergraduate College Alumni (Bachelor's Degree Completed)</option>
+                            <option value="masteral_student" {{ $status == 'masteral_student' ? 'selected' : '' }}>Master's Degree Student (Master's Degree Program)</option>
+                            <option value="masteral_alumni"  {{ $status == 'masteral_alumni' ? 'selected' : '' }}>Master's Degree Alumni (Master's Degree Completed)</option>   
+                        </select>
                     </div>
                     <div class="col-lg-4">
                         <label for="">Course</label>
@@ -110,7 +118,7 @@
                 </div>
         </div>
         <div class="modal-footer">
-            <small class="font-maroon d-flex flex-row justify-content-start" style="flex: 1;">*You can change your personal information located at the Edit Profile section.</small>
+            <small class="font-maroon d-flex flex-row justify-content-start" style="flex: 1;">*You can change your personal information located at the <a href="{{ route('edit-profile') }}" class="font-maroon" style="font-weight:bold; padding-left:5px; padding-right:5px;"> Edit Profile </a> section.</small>
             <button type="button" class="btn btn-appoint" data-bs-toggle="modal" data-bs-target="#appointmentModal">Back</button>
             <button type="submit" id="submitButton" class="btn btn-appoint">Submit</button>
             <!-- data-bs-toggle="modal" data-bs-target="#confirmedModal" -->
