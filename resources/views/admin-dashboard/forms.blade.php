@@ -103,7 +103,7 @@
                                             <p class="info-title">Pages: </p>
                                         </div>
                                         <div class="col-md-6">
-                                            <p class="info-content">At least {{ $form->pages }}</p>
+                                            <p class="info-content">At least {{ $form->pages }} pages</p>
                                         </div>
                                     </div>
                                     <hr class="font-88">

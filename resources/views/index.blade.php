@@ -303,7 +303,7 @@
     </div>
 
     <!-- ABOUT SECTION --> 
-    <div class="about row">
+    <div class="about row" id="about-sect">
         <div class="col-md-6 about-details">
             <div class="about-title display-text font-mont font-bold">MSU-MSAT Registrar</div>    
             <div class="about-subtitle font-este font-body">

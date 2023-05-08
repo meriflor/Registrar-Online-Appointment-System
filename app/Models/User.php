@@ -7,9 +7,12 @@ use Illuminate\Database\Eloquent\Model;
 use App\Models\Booking;
 use App\Models\Appointment;
 
+use Illuminate\Notifications\Notifiable;
+
 class User extends Model
 {
     use HasFactory;
+    use Notifiable;
     protected $fillable = [
         'firstName',
         'lastName',

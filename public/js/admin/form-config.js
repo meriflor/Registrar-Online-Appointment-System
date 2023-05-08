@@ -14,8 +14,10 @@ for (var i = 0; i < editForms.length; i++) {
                 $("#editAvailService").text(data.form_who_avail);
                 $("#editReq").text(data.form_requirements);
                 $("#editProcessingTime").text(data.form_process);
-                $("#editDocFee").text(data.fee);
+                $("#editDocFee").val(data.fee);
                 $("#editMaxTimeClaim").text(data.form_max_time);
+                $("#editDocFeeType").val(data.fee_type);
+                $("#editDocPages").val(data.pages);
             });
     });
 }

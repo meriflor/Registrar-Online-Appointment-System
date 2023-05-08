@@ -15,8 +15,8 @@ use Illuminate\Support\Facades\Auth;
 use GrahamCampbell\ResultType\Success;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\Session;
+use Illuminate\Support\Facades\DB;
 use PhpParser\Node\Expr\FuncCall;
-
 class UserController extends Controller
 {
     public function viewUser(){
@@ -248,9 +248,22 @@ class UserController extends Controller
         
         $announcements = Announcement::orderBy('created_at', 'desc')->take(5)->get();
 
+            //notifications
+            $notifications = User::find($user_id)
+                  ->notifications()
+                  ->orderBy('created_at', 'desc')
+                  ->paginate(5);
+            // Mark all notifications as read
+            User::find($user_id)->unreadNotifications->markAsRead();
+
+            $bookings = Booking::all();
+
         return view('appointment.content.notification', compact('firstName','lastName','middleName','suffix','address','school_id','cell_no','civil_status','email','birthdate','gender','status', 'acadYear', 'gradYear', 'course',
-        'forms',
-        'appointments', 'pending', 'announcements'
+        'forms', 'bookings',
+        'appointments', 'pending', 'announcements', 'notifications'
         ));
     }
+
+    //user other methods,, NOTIFICATION
+//     public
 }

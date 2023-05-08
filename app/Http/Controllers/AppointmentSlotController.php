@@ -57,11 +57,38 @@ class AppointmentSlotController extends Controller
         foreach ($appointmentSlots as $appointmentSlot) {
             $start = $appointmentSlot->slot_date;
             $appDate = Carbon::parse($start)->format('F d, Y');
-            $currentSlot = Appointment::where('appointment_date', $appDate)->count();
-            $pendingSlot = Appointment::where('status', $pending)->where('appointment_date', $appDate)->count();
-            $onProcessSlot = Appointment::where('status', $onProcess)->where('appointment_date', $appDate)->count();
-            $readyToClaimSlot = Appointment::where('status', $readyToClaim)->where('appointment_date', $appDate)->count();
-            $claimedSlot = Appointment::where('status', $claimed)->where('appointment_date', $appDate)->count();
+            // $currentSlot = Appointment::where('appointment_date', $appDate)->count();
+            // $pendingSlot = Appointment::where('status', $pending)->where('appointment_date', $appDate)->count();
+            // $onProcessSlot = Appointment::where('status', $onProcess)->where('appointment_date', $appDate)->count();
+            // $readyToClaimSlot = Appointment::where('status', $readyToClaim)->where('appointment_date', $appDate)->count();
+            // $claimedSlot = Appointment::where('status', $claimed)->where('appointment_date', $appDate)->count();
+
+            $currentSlot = Appointment::where('appointment_date', $appDate)
+                ->whereHas('bookings', function ($query) {
+                    $query->where('resched', 0);
+                })->count();
+            $pendingSlot = Appointment::where('status', $pending)
+                ->where('appointment_date', $appDate)
+                ->whereHas('bookings', function ($query) {
+                    $query->where('resched', 0);
+                })->count();
+            $onProcessSlot = Appointment::where('status', $onProcess)
+                ->where('appointment_date', $appDate)
+                ->whereHas('bookings', function ($query) {
+                    $query->where('resched', 0);
+                })->count()
+            ;$readyToClaimSlot = Appointment::where('status', $readyToClaim)
+                ->where('appointment_date', $appDate)
+                ->whereHas('bookings', function ($query) {
+                    $query->where('resched', 0);
+                })->count()
+            ;$claimedSlot = Appointment::where('status', $claimed)
+                ->where('appointment_date', $appDate)
+                ->whereHas('bookings', function ($query) {
+                    $query->where('resched', 0);
+                })->count();
+
+
             $title = $currentSlot . ' / '.$appointmentSlot->available_slots;
             $isDisabled = $appointmentSlot->is_disabled ? true : false;
             $slots = $appointmentSlot->available_slots;
