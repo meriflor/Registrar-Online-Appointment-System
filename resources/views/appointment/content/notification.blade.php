@@ -9,53 +9,55 @@
         <div class="notification p-4 mb-4">
             <div class="d-flex flex-column align-items-start">
                 <div class="d-flex flex-row align-items-center">
-                    <p class="fs-6 m-0 font-bold me-2">
-                    {{ $notification->data['title'] }} 
+                    <p class="fs-6 m-0 me-2"> 
+                        <span class="font-bold">{{ $notification->data['title'] }} </span>
+                        <span>  {{ $notification->data['doc'] }}</span>
                     </p>
-                    <span>  {{ $notification->data['doc'] }}</span>
                 </div>
                 <div class="d-flex flex-row align-items-center">
                     <small>{{ $notification->created_at->diffForHumans() }} 
                         <span>
                             <a style="color: #1e1e1e;" data-bs-toggle="collapse" href="#{{ $notification->id }}" role="button" aria-expanded="false" aria-controls="collapseExample">
-                                View Appointment
+                                View Notification
                             </a>
                         </span>
                     </small>
                 </div>
             </div>
             
-            <p class="px-5 py-4">{{ $notification->data['remarks'] }}</p>
-
-            <div class="d-flex flex-row justify-content-end">
-                @foreach($bookings as $booking)
-                    @if($booking->appointment_id == $notification->data['app_id'] && $booking->resched == 1 )
-                    <button class="btn notif-btn resched_btn" id="resched_btn" data-form-name="{{ $booking->appointment->form->name }}" data-form-max-claim="{{ $booking->appointment->form->form_max_time }}" data-app-id="{{ $booking->appointment_id }}">
-                        Re-Schedule
-                    </button>
+            <div class="collapse" id="{{ $notification->id }}">
+                <p class="px-5 py-4">{{ $notification->data['remarks'] }}</p>
+                <div class="d-flex flex-row justify-content-end">
+                    @foreach($bookings as $booking)
+                        @if($booking->appointment_id == $notification->data['app_id'] && $booking->resched == 1 )
+                        <button class="btn notif-btn resched_btn" id="resched_btn" data-form-name="{{ $booking->appointment->form->name }}" data-form-max-claim="{{ $booking->appointment->form->form_max_time }}" data-app-id="{{ $booking->appointment_id }}">
+                            Re-Schedule
+                        </button>
+                        @endif
+                    @endforeach
+                </div>
+                <div class="">
+                    <h5 class="m-0">Appointment Detail</h5>
+                    <hr>
+                    @foreach($appointments as $appointment)
+                    @if($notification->data['app_id'] == $appointment->id)
+                    <p class="fs-6 m-0 mt-2">
+                        <span class="font-bold">Date Requested:</span>  
+                        <span>  {{ $appointment->created_at->format('M d, Y') }}</span>
+                    </p>
+                    <p class="fs-6 m-0 mt-2">
+                        <span class="font-bold">Appointment Date:</span>  
+                        <span>  {{ $appointment->appointment_date }}</span>
+                    </p>
+                    <p class="fs-6 m-0 mt-2">
+                        <span class="font-bold">Payment Method:</span>  
+                        <span>  {{ $appointment->payment_method }}</span>
+                    </p>
                     @endif
-                @endforeach
-                
-                
+                    @endforeach
+                </div>
             </div>
-            <div id="{{ $notification->id }}" class="collapse">
-                @foreach($appointments as $appointment)
-                @if($notification->data['app_id'] == $appointment->id)
-                <p class="fs-6 m-0 mt-2">
-                    <span class="font-bold">Date Requested:</span>  
-                    <span>  {{ $appointment->created_at->format('M d, Y') }}</span>
-                </p>
-                <p class="fs-6 m-0 mt-2">
-                    <span class="font-bold">Appointment Date:</span>  
-                    <span>  {{ $appointment->appointment_date }}</span>
-                </p>
-                <p class="fs-6 m-0 mt-2">
-                    <span class="font-bold">Payment Method:</span>  
-                    <span>  {{ $appointment->payment_method }}</span>
-                </p>
-                @endif
-                @endforeach
-            </div>
+            
         </div>
     @endforeach
 @else

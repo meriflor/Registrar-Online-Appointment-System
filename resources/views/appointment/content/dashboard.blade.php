@@ -48,7 +48,11 @@
                     @if($form->fee > 0)
                     <div class="fees">
                         <p class="fs-6"><b>Document Fee: </b>
-                            PHP {{ $form->fee }}.00</p>
+                            PHP {{ $form->fee }}.00 
+                            @if($form->fee_type !== "None")
+                            {{ $form->fee_type }}
+                            @endif 
+                        </p>
                     </div>
                     @else
                     <div class="fees">

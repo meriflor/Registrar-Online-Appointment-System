@@ -39,15 +39,11 @@ var editCourses = document.querySelectorAll(".open_edit_course_modal");
 for (var i = 0; i < editCourses.length; i++) {
     editCourses[i].addEventListener("click", function () {
         var course_id = $(this).data("course-edit-id");
+        var course_name = $(this).data("course-edit-name");
         console.log(course_id);
         $("#editCourseModal").modal("show");
         $("#course-id").val(course_id);
-
-        fetch("/course/" + course_id)
-            .then((response) => response.json())
-            .then((data) => {
-                $("#editCourseName").val(data.course_name);
-            });
+        $("#editCourseName").val(course_name);
     });
 }
 

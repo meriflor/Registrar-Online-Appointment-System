@@ -46,7 +46,7 @@ for (var i = 0; i < viewBtns.length; i++) {
                     $('#viewTOR').show();
                 }
                 $("#viewPurpose").text(data.app_purpose);
-                $("#viewDocFee").text(data.doc_fee);
+                $("#viewDocFee").text("PHP " + data.doc_fee + ".00");
                 
                 if(data.a_transfer == 0){
                     $("#viewATransfer").text("No");

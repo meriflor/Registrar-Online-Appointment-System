@@ -108,16 +108,48 @@
                     <ul class="list-group list-group-flush">
                         @if(count($pending) > 0)
                             @foreach($pending as $pendapp)
-                            <li class="list-group-item"> <b>{{ $pendapp->form->name }}</b>  on <b>{{ $pendapp->appointment_date }}</b><b> (</b>
-                                @if($pendapp->status == 'Pending')
-                                    <span style="color: #4a7453;"><i><b>Pending</b></i></span>
-                                @elseif($pendapp->status == 'On Process')
-                                    <span style="color: #3c8fad;"><i><b>On Process</b></i></span>
-                                @elseif($pendapp->status == 'Ready to Claim')
-                                    <span style="color: #c18930;"><i><b>Ready to Claim</b></i></span>
+                            @php
+                                $has_resched = false;
+                                foreach($bookings as $booking) {
+                                    if($booking->appointment_id == $pendapp->id && $booking->resched == 1) {
+                                        $has_resched = true;
+                                        break;
+                                    }
+                                }
+                            @endphp
+                            @if($has_resched)
+                            <a class="list-group-item" href="/notification"> 
+                                <b>{{ $pendapp->form->name }}</b> on <b>{{ $pendapp->appointment_date }}</b>
+                                
+                                @if($has_resched)
+                                    <span style="color: #f3f3f3; background-color: maroon;"><i><b>Reschedule</b></i></span>
+                                @else
+                                    @if($pendapp->status == 'Pending')
+                                        <span style="color: #4a7453;"><i><b>Pending</b></i></span>
+                                    @elseif($pendapp->status == 'On Process')
+                                        <span style="color: #3c8fad;"><i><b>On Process</b></i></span>
+                                    @elseif($pendapp->status == 'Ready to Claim')
+                                        <span style="color: #c18930;"><i><b>Ready to Claim</b></i></span>
+                                    @endif
                                 @endif
-                                <b>)</b> 
-                            </li>
+                                </a>
+                            @else
+                                <li class="list-group-item" href="/notification"> 
+                                <b>{{ $pendapp->form->name }}</b> on <b>{{ $pendapp->appointment_date }}</b>
+                                
+                                @if($has_resched)
+                                    <span style="color: #f3f3f3; background-color: maroon;"><i><b>Reschedule</b></i></span>
+                                @else
+                                    @if($pendapp->status == 'Pending')
+                                        <span style="color: #4a7453;"><i><b>Pending</b></i></span>
+                                    @elseif($pendapp->status == 'On Process')
+                                        <span style="color: #3c8fad;"><i><b>On Process</b></i></span>
+                                    @elseif($pendapp->status == 'Ready to Claim')
+                                        <span style="color: #c18930;"><i><b>Ready to Claim</b></i></span>
+                                    @endif
+                                @endif
+                                </li>
+                            @endif
                             @endforeach
                         @else
                             <li class="list-group-item">You have no pending appointments at the moment.</li>
@@ -174,7 +206,6 @@
         var appointment_date;
         $(document).ready(function() { 
             var cell;
-
             $('#download-button').on('click', function() {
                 window.jsPDF = window.jspdf.jsPDF;
 

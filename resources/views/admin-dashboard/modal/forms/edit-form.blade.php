@@ -3,7 +3,7 @@
         <div class="modal-content">
             <div class="modal-header">
                 <h1 class="modal-title fs-5 font-white font-nun" id="editFormModal">Edit Form</h1>
-                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                <button type="button" class="btn-close btn-close-white" data-bs-dismiss="modal" aria-label="Close"></button>
             </div>
             <div class="modal-body px-5">
                 <input type="hidden" id="form-id">
@@ -47,7 +47,7 @@
                         <div class="d-flex flex-row align-items-center">
                             <p class="p-0 m-0 me-2 font-bold">At least </p>
                             <input type="number" class="form-control" style="flex: 1;" name="editDocPages"  id="editDocPages" placeholder="ex. 4">
-                            <p class="p-0 m-0 ms-2 font-bold"> Pages</p>
+                            <p class="p-0 m-0 ms-2 font-bold"> Page(s)</p>
                         </div>
                     </div>
                 </div>

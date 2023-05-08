@@ -159,7 +159,7 @@
                     <li class="list-group-item d-flex flex-row justify-content-between align-items-center">
                         <p class="m-0 p-0">{{ $course->course_name }}</p>
                         <div class="body-buttons d-flex flex-row justify-content-end align-items-center">
-                            <button class="btn btn-custom d-flex flex-row align-items-center open_edit_course_modal" type="button"  data-course-edit-id="{{ $course->id }}">
+                            <button class="btn btn-custom d-flex flex-row align-items-center open_edit_course_modal" type="button"  data-course-edit-id="{{ $course->id }}"  data-course-edit-name="{{ $course->course_name }}">
                                 <img src="/images/edit.png" alt="">
                                 <small class="m-0 ms-2 p-0 font-nun d-none d-md-flex">Edit</small>
                             </button>
@@ -178,6 +178,7 @@
             
         </section>
     </div> 
+    <button id="back-to-top-btn" class="btn btn-custom show" style="color: #131313;">Back to top</button>
     <!-- TODO scripts -->
     <script>
         var links = document.querySelectorAll('.navigation a');

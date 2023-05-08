@@ -58,10 +58,11 @@ class UserController extends Controller
                                 ->where('user_id', $user_id)->get();
         
         $announcements = Announcement::orderBy('created_at', 'desc')->take(5)->get();
+        $bookings = Booking::all();
 
         return view('appointment.content.dashboard', compact('firstName','lastName','middleName','suffix','address','school_id','cell_no','civil_status','email','birthdate','gender','status', 'acadYear', 'gradYear', 'course',
         'forms',
-        'appointments', 'pending', 'announcements'
+        'appointments', 'pending', 'announcements', 'bookings',
         ));
     }
 
@@ -108,9 +109,10 @@ class UserController extends Controller
                                 ->where('user_id', $user_id)->get();
         
         $announcements = Announcement::orderBy('created_at', 'desc')->take(5)->get();
+        $bookings = Booking::all();
 
         return view('appointment.content.appointment-records', compact('firstName','lastName','middleName','suffix','address','school_id','cell_no','civil_status','email','birthdate','gender','status', 'acadYear', 'gradYear', 'course',
-        'forms',
+        'forms', 'bookings',
         'appointments', 'pending', 'announcements'
         ));
     }
@@ -156,9 +158,10 @@ class UserController extends Controller
         
         $announcements = Announcement::orderBy('created_at', 'desc')->take(5)->get();
 
+        $bookings = Booking::all();
         return view('appointment.content.edit-profile', compact('firstName','lastName','middleName','suffix','address','school_id','cell_no','civil_status','email','birthdate','gender','status', 'acadYear', 'gradYear', 'course',
-        'forms',
-        'appointments', 'pending', 'announcements','courses'
+        'forms','bookings',
+        'appointments', 'pending', 'announcements','courses' 
         ));
     }
     
@@ -202,8 +205,9 @@ class UserController extends Controller
         
         $announcements = Announcement::orderBy('created_at', 'desc')->take(5)->get();
 
+        $bookings = Booking::all();
         return view('appointment.content.settings', compact('firstName','lastName','middleName','suffix','address','school_id','cell_no','civil_status','email','birthdate','gender','status', 'acadYear', 'gradYear', 'course',
-        'forms',
+        'forms', 'bookings',
         'appointments', 'pending', 'announcements'
         ));
     }

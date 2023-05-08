@@ -24,40 +24,59 @@
             <div class="col-md-4">
                 <div id="track-boxes" class="track-boxes mb-3" style="padding: 0 10px 0 0;">
                     <div class="p-shad-w">
-                        <h5 class="font-nun font-bold">Today: {{ ($current_day) }} </h5>
-                        <ul class="list-group list-group-flush">
+                        <a href="#list_day-{{ \Carbon\Carbon::now()->format('Y-m-d') }}" data-bs-toggle="collapse" class="w-100 d-flex flex-row align-items-center justify-content-between btn text-start" style="background-color: white; border: none; color: #1e1e1e;" role="button" aria-expanded="false" aria-controls="collapseExample">
+                            <h5 class="m-0 font-nun font-bold" style="flex: 1;">Today: {{ ($current_day) }} </h5>
                             @if(count($formCounts) > 0)
-                            @foreach($formCounts as $formName => $count)
-                            <li class="list-group-item py-3 px-4 font-nun row d-flex flex-row align-items-center justify-content-between">
-                                <p class="p-0 m-0 doc-title flex-1 col-9">
-                                    {{ ($formName ) }}
-                                </p>
-                                <span class="col-3 badge badge-dash-custom d-flex flex-row justify-content-center">{{ ($count ) }}</span>
-                            </li>
-                            @endforeach
-                            @else
-                            <li class="list-group-item py-3 px-4 font-nun row d-flex flex-row align-items-center justify-content-between">
-                                No appointments for this day. 
-                            </li>
+                            <small>Open</small>
                             @endif
-                        </ul>
+                        </a>
+                        <div class="collapse" id="list_day-{{ \Carbon\Carbon::now()->format('Y-m-d') }}">
+                            <ul class="list-group list-group-flush">
+                                @if(count($formCounts) > 0)
+                                @foreach($formCounts as $formName => $count)
+                                <li class="list-group-item py-3 px-4 font-nun row d-flex flex-row align-items-center justify-content-between">
+                                    <p class="p-0 m-0 doc-title flex-1 col-9">
+                                        {{ ($formName ) }}
+                                    </p>
+                                    <span class="col-3 badge badge-dash-custom d-flex flex-row justify-content-center">{{ ($count ) }}</span>
+                                </li>
+                                @endforeach
+                                @else
+                                <li class="list-group-item py-3 px-4 font-nun row d-flex flex-row align-items-center justify-content-between">
+                                    No appointments for this day. 
+                                </li>
+                                @endif
+                            </ul>
+                        </div>
+                        
+
                     </div>
                     
                     @foreach($futureDocs as $futureDate => $appointments)
                         <div class="p-shad-w mt-3">
-                            <h5 class="font-nun font-bold">On: {{ \Carbon\Carbon::parse($futureDate)->format('M d, Y') }}</h5>
-                            <ul class="list-group list-group-flush">
-                                @foreach($appointments->groupBy('form.name') as $formName => $groupedAppointments)
-                                    <li class="list-group-item py-3 px-4 font-nun row d-flex flex-row align-items-center justify-content-between">
-                                        <p class="p-0 m-0 doc-title flex-1 col-9">
-                                            {{ $formName }}
-                                        </p>
-                                        <span class="col-3 badge badge-dash-custom d-flex flex-row justify-content-center">
-                                            {{ $groupedAppointments->count() }}
-                                        </span>
-                                    </li>
-                                @endforeach
-                            </ul>
+                            <a href="#list_day-{{ \Carbon\Carbon::parse($futureDate)->format('Y-m-d') }}" data-bs-toggle="collapse" 
+                                class="w-100 d-flex flex-row align-items-center justify-content-between btn text-start" 
+                                style="background-color: white; border: none; color: #1e1e1e;" role="button" 
+                                aria-expanded="false" aria-controls="collapseExample"
+                            >
+                                <h5 class="font-nun font-bold">On: {{ \Carbon\Carbon::parse($futureDate)->format('M d, Y') }}</h5>
+                                <small>Open</small>
+                            </a>
+                            <div class="collapse" id="list_day-{{ \Carbon\Carbon::parse($futureDate)->format('Y-m-d') }}">
+                                <ul class="list-group list-group-flush">
+                                    @foreach($appointments->groupBy('form.name') as $formName => $groupedAppointments)
+                                        <li class="list-group-item py-3 px-4 font-nun row d-flex flex-row align-items-center justify-content-between">
+                                            <p class="p-0 m-0 doc-title flex-1 col-9">
+                                                {{ $formName }}
+                                            </p>
+                                            <span class="col-3 badge badge-dash-custom d-flex flex-row justify-content-center">
+                                                {{ $groupedAppointments->count() }}
+                                            </span>
+                                        </li>
+                                    @endforeach
+                                </ul>
+                            </div>
+                            
                         </div>
                     @endforeach
                 </div>
@@ -106,7 +125,7 @@
                     <thead class="table-head text-center">
                         <tr>
                             <th>Appointment Number</th>
-                            <th>School ID</th>
+                            <th>Student ID</th>
                             <th>First Name</th>
                             <th>Last Name</th>
                             <th>Document Requested</th>

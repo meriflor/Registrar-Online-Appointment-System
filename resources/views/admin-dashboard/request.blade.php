@@ -97,7 +97,7 @@
     <div class="appointment-records p-4">
         <div class="w-100 fs-2 font-bold font-nun mb-2">On Process Documents</div>
         <div class="table-rounded">
-            <table id="onProcessDocuments" class="table table-bordered table-sm font-nun table-striped">
+            <table id="onProcessDocuments" class="table font-nun">
                 <thead class="table-head text-center">
                     <tr>
                         <th>Appointment Number</th>
@@ -151,7 +151,7 @@
     <div class="appointment-records p-4">
         <div class="w-100 fs-2 font-bold font-nun mb-2">Ready to Claim Documents</div>
         <div class="table-rounded">
-            <table id="readyToClaimDocuments" class="table table-bordered table-sm font-nun table-striped">
+            <table id="readyToClaimDocuments" class="table font-nun">
                 <thead class="table-head text-center">
                     <tr>
                         <th>Appointment Number</th>
@@ -205,17 +205,16 @@
     <div class="appointment-records p-4">
         <div class="w-100 fs-2 font-bold font-nun mb-2">Claimed Documents</div>
         <div class="table-rounded">
-            <table id="claimedDocuments" class="table table-bordered table-sm font-nun table-striped">
+            <table id="claimedDocuments" class="table font-nun">
                 <thead class="table-head text-center">
                     <tr>
                         <th>Appointment Number</th>
-                        tudent</th>
+                        <th>Student ID</th>
                         <th>First Name</th>
                         <th>Last Name</th>
                         <th>Document Requested</th>
                         <th>Date Requested</th>
                         <th>Status</th>
-                        <th>Action</th>
                         <th></th>
                     </tr>
                 </thead>
@@ -229,17 +228,6 @@
                             <td>{{ $booking->appointment->form->name}}</td>
                             <td>{{ $booking->created_at->format('M d, Y') }}</td>
                             <td class="status">{{ $booking->appointment->status }}</td>
-                            <td>
-                                <a  type="button" class="btn view-request p-0 accept-btn" id="accept-btn" style="display: block;" data-accept-id="{{ $booking->appointment->id }}">
-                                    Accept
-                                </a>
-                                <a  type="button" class="btn view-request p-0 done-btn"  id="done-btn" style="display: none;" data-done-id="{{ $booking->appointment->id }}" data-bs-toggle="modal" data-bs-target="#status_appointment_modal">
-                                    Done
-                                </a>
-                                <a  type="button"  class="btn view-request p-0 claimed-btn"  id="claimed-btn" style="display: none;" data-claimed-id="{{ $booking->appointment->id }}" data-bs-toggle="modal" data-bs-target="#status_appointment_modal">
-                                    Claimed
-                                </a>
-                            </td>
                             <td class="td-view">
                                 <a type="button" class="btn view-request p-0 view-btn" id="{{ $booking->id }}">
                                     View

@@ -19,14 +19,30 @@
                                 <div class="d-flex flex-row align-items-center row">
                                     <div class="col-md-6" style="flex: 1;">
                                         <p class="fs-6 m-0"><b>Status: </b>
-                                        @if($appointment->status == 'Pending')
-                                            <span style="color: #4a7453;"><i><b> Pending</b></i></span>
-                                        @elseif($appointment->status == 'On Process')
-                                            <span style="color: #3c8fad;"><i><b> On Process</b></i></span>
-                                        @elseif($appointment->status == 'Ready to Claim')
-                                            <span style="color: #c18930;"><i><b> Ready to Claim</b></i></span>
-                                        @elseif($appointment->status == 'Claimed')
-                                            <span style="color: maroon;"><i><b> Claimed</b></i></span>
+                                        @php
+                                            $has_resched = false;
+                                            $has_remarks = false;
+                                            foreach($bookings as $booking) {
+                                                if($booking->appointment_id == $appointment->id && $booking->resched == 1) {
+                                                    $has_resched = true;
+                                                    $has_remarks = true;
+                                                    $remarks = $booking->appointment->remarks;
+                                                    break;
+                                                }
+                                            }
+                                        @endphp
+                                        @if($has_resched)
+                                            <span style="color: #f3f3f3; background-color: maroon;"><i><b>Reschedule</b></i></span>
+                                        @else
+                                            @if($appointment->status == 'Pending')
+                                                <span style="color: #4a7453;"><i><b> Pending</b></i></span>
+                                            @elseif($appointment->status == 'On Process')
+                                                <span style="color: #3c8fad;"><i><b> On Process</b></i></span>
+                                            @elseif($appointment->status == 'Ready to Claim')
+                                                <span style="color: #c18930;"><i><b> Ready to Claim</b></i></span>
+                                            @elseif($appointment->status == 'Claimed')
+                                                <span style="color: maroon;"><i><b> Claimed</b></i></span>
+                                            @endif
                                         @endif
                                             <!-- {{ $appointment->status }} -->
                                         </p>
@@ -38,7 +54,12 @@
                                     </button>
                                     @endif
                                 </div>
-                                
+                                @if($has_remarks)
+                                    <div class="d-flex flex-row p-2 mt-4" style="background-color: #80000021; border: 1px solid maroon;">
+                                        <p class="m-0 p-0">REMARKS: <span class="m-0 p-0">{{ $remarks }}</span></p>
+
+                                    </div>
+                                @endif
                                 <div class="receipt-box p-3 my-3" id="my-div">
                                     <div class="receipt-content fs-6 d-flex flex-column font-mont">
                                         <div class="content-head d-flex flex-column">

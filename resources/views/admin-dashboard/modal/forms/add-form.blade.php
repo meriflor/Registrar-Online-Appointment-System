@@ -48,7 +48,7 @@
                             <div class="d-flex flex-row align-items-center">
                                 <p class="p-0 m-0 me-2 font-bold">At least </p>
                                 <input type="number" class="form-control" style="flex: 1;" name="pages"  id="addDocPages" placeholder="ex. 4">
-                                <p class="p-0 m-0 ms-2 font-bold"> Pages</p>
+                                <p class="p-0 m-0 ms-2 font-bold"> Page(s)</p>
                             </div>
                         </div>
                     </div>

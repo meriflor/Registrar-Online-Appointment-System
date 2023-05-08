@@ -85,6 +85,13 @@
     --bs-list-group-action-hover-bg: #cfcfcf;
 }.list-group-item{
     border: var(--bs-list-group-border-width) solid grey;
+}a.list-group-item:hover{
+    background-color: rgba(128, 128, 128, .1);
+}
+
+.btn:focus{
+    outline: none;
+    box-shadow: none;
 }
 /* dashboard document lists for appointment */
 .dashboard-content {
