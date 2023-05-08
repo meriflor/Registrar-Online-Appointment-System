@@ -55,7 +55,7 @@
                                                 <small>{{ $appointment->appointment_date}}</small>
                                             </div>
                                             <div class="d-flex flex-wrap m-0 p-0">
-                                                <small class="font-bold me-1">Client name: </small>
+                                                <small class="font-bold me-1">Client Name: </small>
                                                 <small>{{ $appointment->user->firstName }} {{ $appointment->user->middleName }} {{ $appointment->user->lastName }} {{ $appointment->user->suffix }}</small>
                                             </div>
                                             <div class="d-flex flex-wrap m-0 p-0">

@@ -36,7 +36,7 @@ Route::middleware([AuthCheck::class,AlreadyLoggedIn::class])->group(function () 
     Route::get('/dashboard', [UserController::class, 'viewUser'])->name('user-dashboard');
     Route::get('/appointment-records', [UserController::class, 'viewUserAppointments']);
     Route::get('/notification', [UserController::class, 'viewUserNotification']);
-    Route::get('/edit-profile', [UserController::class, 'viewUserEditProfile']);
+    Route::get('/edit-profile', [UserController::class, 'viewUserEditProfile'])->name('edit-profile');
     Route::get('/settings', [UserController::class, 'viewUserSettings']);
 });
 

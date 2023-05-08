@@ -218,7 +218,7 @@
                                 <label for="inputCourse">Course</label>
                                 <select class="form-control" name="course" value="{{ old('course') }}" id="inputCourse">
                                     <option value="">Choose...</option>
-                                    <option value="Secondary Level High School / Senior High School">Secondary Level High School / Senior High School</option>
+                                    <option value="Secondary High School / Senior High School">Secondary ( High School / Senior High School )</option>
                                     <option value="Bachelor of Science in Computer Science">Bachelor of Science in Computer Science</option>
                                     <option value="Bachelor of Technology and Livelihood Education">Bachelor of Technology and Livelihood Education</option>
                                     <option value="Bachelor of Technical-Vocational Teacher Education">Bachelor of Technical-Vocational Teacher Education</option>
@@ -238,9 +238,13 @@
                                 <label for="inputGender">Status</label>
                                 <select class="form-control" name="status" id="inputStudentStatus" required>
                                     <option value="">Choose...</option>
-                                    <option value="Secondary Level">Secondary Level</option>
-                                    <option value="Undergraduate College">Undergraduate College</option>
-                                    <option value="Masteral/Alumni">Masteral/Alumni</option>
+                                    <option value="junior_high_student">Junior High School Student (Grades 7-10)</option>
+                                    <option value="senior_high_student">Senior High School Student (Grades 11-12)</option>
+                                    <option value="senior_high_graduate">Senior High School Graduate (High School Diploma)</option>
+                                    <option value="undergraduate_student">Undergraduate College Student (Bachelor's Degree Program)</option>
+                                    <option value="undergraduate_alumni">Undergraduate College Alumni (Bachelor's Degree Completed)</option>
+                                    <option value="masteral_student">Master's Degree Student (Master's Degree Program)</option>
+                                    <option value="masteral_alumni">Master's Degree Alumni (Master's Degree Completed)</option>                                    
                                     </select>
                                 <span class="text-danger">@error('status'){{ $message }} @enderror </span>
                             </div>

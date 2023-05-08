@@ -194,5 +194,41 @@ class FormSeeder extends Seeder
             ",
         ]);
         $announcement -> save();
+
+        $faq = new \App\Models\Faq([
+            'faqs_title' => 'Is my personal information safe when using the online appointment system?',
+            'faqs_subtext' => "Yes, your personal information is safe when using the online appointment system. We use industry-standard security protocols to protect your information and ensure that it is kept confidential.
+            ",
+        ]);
+        $faq -> save();
+
+        $faq = new \App\Models\Faq([
+            'faqs_title' => 'What services can I book an appointment for using the online appointment system?',
+            'faqs_subtext' => "You can book an appointment for a variety of services, including student registration, transcript requests, and academic advising. Check the online appointment system for a full list of available services.
+            ",
+        ]);
+        $faq -> save();
+
+        $faq = new \App\Models\Faq([
+            'faqs_title' => 'What should I do if I have a question or concern that is not addressed in the FAQs?',
+            'faqs_subtext' => "If you have a question or concern that is not addressed in the FAQs, please contact the Registrar's Office directly for assistance. You can find contact information on our website.
+            ",
+        ]);
+        $faq -> save();
+
+        $faq = new \App\Models\Faq([
+            'faqs_title' => "How far in advance should I book an appointment with the Registrar's Office?",
+            'faqs_subtext' => "We recommend booking your appointment at least a week in advance to ensure availability. Some services may have specific deadlines, so be sure to check the online appointment system for details.
+            ",
+        ]);
+        $faq -> save();
+
+        $faq = new \App\Models\Faq([
+            'faqs_title' => 'Can I walk in for an appointment without booking in advance?',
+            'faqs_subtext' => "We strongly encourage clients to book their appointments in advance using the online appointment system. However, if you need immediate assistance and cannot book an appointment in advance, you may walk in and speak with a staff member if they are available. Please note that walk-ins may experience longer wait times and may not be able to receive the same level of service as those with appointments. 
+            ",
+        ]);
+        $faq -> save();
     }
+    
 }
