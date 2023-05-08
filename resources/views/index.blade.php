@@ -214,8 +214,9 @@
                                 </select>
                                 <span class="text-danger">@error('gender'){{ $message }} @enderror </span>
                             </div>
+                            @if(isset($courses) && count($courses) > 0)
                             <div class="col-lg-9">
-                                <label for="inputCourse">Course</label>
+                                {{-- <label for="inputCourse">Course</label>
                                 <select class="form-control" name="course" value="{{ old('course') }}" id="inputCourse">
                                     <option value="">Choose...</option>
                                     <option value="Secondary High School / Senior High School">Secondary ( High School / Senior High School )</option>
@@ -230,21 +231,36 @@
                                     <option value="Bachelor of Industrial Technology Major in Electrical Technology">Bachelor of Industrial Technology Major in Electrical Technology</option>
                                     <option value="Bachelor of Industrial Technology Major in Automotive Technology">Bachelor of Industrial Technology Major in Automotive Technology</option>
                                   </select>
-                                  <span class="text-danger">@error('course'){{ $message }} @enderror </span>
+                                  <span class="text-danger">@error('course'){{ $message }} @enderror </span> --}}
+                                  <label for="inputCourse">Course</label>
+                                    <select class="form-control" id="inputCourse" name="course">
+                                        <option value="">Choose..</option>
+                                        @foreach($courses as $course)
+                                            <option value="{{ $course->course_name }}">{{ $course->course_name }}</option>
+                                        @endforeach
+                                        <option value="other">Other (please specify)...</option>
+                                    </select>
+                                    <div id="otherCourseInput" style="display:none;">
+                                        <label for="inputOtherCourse">Other Course</label>
+                                        <input type="text" class="form-control" id="inputOtherCourse" name="course_name">
+                                    </div>
                             </div>
+                            @else
+                                <p>No courses found.</p>
+                            @endif
                         </div>
                         <div class="form-group row mt-3">
                             <div class="col-lg-3">
                                 <label for="inputGender">Status</label>
                                 <select class="form-control" name="status" id="inputStudentStatus" required>
                                     <option value="">Choose...</option>
-                                    <option value="junior_high_student">Junior High School Student (Grades 7-10)</option>
-                                    <option value="senior_high_student">Senior High School Student (Grades 11-12)</option>
-                                    <option value="senior_high_graduate">Senior High School Graduate (High School Diploma)</option>
-                                    <option value="undergraduate_student">Undergraduate College Student (Bachelor's Degree Program)</option>
-                                    <option value="undergraduate_alumni">Undergraduate College Alumni (Bachelor's Degree Completed)</option>
-                                    <option value="masteral_student">Master's Degree Student (Master's Degree Program)</option>
-                                    <option value="masteral_alumni">Master's Degree Alumni (Master's Degree Completed)</option>                                    
+                                    <option value="Junior High School Student (Grades 7-10)">Junior High School Student (Grades 7-10)</option>
+                                    <option value="Senior High School Student (Grades 11-12)">Senior High School Student (Grades 11-12)</option>
+                                    <option value="Senior High School Graduate (High School Diploma)">Senior High School Graduate (High School Diploma)</option>
+                                    <option value="Undergraduate College Student (Bachelor's Degree Program)">Undergraduate College Student (Bachelor's Degree Program)</option>
+                                    <option value="Undergraduate College Alumni (Bachelor's Degree Completed)">Undergraduate College Alumni (Bachelor's Degree Completed)</option>
+                                    <option value="Master's Degree Student (Master's Degree Program)">Master's Degree Student (Master's Degree Program)</option>
+                                    <option value="Master's Degree Alumni (Master's Degree Completed)">Master's Degree Alumni (Master's Degree Completed)</option>                                    
                                     </select>
                                 <span class="text-danger">@error('status'){{ $message }} @enderror </span>
                             </div>
@@ -317,4 +333,17 @@
 
     @include('layout.modal.data-privacy')
     @include('layout.modal.contact-us')
+
+    <script>
+        var courseSelect = document.getElementById("inputCourse");
+        var otherCourseInput = document.getElementById("otherCourseInput");
+    
+        courseSelect.addEventListener("change", function() {
+            if (courseSelect.value == "other") {
+                otherCourseInput.style.display = "block";
+            } else {
+                otherCourseInput.style.display = "none";
+            }
+        });
+    </script>
 @endsection

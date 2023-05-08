@@ -8,6 +8,7 @@ use Illuminate\Http\Request;
 use App\Models\User;
 use App\Models\Form;
 use App\Models\Appointment;
+use App\Models\Course;
 use App\Models\Booking;
 use Illuminate\Support\Facades\Auth;
 use GrahamCampbell\ResultType\Success;
@@ -19,8 +20,9 @@ class announcementController extends Controller
 {
     public function showAnnouncement(Request $request)
     {
+        $courses = Course::all();
         $announcements = Announcement::orderBy('created_at', 'desc')->take(2)->get();
-        return view('index', compact('announcements'));
+        return view('index', compact('announcements','courses'));
     }
 
     public function viewAnnouncementAdmin(){

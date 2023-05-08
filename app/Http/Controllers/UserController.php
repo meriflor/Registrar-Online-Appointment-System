@@ -10,6 +10,7 @@ use App\Models\Form;
 use App\Models\Appointment;
 use App\Models\Booking;
 use App\Models\Announcement;
+use App\Models\Course;
 use Illuminate\Support\Facades\Auth;
 use GrahamCampbell\ResultType\Success;
 use Illuminate\Support\Facades\Hash;
@@ -116,6 +117,7 @@ class UserController extends Controller
 
     public function viewUserEditProfile(){
         $user = array();
+        $courses = Course::all(); 
         $appointments = Appointment::all();
         $forms = Form::all();
 
@@ -156,7 +158,7 @@ class UserController extends Controller
 
         return view('appointment.content.edit-profile', compact('firstName','lastName','middleName','suffix','address','school_id','cell_no','civil_status','email','birthdate','gender','status', 'acadYear', 'gradYear', 'course',
         'forms',
-        'appointments', 'pending', 'announcements'
+        'appointments', 'pending', 'announcements','courses'
         ));
     }
     

@@ -2,6 +2,7 @@
 
 use App\Http\Controllers\adminController;
 use App\Http\Controllers\announcementController;
+use App\Http\Controllers\courseController;
 use App\Http\Controllers\faqsController;
 use App\Http\Middleware\AuthCheck;
 use App\Http\Middleware\AdminCheck;
@@ -75,6 +76,7 @@ Route::middleware([AuthCheck::class, AdminCheck::class])->prefix('dashboard-admi
 
     //faqs sa user side dapit -> temporary
     Route::get('/faqs',[faqsController::class,'index'])->name('faqs');
+    
 
     //Para ni sa Crud sa calendar -> wala pani sure,, test rani
     Route::get('appointment_slots', [AppointmentSlotController::class, 'events'])->name('appointment_slots.events');
@@ -98,6 +100,11 @@ Route::middleware([AuthCheck::class, AdminCheck::class])->prefix('dashboard-admi
     Route::get('announcement/{id}',[announcementController::class,'viewOneAnnouncement']);  
     Route::put('edit-announcement',[announcementController::class,'editAnnouncement'])->name('editannouncement');
     Route::delete('announcement/delete/{id}',[announcementController::class,'delete'])->name('deleteannouncement');  
+
+    //testing -> course
+    Route::post('store-course',[courseController::class,'storeCourse'])->name('store-course');
+    Route::put('edit-course',[courseController::class,'editCourse'])->name('editcourse');
+    Route::delete('course/delete/{id}',[courseController::class,'delete'])->name('deletecourse');  
 
     //testing -> faqs
     Route::get('faq/{id}',[faqsController::class,'viewOneFaq']);  

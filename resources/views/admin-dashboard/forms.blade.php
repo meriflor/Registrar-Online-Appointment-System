@@ -141,6 +141,7 @@
         
         <!-- fix section courses -->
         <section id="courses" class="mt-2 mb-2">
+           
             <div id="forms-head" class="w-100 px-5 d-flex flex-row justify-content-between align-items-center">
                 <div class="title font-nun font-bold fs-3">Courses</div>
                 <button class="btn btn-custom d-flex flex-row align-items-center" type="button" data-bs-toggle="modal" data-bs-target="#addCourseModal">
@@ -150,36 +151,28 @@
                     <small class="m-0 ms-2 p-0 font-nun">Add</small>
                 </button>
             </div>
+           
             <div id="forms-body" class="this-box mt-2">
+               
                 <ul class="list-group list-group-flush">
+                    @foreach ($courses as $course)
                     <li class="list-group-item d-flex flex-row justify-content-between align-items-center">
-                        <p class="m-0 p-0">Bachelor of Science in Computer Science</p>
+                        <p class="m-0 p-0">{{ $course->course_name }}</p>
                         <div class="body-buttons d-flex flex-row justify-content-end align-items-center">
-                            <button class="btn btn-custom d-flex flex-row align-items-center" type="button" data-bs-toggle="modal" data-bs-target="#editCourseModal">
+                            <button class="btn btn-custom d-flex flex-row align-items-center open_edit_course_modal" type="button"  data-course-edit-id="{{ $course->id }}">
                                 <img src="/images/edit.png" alt="">
                                 <small class="m-0 ms-2 p-0 font-nun d-none d-md-flex">Edit</small>
                             </button>
-                            <button class="btn btn-custom d-flex flex-row align-items-center" type="button" data-bs-toggle="modal" data-bs-target="#deleteCourseModal">
+                            <button class="btn btn-custom d-flex flex-row align-items-center open_delete_course_modal" type="button" data-course-delete-id="{{ $course->id }}" data-course-delete-name="{{ $course->course_name }}" >
                                 <img src="/images/delete.png" alt="">
                                 <small class="d-none d-md-flex m-0 ms-2 p-0 font-nun">Delete</small>
                             </button>
                         </div>
                     </li>
-                    <li class="list-group-item d-flex flex-row justify-content-between align-items-center">
-                        <p class="m-0 p-0">Bachelor of Science in Information Technology</p>
-                        <div class="body-buttons d-flex flex-row justify-content-end align-items-center">
-                            <button class="btn btn-custom d-flex flex-row align-items-center" type="button" data-bs-toggle="modal" data-bs-target="#editCourseModal">
-                                <img src="/images/edit.png" alt="">
-                                <small class="m-0 ms-2 p-0 font-nun d-none d-md-flex">Edit</small>
-                            </button>
-                            <button class="btn btn-custom d-flex flex-row align-items-center" type="button" data-bs-toggle="modal" data-bs-target="#deleteCourseModal">
-                                <img src="/images/delete.png" alt="">
-                                <small class="d-none d-md-flex m-0 ms-2 p-0 font-nun">Delete</small>
-                            </button>
-                        </div>
-                    </li>
+                    @endforeach
                 </ul>
             </div>
+            
         </section>
     </div> 
     <!-- TODO scripts -->

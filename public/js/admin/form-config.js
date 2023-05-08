@@ -32,3 +32,32 @@ for (var i = 0; i < deleteForms.length; i++) {
         $("#deleteFormModal #formName").text(form_name);
     });
 }
+
+var editCourses = document.querySelectorAll(".open_edit_course_modal");
+for (var i = 0; i < editCourses.length; i++) {
+    editCourses[i].addEventListener("click", function () {
+        var course_id = $(this).data("course-edit-id");
+        console.log(course_id);
+        $("#editCourseModal").modal("show");
+        $("#course-id").val(course_id);
+
+        fetch("/course/" + course_id)
+            .then((response) => response.json())
+            .then((data) => {
+                $("#editCourseName").val(data.course_name);
+            });
+    });
+}
+
+var deleteCourses = document.querySelectorAll(".open_delete_course_modal");
+for (var i = 0; i < deleteCourses.length; i++) {
+    deleteCourses[i].addEventListener("click", function () {
+        var course_id = $(this).data("course-delete-id");
+        var course_name = $(this).data("course-delete-name");
+        console.log(course_id);
+        console.log(course_name);
+        $("#deleteCourseModal").modal("show");
+        $("#deleteCourseModal #course-id_delete").val(course_id);
+        $("#deleteCourseModal #courseName").text(course_name);
+    });
+}

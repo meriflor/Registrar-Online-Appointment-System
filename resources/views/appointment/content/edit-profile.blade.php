@@ -85,8 +85,8 @@
                     <div class="col-lg-6">
                         <label for="editCourse">Course</label>
                         <select name="editCourse" class="form-control" id="editCourse" required>
-                            <option value=""{{ $course == null ? 'selected' : '' }}>Choose...</option>
-                                <option value="Secondary High School / Senior High School"{{ $course == 'Secondary High School / Senior High School' ? 'selected' : '' }}>Secondary ( High School / Senior High School )</option>
+                               <option value=""{{ $course == null ? 'selected' : '' }}>Choose...</option>
+                                {{-- <option value="Secondary High School / Senior High School"{{ $course == 'Secondary High School / Senior High School' ? 'selected' : '' }}>Secondary ( High School / Senior High School )</option>
                                 <option value="Bachelor of Science in Computer Science"{{ $course == 'Bachelor of Science in Computer Science' ? 'selected' : '' }}>Bachelor of Science in Computer Science</option>
                                 <option value="Bachelor of Technology and Livelihood Education"{{ $course == 'Bachelor of Technology and Livelihood Education' ? 'selected' : '' }}>Bachelor of Technology and Livelihood Education</option>
                                 <option value="Bachelor of Technical-Vocational Teacher Education"{{ $course == 'Bachelor of Technical-Vocational Teacher Education' ? 'selected' : '' }}>Bachelor of Technical-Vocational Teacher Education</option>
@@ -96,7 +96,12 @@
                                 <option value="Bachelor of Industrial Technology Major in Mechanical Technology"{{ $course == 'Bachelor of Industrial Technology Major in Mechanical Technology' ? 'selected' : '' }}>Bachelor of Industrial Technology Major in Mechanical Technology</option>
                                 <option value="Bachelor of Industrial  Technology Major in Food and Service Management"{{ $course == 'Bachelor of Industrial  Technology Major in Food and Service Management' ? 'selected' : '' }}>Bachelor of Industrial  Technology Major in Food and Service Management</option>
                                 <option value="Bachelor of Industrial Technology Major in Electrical Technology"{{ $course == 'Bachelor of Industrial Technology Major in Electrical Technology' ? 'selected' : '' }}>Bachelor of Industrial Technology Major in Electrical Technology</option>
-                                <option value="Bachelor of Industrial Technology Major in Automotive Technology"{{ $course == 'Bachelor of Industrial Technology Major in Automotive Technology' ? 'selected' : '' }}>Bachelor of Industrial Technology Major in Automotive Technology</option>
+                                <option value="Bachelor of Industrial Technology Major in Automotive Technology"{{ $course == 'Bachelor of Industrial Technology Major in Automotive Technology' ? 'selected' : '' }}>Bachelor of Industrial Technology Major in Automotive Technology</option> --}}
+                                @foreach($courses as $course)
+                                <option value="{{ $course->course_name }}" {{ $course == $course->course_name ? 'selected' : '' }}>
+                                    {{ $course->course_name }}
+                                </option>
+                            @endforeach
                             </select>
                     </div>
                 </div>
@@ -105,13 +110,13 @@
                         <label for="editStatus">Status</label>
                         <select name="editStatus" class="form-control" id="editStatus" required>
                             <option value=""{{ $status == null ? 'selected' : '' }}>Choose...</option>
-                            <option value="junior_high_student"  {{ $status == 'junior_high_student' ? 'selected' : '' }}>Junior High School Student (Grades 7-10)</option>
-                            <option value="senior_high_student" {{ $status == 'senior_high_student' ? 'selected' : '' }}>Senior High School Student (Grades 11-12)</option>
-                            <option value="senior_high_graduate" {{ $status == 'senior_high_graduate' ? 'selected' : '' }}>Senior High School Graduate (High School Diploma)</option>
-                            <option value="undergraduate_student" {{ $status == 'undergraduate_student' ? 'selected' : '' }}>Undergraduate College Student (Bachelor's Degree Program)</option>
-                            <option value="undergraduate_alumni" {{ $status == 'undergraduate_alumni' ? 'selected' : '' }}>Undergraduate College Alumni (Bachelor's Degree Completed)</option>
-                            <option value="masteral_student" {{ $status == 'masteral_student' ? 'selected' : '' }}>Master's Degree Student (Master's Degree Program)</option>
-                            <option value="masteral_alumni"  {{ $status == 'masteral_alumni' ? 'selected' : '' }}>Master's Degree Alumni (Master's Degree Completed)</option>   
+                            <option value="Junior High School Student (Grades 7-10)"  {{ $status == 'Junior High School Student (Grades 7-10)' ? 'selected' : '' }}>Junior High School Student (Grades 7-10)</option>
+                            <option value="Senior High School Student (Grades 11-12)" {{ $status == 'Senior High School Student (Grades 11-12)' ? 'selected' : '' }}>Senior High School Student (Grades 11-12)</option>
+                            <option value="Senior High School Graduate (High School Diploma)" {{ $status == 'Senior High School Graduate (High School Diploma)' ? 'selected' : '' }}>Senior High School Graduate (High School Diploma)</option>
+                            <option value="Undergraduate College Student (Bachelor's Degree Program)" {{ $status == "Undergraduate College Student (Bachelor's Degree Program)" ? 'selected' : '' }}>Undergraduate College Student (Bachelor's Degree Program)</option>
+                            <option value="Undergraduate College Alumni (Bachelor's Degree Completed)" {{ $status == "Undergraduate College Alumni (Bachelor's Degree Completed)" ? 'selected' : '' }}>Undergraduate College Alumni (Bachelor's Degree Completed)</option>
+                            <option value="Master's Degree Student (Master's Degree Program)" {{ $status == "Master's Degree Student (Master's Degree Program)" ? 'selected' : '' }}>Master's Degree Student (Master's Degree Program)</option>
+                            <option value="Master's Degree Alumni (Master's Degree Completed)"  {{ $status == "Master's Degree Alumni (Master's Degree Completed)" ? 'selected' : '' }}>Master's Degree Alumni (Master's Degree Completed)</option>   
 
                         </select>
                     </div>
