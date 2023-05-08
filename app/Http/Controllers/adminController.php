@@ -49,6 +49,11 @@ class adminController extends Controller
             'doc_created' => Carbon::parse($booking->user->created_at)->format('F j, Y'),
             'appointment_date' => $booking->appointment->appointment_date,
             'booking_number' => $booking->appointment->booking_number,
+            'a_transfer' => $booking->appointment->a_transfer,
+            'a_transfer_school' => $booking->appointment->a_transfer_school,
+            'b_transfer' => $booking->appointment->b_transfer,
+            'b_transfer_school' => $booking->appointment->b_transfer_school,
+            'remarks' => $booking->appointment->remarks,
 
             'doc_fee' => $booking->appointment->form->fee,
             'payment_method' => $booking->appointment->payment_method,
@@ -203,11 +208,11 @@ class adminController extends Controller
         $appointment->save();
         // Create a new notification and store it in the database
         $notif_type = $request->input('notif_type');
-        $title = $request->input('title');
         $doc = $request->input('doc');
         $resched = $request->input('resched_check');
+        $title = $request->input('title');
 
-        $bookings = Booking::find($app_id);
+        $bookings = Booking::where('appointment_id', $app_id)->first();
         if($resched == null){
             $bookings->resched = 0;
         }else{
@@ -216,6 +221,12 @@ class adminController extends Controller
         }
         $bookings->save();
 
+        $existingNotification = $appointment->user->notifications()
+            ->where('data->app_id', $app_id)
+            ->first();
+        if($existingNotification){
+            $existingNotification->delete();
+        }
         $notification = new AppRemarksUpdate($appointment->remarks, $app_id, $notif_type, $title, $doc, $resched);
         $appointment->user->notify($notification);
         

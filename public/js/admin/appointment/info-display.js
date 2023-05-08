@@ -18,6 +18,9 @@ for (var i = 0; i < viewBtns.length; i++) {
                 $('#viewSchoolID').text(data.school_id);
                 $('#viewCourse').text(data.course);
                 $('#viewStudentStatus').text(data.status);
+                
+
+
                 $('#viewAcadYear').text(data.acadYear);
                 $('#viewGradYear').text(data.gradYear);
                 if(data.acadYear === null){
@@ -44,6 +47,23 @@ for (var i = 0; i < viewBtns.length; i++) {
                 }
                 $("#viewPurpose").text(data.app_purpose);
                 $("#viewDocFee").text(data.doc_fee);
+                
+                if(data.a_transfer == 0){
+                    $("#viewATransfer").text("No");
+                }else{
+                    $("#viewATransfer").text("No, " + data.a_transfer_school);
+                }if(data.b_transfer == 0){
+                    $("#viewBTransfer").text("No");
+                }else{
+                    $("#viewBTransfer").text("No, " + data.b_transfer_school);
+                }
+
+                if(data.remarks == null || data.remarks == ""){
+                    $('#remarks_info').hide();
+                }else{
+                    $('#remarks_info').show();
+                    $("#viewRemarks").text(data.remarks);
+                }
 
                 $("#viewMethod").text(data.payment_method);
 

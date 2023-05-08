@@ -12,12 +12,13 @@
     <div class="row d-flex flex-row m-2">
         <div class="appointment-records p-4">
             <div class="w-100 fs-2 font-bold font-nun mb-2">Appointment Remarks</div>
+            @if(count($bookings)>0)
             <div class="table-rounded">
                 <table id="appointmentResched" class="table table-bordered table-sm font-nun table-striped">
                     <thead class="table-head text-center">
                         <tr>
                             <th>Appointment Number</th>
-                            <th>School ID</th>
+                            <th>Student ID</th>
                             <th>First Name</th>
                             <th>Last Name</th>
                             <th>Document Requested</th>
@@ -26,7 +27,6 @@
                         </tr>
                     </thead>
                     <tbody class="table-group-divider">
-                        @if(count($bookings)>0)
                             @foreach ($bookings as $booking)
                             <tr class="text-center">
                                 <td>{{ $booking->appointment->booking_number }}</td>
@@ -45,11 +45,14 @@
                                 </td>
                             </tr>
                             @endforeach
-                            
-                            @endif
+
+                        
                     </tbody>
                 </table>
             </div>
+            @else
+                <div class="text-center font-nun">There is no Appointments that needs to reschedule.</div>
+            @endif
         </div>
     </div>
 

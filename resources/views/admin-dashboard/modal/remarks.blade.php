@@ -19,7 +19,7 @@
                         <div class="col-md-6 d-flex flex-row justify-content-end">
                             <input class="form-check-input" id="resched_check" type="checkbox" value="1" name="resched_check" style="border: 2px solid #131313;">
                             <label class="form-check-label font-karma ms-2" for="resched_check">
-                                Need Rescheduling
+                                Re-schedule
                             </label>
                         </div>
                     </div>
@@ -35,7 +35,7 @@
                                 <option value="Follow-up instructions:">Follow-up instructions:</option>
                                 <option value="Next steps:">Next steps:</option>
                                 <option value="Appointment Cancellation">Appointment Cancellation:</option>
-                                <option value="Appointment Rescheduling Request">Appointment Rescheduling Request:</option>
+                                <option value="Appointment Rescheduling Request">Rescheduling Request:</option>
                             </select>
                         </div>
                         <div class="col-md-6">

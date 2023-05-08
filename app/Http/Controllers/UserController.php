@@ -250,7 +250,7 @@ class UserController extends Controller
             $notifications = User::find($user_id)
                   ->notifications()
                   ->orderBy('created_at', 'desc')
-                  ->paginate(5);
+                  ->take(10)->get();
             // Mark all notifications as read
             User::find($user_id)->unreadNotifications->markAsRead();
 
@@ -262,6 +262,31 @@ class UserController extends Controller
         ));
     }
 
-    //user other methods,, NOTIFICATION
-//     public
+      public function reschedAppointment(Request $request){
+            $app_id = $request->input('re_app_id');
+            $appointment = Appointment::find($app_id);
+
+            // dd($request->input('re_app_date_input'));
+            $appointment->appointment_date = $request->input('re_app_date_input');
+            $appointment->remarks = null;
+            $appointment->save();
+
+            $bookings = Booking::where('appointment_id', $app_id)->first();
+            $bookings->resched = 0;
+            $bookings->save();
+
+            $existingNotification = $appointment->user->notifications()
+                  ->where('data->app_id', $app_id)
+                  ->first();
+            if($existingNotification){
+                  $existingNotification->delete();
+            }
+            return redirect()->back();
+      }
+
+      // delete a specific notification by ID (in case code)
+      // $user->notifications()->find($notificationId)->delete();
+
+      // delete all the notifications for the user
+      // $user->notifications()->delete();
 }

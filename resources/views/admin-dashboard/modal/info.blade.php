@@ -21,9 +21,16 @@
                         <p class="p-0 m-0 font-small" id="viewCpNo"></p>
                     </div>
                 </div>
-
+                <!-- review -->
+                <div id="remarks_info">
+                    <div class="d-flex flex-row align-items-center font-nun m-0 px-5 py-4 mt-5 fs-6 font-13" style="background-color: #38383859;border: 1px solid;" >
+                        <span class="font-bold">REMARKS: </span>
+                        <small class="ms-2 p-0 font-black" id="viewRemarks"></small>
+                    </div>
+                </div>
+                
                 <div
-                    class="p-info d-flex flex-column m-0 px-5 py-4 mt-5"
+                    class="p-info d-flex flex-column m-0 px-5 py-4 mt-3"
                 >
                     <div
                         class="p-info-head d-flex flex-row align-items-end"
@@ -46,7 +53,7 @@
                                 class="row w-100 p-0 my-2 d-flex flex-row align-items-center"
                             >
                                 <div class="col-md-6">
-                                    <p class="info-title">SCHOOL ID</p>
+                                    <p class="info-title">STUDENT ID</p>
                                 </div>
                                 <div class="col-md-6">
                                     <p class="info-content" id="viewSchoolID"></p>
@@ -129,29 +136,21 @@
                         </div>
                     </div>
                 </div>
-                <div
-                    class="p-info d-flex flex-column m-0 px-5 py-4 mt-5"
-                >
-                    <div
-                        class="p-info-head d-flex flex-row align-items-end"
-                    >
+                <div class="p-info d-flex flex-column m-0 px-5 py-4 mt-5" >
+                    <div class="p-info-head d-flex flex-row align-items-end" >
                         <div class="logo">
                             <img
                                 src="/images/appointment.png"
                                 alt="user info"
                             />
                         </div>
-                        <p
-                            class="p-0 m-0 ms-2 font-nun fs-6 font-bold font-13"
-                        >
+                        <p class="p-0 m-0 ms-2 font-nun fs-6 font-bold font-13" >
                             Appointment Information
                         </p>
                     </div>
                     <div class="row w-100 p-0 m-0 mt-3 font-nun">
                         <div class="col-md-6">
-                            <div
-                                class="row w-100 p-0 my-2 d-flex flex-row align-items-center"
-                            >
+                            <div class="row w-100 p-0 my-2 d-flex flex-row align-items-center" >
                                 <div class="col-md-6">
                                     <p class="info-title">
                                         APPOINTMENT ID
@@ -181,8 +180,6 @@
                                     <p class="info-content" id="viewDocDateReq"></p>
                                 </div>
                             </div>
-                        </div>
-                        <div class="col-md 6">
                             <div class="row w-100 p-0 my-2">
                                 <div class="col-md-6">
                                     <p class="info-title">
@@ -203,6 +200,8 @@
                                     <p class="info-content" id="viewDocReqYear"></p>
                                 </div>
                             </div>
+                        </div>
+                        <div class="col-md 6">
                             <div class="row w-100 p-0 my-2">
                                 <div class="col-md-6">
                                     <p class="info-title">PURPOSE</p>
@@ -211,12 +210,26 @@
                                     <p class="info-content" id="viewPurpose"></p>
                                 </div>
                             </div>
+                            <div class="row w-100 p-0 my-2">
+                                <div class="col-md-6">
+                                    <p class="info-title">Before MSU-MSAT, did you study in a different school?</p>
+                                </div>
+                                <div class="col-md-6">
+                                    <p class="info-content" id="viewATransfer"></p>
+                                </div>
+                            </div>
+                            <div class="row w-100 p-0 my-2">
+                                <div class="col-md-6">
+                                    <p class="info-title">After MSU-MSAT, did you study in a different school?</p>
+                                </div>
+                                <div class="col-md-6">
+                                    <p class="info-content" id="viewBTransfer"></p>
+                                </div>
+                            </div>
                         </div>
                     </div>
                 </div>
-                <div
-                    class="p-info-pay d-flex flex-column m-0 px-5 py-4 mt-5"
-                >
+                <div class="p-info-pay d-flex flex-column m-0 px-5 py-4 mt-5">
                     <div
                         class="p-info-head d-flex flex-row align-items-end"
                     >

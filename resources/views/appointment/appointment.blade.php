@@ -154,11 +154,8 @@
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha2/dist/js/bootstrap.bundle.min.js" integrity="sha384-qKXV1j0HvMUeCBQ+QVp7JcfGl760yU08IQ+GpUo5hlbpg51QRiuqHAJz8+BrxE/N" crossorigin="anonymous"></script>
     <script src='https://code.jquery.com/jquery-3.5.1.min.js'></script>
     <script src="js/dashboard/navbar.js"></script>
-    <!-- <script src="js/dashboard/dashboard.js"></script> -->
     <script src="js/navbar.js"></script>
     <script src="js/form.js"></script>
-<script src="js/dashboard/notifications.js"></script>
-    <!-- <script src="js/dashboard/forms.js"></script> -->
     <script src='https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.24.0/moment.min.js'></script>
     <script src='https://cdnjs.cloudflare.com/ajax/libs/fullcalendar/3.10.2/fullcalendar.min.js'></script>
     @include('appointment.modal.cancel-app')
@@ -457,7 +454,8 @@
             });
             
         });
-        
+            
     </script>
+    @include('appointment.modal.reschedule')
 </body>
 </html>

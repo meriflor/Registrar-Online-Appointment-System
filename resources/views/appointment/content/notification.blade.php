@@ -29,11 +29,11 @@
 
             <div class="d-flex flex-row justify-content-end">
                 @foreach($bookings as $booking)
-                @if($booking->appointment_id == $notification->data['app_id'] && $booking->resched == 1 )
-                <a class="btn notif-btn" id="resched_btn">
-                    Re-Schedule
-                </a>
-                @endif
+                    @if($booking->appointment_id == $notification->data['app_id'] && $booking->resched == 1 )
+                    <button class="btn notif-btn resched_btn" id="resched_btn" data-form-name="{{ $booking->appointment->form->name }}" data-form-max-claim="{{ $booking->appointment->form->form_max_time }}" data-app-id="{{ $booking->appointment_id }}">
+                        Re-Schedule
+                    </button>
+                    @endif
                 @endforeach
                 
                 
@@ -62,11 +62,9 @@
     <div>You have no notifications of now.</div>
 @endif
 
-{{ $notifications->links() }}
 <script>
-    $('#resched_btn').on('click', fucntion(){
-        $('#re_sched_modal').modal('show');
-    });
+    
+    
 </script>
     
 @endsection
