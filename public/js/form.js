@@ -1,6 +1,9 @@
 $(document).ready(function () {
     $("#inputStudentStatus").change(function () {
-        if ($(this).val() === "senior_high_graduate" ||$(this).val() === "undergraduate_alumni" ||$(this).val() === "masteral_alumni") {
+        // if ($(this).val() === "senior_high_graduate" ||$(this).val() === "undergraduate_alumni" ||$(this).val() === "masteral_alumni") {
+            if($(this).val() === "Senior High School Graduate (High School Diploma)" ||
+            $(this).val() === "Undergraduate College Alumni (Bachelor's Degree Completed)" ||
+            $(this).val() === "Master's Degree Alumni (Master's Degree Completed)"){
             $("#reg-input-acadYear").hide();
             // $('#reg-input-acadYear').removeAttr('required');
             $("#reg-input-gradYear").show();
@@ -17,7 +20,10 @@ $(document).ready(function () {
 // fix
 $(document).ready(function () {
     $("#editStatus").change(function () {
-        if ($(this).val() === "senior_high_graduate" ||$(this).val() === "undergraduate_alumni" ||$(this).val() === "masteral_alumni") {
+        // if ($(this).val() === "senior_high_graduate" ||$(this).val() === "undergraduate_alumni" ||$(this).val() === "masteral_alumni") {
+        if($(this).val() === "Senior High School Graduate (High School Diploma)" ||
+            $(this).val() === "Undergraduate College Alumni (Bachelor's Degree Completed)" ||
+            $(this).val() === "Master's Degree Alumni (Master's Degree Completed)"){
             $("#edit-AcadYear").hide();
             $("#edit-GradYear").show();
         } else {
@@ -26,7 +32,10 @@ $(document).ready(function () {
         }
     });
     // var status = $("#editStatus").val();
-    if ($("#editStatus").val() === "senior_high_graduate" ||$("#editStatus").val() === "undergraduate_alumni" ||$("#editStatus").val() === "masteral_alumni") {
+    // if ($("#editStatus").val() === "senior_high_graduate" ||$("#editStatus").val() === "undergraduate_alumni" ||$("#editStatus").val() === "masteral_alumni") {
+    if($("#editStatus").val() === "Senior High School Graduate (High School Diploma)" ||
+        $("#editStatus").val() === "Undergraduate College Alumni (Bachelor's Degree Completed)" ||
+        $("#editStatus").val() === "Master's Degree Alumni (Master's Degree Completed)"){
         $("#edit-AcadYear").hide();
         $("#edit-GradYear").show();
     } else {
@@ -47,7 +56,9 @@ $(document).ready(function () {
 
 $(document).ready(function () {
     // var status = $("#inputStudentStatus").val();
-    if ($("#inputStudentStatus").val() === "senior_high_graduate" ||$("#inputStudentStatus").val() === "undergraduate_alumni" ||$("#inputStudentStatus").val() === "masteral_alumni") {
+    if ($("#inputStudentStatus").val() === "Senior High School Graduate (High School Diploma)" ||
+    $("#inputStudentStatus").val() === "Undergraduate College Alumni (Bachelor's Degree Completed)" ||
+    $("#inputStudentStatus").val() === "Master's Degree Alumni (Master's Degree Completed)") {
         $("#input-acadYear").hide();
         $("#input-gradYear").show();
     } else {

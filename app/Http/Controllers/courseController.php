@@ -16,15 +16,17 @@ class courseController extends Controller
         $course = new Course;
         $course->course_name = $request->course_name;
         $course->save();
+        return redirect()->back();
     }
 
     public function editCourse(Request $request){
-    $courses = Course::find($request->courseID);
-    $courses->course_name = $request->editCourseName;
-    $courses->save();
+        $courses = Course::find($request->courseID);
+        $courses->course_name = $request->editCourseName;
+        $courses->save();
 
-    return response()->json(['success' => true, 'message' => 'The Forms is chu2.']);
-}
+        return response()->json(['success' => true, 'message' => 'The Forms is chu2.']);
+        // return redirect()->back();
+    }
 
 public function delete(Request $request, $id){
     $courses = Course::find($id);

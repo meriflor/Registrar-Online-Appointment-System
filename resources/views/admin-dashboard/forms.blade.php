@@ -142,7 +142,7 @@
         <!-- fix section courses -->
         <section id="courses" class="mt-2 mb-2">
            
-            <div id="forms-head" class="w-100 px-5 d-flex flex-row justify-content-between align-items-center">
+            <div id="courses-head" class="w-100 px-5 d-flex flex-row justify-content-between align-items-center">
                 <div class="title font-nun font-bold fs-3">Courses</div>
                 <button class="btn btn-custom d-flex flex-row align-items-center" type="button" data-bs-toggle="modal" data-bs-target="#addCourseModal">
                     <div class="logo">
@@ -152,8 +152,8 @@
                 </button>
             </div>
            
-            <div id="forms-body" class="this-box mt-2">
-               
+            <div id="courses-body" class="this-box mt-2">
+                @if(count($courses)>0)
                 <ul class="list-group list-group-flush">
                     @foreach ($courses as $course)
                     <li class="list-group-item d-flex flex-row justify-content-between align-items-center">
@@ -171,6 +171,9 @@
                     </li>
                     @endforeach
                 </ul>
+                @else
+                <div class="text-center">There's no courses inputted yet.</div>
+                @endif
             </div>
             
         </section>

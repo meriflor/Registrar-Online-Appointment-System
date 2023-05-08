@@ -52,10 +52,21 @@ class CustomAuthController extends Controller
             $user -> email = $request->email;
             $user->birthdate = $request->input('birthdate');
             $user->status = $request->input('status');
-            $user->acadYear = $request->input('acad_year');
-            $user->gradYear = $request->input('grad_year');
+            if ($user->status === "Senior High School Graduate (High School Diploma)"||$user->status === "Undergraduate College Alumni (Bachelor's Degree Completed)"||$user->status === "Master's Degree Alumni (Master's Degree Completed)") {
+                  $user->acadYear = null;
+                  $user->gradYear = $request->input('grad_year');
+            } else {
+                  $user->acadYear = $request->input('acad_year');
+                  $user->gradYear = null;
+            }
             $user->gender = $request->input('gender');
-            $user->course = $request->input('course');
+            // $user->course = $request->input('course');
+            $courseInput = $request->input('course');
+            if($courseInput == "other"){
+                  $user->course = $request->input('course_name');
+            }else{
+                  $user->course = $courseInput ;
+            }
             $user -> password = Hash::make($request->password);
             $res = $user -> save();
 
@@ -251,7 +262,7 @@ class CustomAuthController extends Controller
             $user->email = $request->input('editEmail');
             $user->birthdate = $request->input('editBirthdate');
             $user->status = $request->input('editStatus');
-            if ($user->status === 'senior_high_graduate'||$user->status === 'undergraduate_alumni'||$user->status === 'masteral_alumni') {
+            if ($user->status === "Senior High School Graduate (High School Diploma)"||$user->status === "Undergraduate College Alumni (Bachelor's Degree Completed)"||$user->status === "Master's Degree Alumni (Master's Degree Completed)") {
                   $user->acadYear = null;
                   $user->gradYear = $request->input('editGradYear');
             } else {
@@ -259,7 +270,16 @@ class CustomAuthController extends Controller
                   $user->gradYear = null;
             }
             $user->gender = $request->input('editGender');
-            $user->course = $request->input('editCourse');
+            // $user->course = $request->input('editCourse');
+            $courseInput = $request->input('editCourse');
+            // dd($courseInput);
+            // if($user->course == )
+            if($courseInput == "other"||$courseInput==null){
+                  $user->course = $request->input('course_name');
+            }else{
+                  $user->course = $courseInput ;
+            }
+            // dd($user->course);
             $user->save();
 
             return redirect('/edit-profile')->with('success', 'User information updated successfully.');

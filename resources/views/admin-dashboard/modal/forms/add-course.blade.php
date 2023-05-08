@@ -10,7 +10,7 @@
             <div class="modal-body px-5">
                 <div class="mb-3">
                     <label for="addCourseName" class="form-label">Course Name</label>
-                    <input type="text" class="form-control" name="course_name" id="addCourseName" placeholder="">
+                    <input type="text" class="form-control" name="course_name" id="addCourseName" placeholder="" required>
                 </div>
             </div>
             <div class="modal-footer">

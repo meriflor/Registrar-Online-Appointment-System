@@ -9,7 +9,7 @@
                 <input type="hidden" id="course-id">
                 <div class="mb-3">
                     <label for="editCourseName" class="form-label">Course Name</label>
-                    <input type="text" class="form-control" name="editCourseName" id="editCourseName" placeholder="">
+                    <input type="text" class="form-control" name="editCourseName" id="editCourseName" placeholder="" required>
                 </div>
             </div>
             <div class="modal-footer">

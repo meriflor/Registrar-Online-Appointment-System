@@ -285,7 +285,7 @@
                         <div class="form-group d-flex flex-row justify-content-center mt-3">
                             <div class="check-custom">
                                 <div class="form-check">
-                                    <input type="checkbox" class="form-check-input" name="acceptTerms" id="acceptTerms">
+                                    <input type="checkbox" class="form-check-input" name="acceptTerms" id="acceptTerms" required>
                                     <label for="acceptTerms" class="form-check-label" >I have read and accept <button>Terms and Services</button></label>
                                 </div> 
                             </div>

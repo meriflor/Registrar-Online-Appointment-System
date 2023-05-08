@@ -82,27 +82,28 @@
                             <option value="Male"{{ $gender == 'Male' ? 'selected' : '' }}>Male</option>
                         </select>
                     </div>
-                    <div class="col-lg-6">
+                    <div class="col-lg-6" id="course_loaded" style="display:none;">
                         <label for="editCourse">Course</label>
-                        <select name="editCourse" class="form-control" id="editCourse" required>
-                               <option value=""{{ $course == null ? 'selected' : '' }}>Choose...</option>
-                                {{-- <option value="Secondary High School / Senior High School"{{ $course == 'Secondary High School / Senior High School' ? 'selected' : '' }}>Secondary ( High School / Senior High School )</option>
-                                <option value="Bachelor of Science in Computer Science"{{ $course == 'Bachelor of Science in Computer Science' ? 'selected' : '' }}>Bachelor of Science in Computer Science</option>
-                                <option value="Bachelor of Technology and Livelihood Education"{{ $course == 'Bachelor of Technology and Livelihood Education' ? 'selected' : '' }}>Bachelor of Technology and Livelihood Education</option>
-                                <option value="Bachelor of Technical-Vocational Teacher Education"{{ $course == 'Bachelor of Technical-Vocational Teacher Education' ? 'selected' : '' }}>Bachelor of Technical-Vocational Teacher Education</option>
-                                <option value="Bachelor of Science in Hospitality Management"{{ $course == 'Bachelor of Science in Hospitality Management' ? 'selected' : '' }}>Bachelor of Science in Hospitality Management</option>
-                                <option value="Bachelor of Industrial Technology Major in Drafting"{{ $course == 'Bachelor of Industrial Technology Major in Drafting' ? 'selected' : '' }}>Bachelor of Industrial Technology Major in Drafting</option>
-                                <option value="Bachelor of Industrial Technology Major in Garments Fashion and Design"{{ $course == 'Bachelor of Industrial Technology Major in Garments Fashion and Design' ? 'selected' : '' }}>Bachelor of Industrial Technology Major in Garments Fashion and Design</option>
-                                <option value="Bachelor of Industrial Technology Major in Mechanical Technology"{{ $course == 'Bachelor of Industrial Technology Major in Mechanical Technology' ? 'selected' : '' }}>Bachelor of Industrial Technology Major in Mechanical Technology</option>
-                                <option value="Bachelor of Industrial  Technology Major in Food and Service Management"{{ $course == 'Bachelor of Industrial  Technology Major in Food and Service Management' ? 'selected' : '' }}>Bachelor of Industrial  Technology Major in Food and Service Management</option>
-                                <option value="Bachelor of Industrial Technology Major in Electrical Technology"{{ $course == 'Bachelor of Industrial Technology Major in Electrical Technology' ? 'selected' : '' }}>Bachelor of Industrial Technology Major in Electrical Technology</option>
-                                <option value="Bachelor of Industrial Technology Major in Automotive Technology"{{ $course == 'Bachelor of Industrial Technology Major in Automotive Technology' ? 'selected' : '' }}>Bachelor of Industrial Technology Major in Automotive Technology</option> --}}
-                                @foreach($courses as $course)
-                                <option value="{{ $course->course_name }}" {{ $course == $course->course_name ? 'selected' : '' }}>
-                                    {{ $course->course_name }}
+                        <select name="editCourse" class="form-control" id="editCourse">
+                            <option value="">Choose...</option>
+                            @foreach($courses as $course_loop)
+                                <option value="{{ $course_loop->course_name }}">
+                                    {{ $course_loop->course_name }}
                                 </option>
                             @endforeach
-                            </select>
+                            <option value="other">Other (please specify)...</option>
+                        </select>
+                    </div>
+                    <div class="col-lg-6" id="course_input">
+                        <label for="editBirthdate">Course</label>
+                        <div class="d-flex flex-row align-items-center">
+                            <div class="" style="flex: 1;">
+                                <input type="text" class="form-control" id="editOtherCourse" name="course_name" value="{{ $course }}" placeholder="Specify your course...">
+                            </div>
+                            <div>
+                                <a class="btn fs-4 m-0 p-0 px-3" id="course_specify">&times;</a>
+                            </div>
+                        </div>
                     </div>
                 </div>
                 <div class="form-group row mt-3">
@@ -137,4 +138,20 @@
             </form>
         </div>
     </div>
+    <script>
+        $('#course_specify').click(function(){
+            $('#course_loaded').show();
+            $('#course_input').hide();
+            $('#course_input').val("");
+        });
+        $('#editCourse').change(function(){
+            if($('#editCourse').val() == "other"){
+                $('#course_input').show();
+                $('#course_loaded').hide();
+                // $('#course_input').val("");
+            }else{
+                $('#course_input').hide();
+            }
+        });
+    </script>
 @endsection
