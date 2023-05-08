@@ -19,6 +19,8 @@ class CreateBookingsTable extends Migration
             $table->foreign('user_id')->references('id')->on('users');
             $table->unsignedInteger('appointment_id');
             $table->foreign('appointment_id')->references('id')->on('appointments');
+            
+            $table->boolean('resched')->nullable();
             $table->timestamps();
         });
     }

@@ -8,6 +8,7 @@ use App\Models\Booking;
 use App\Models\Form;
 use App\Models\User;
 
+// use Illuminate\Notifications\Notifiable;
 class Appointment extends Model
 {
 

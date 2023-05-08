@@ -17,6 +17,8 @@
     <link rel="stylesheet" href="css/dashboard/modal.css">
     <link rel="stylesheet" href="css/dashboard/reciept.css">
     <link rel="stylesheet" href="css/defaultcss/scrollbar.css">
+    <link rel="stylesheet" href="{{ asset('css/defaultcss/calendar.css') }}" />
+    <link rel="stylesheet" href="css/dashboard/notification.css" />
 
     <link href='https://cdnjs.cloudflare.com/ajax/libs/fullcalendar/3.10.2/fullcalendar.min.css' rel='stylesheet' />
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.5.1/jspdf.umd.min.js"></script>
@@ -155,11 +157,10 @@
     <!-- <script src="js/dashboard/dashboard.js"></script> -->
     <script src="js/navbar.js"></script>
     <script src="js/form.js"></script>
+<script src="js/dashboard/notifications.js"></script>
     <!-- <script src="js/dashboard/forms.js"></script> -->
     <script src='https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.24.0/moment.min.js'></script>
     <script src='https://cdnjs.cloudflare.com/ajax/libs/fullcalendar/3.10.2/fullcalendar.min.js'></script>
-
-    <link rel="stylesheet" href="{{ asset('css/defaultcss/calendar.css') }}" />
     @include('appointment.modal.cancel-app')
     @include('appointment.modal.book-appointment')
     @include('appointment.modal.review')

@@ -1,5 +1,5 @@
 <div class="modal fade" id="editFormModal" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="editFormModal" aria-hidden="true">
-    <div class="modal-dialog modal-lg modal-dialog-scrollable  modal-dialog-centered">
+    <div class="modal-dialog modal-xl modal-dialog-scrollable  modal-dialog-centered">
         <div class="modal-content">
             <div class="modal-header">
                 <h1 class="modal-title fs-5 font-white font-nun" id="editFormModal">Edit Form</h1>
@@ -27,9 +27,29 @@
                     <label for="editProcessingTime" class="form-label">Complete Processing Time</label>
                     <textarea class="form-control" name="editProcessingTime" id="editProcessingTime" rows="3"></textarea>
                 </div>
-                <div class="mb-3">
-                    <label for="editDocFee" class="form-label">Document Fee</label>
-                    <textarea class="form-control" name="editDocFee" id="editDocFee" rows="3"></textarea>
+                <div class="mb-3 form-group row">
+                    <div class="col-md-3">
+                        <label for="editDocFee" class="form-label">Document Fee</label>
+                        <div class="d-flex flex-row align-items-center">   
+                            <p class="p-0 m-0 me-2 font-bold">PHP </p>
+                            <input type="number" class="form-control" style="flex: 1;" name="editReq"  id="editDocFee" placeholder="ex. 50 or 0 for No Payment">
+                            <p class="p-0 m-0 ms-2 font-bold"> .00</p>
+                        </div>
+                    </div>
+                    <div class="col-md-6">
+                        <label for="editDocFeeType" class="form-label">Collection Type</label>
+                        <div class="d-flex flex-row align-items-center">
+                            <input type="text" class="form-control" style="flex: 1;" name="editDocFeeType"  id="editDocFeeType" placeholder="ex. Per Page, None or (Collected as part of graduation fee)">
+                        </div>
+                    </div>
+                    <div class="col-md-3">
+                        <label for="editDocPages" class="form-label">Pages</label>
+                        <div class="d-flex flex-row align-items-center">
+                            <p class="p-0 m-0 me-2 font-bold">At least </p>
+                            <input type="number" class="form-control" style="flex: 1;" name="editDocPages"  id="editDocPages" placeholder="ex. 4">
+                            <p class="p-0 m-0 ms-2 font-bold"> Pages</p>
+                        </div>
+                    </div>
                 </div>
                 <div class="mb-3">
                     <label for="editMaxTimeClaim" class="form-label">Maximum Time to Claim</label>
@@ -54,6 +74,8 @@
         var editProcessingTime = $('#editProcessingTime').val();
         var editDocFee = $('#editDocFee').val();
         var editMaxTimeClaim = $('#editMaxTimeClaim').val();
+        var editDocFeeType = $('#editDocFeeType').val();
+        var editDocPages = $('#editDocPages').val();
 
         $.ajax({
             url: "{{ route('editform') }}",
@@ -66,7 +88,9 @@
                 editReq: editReq,
                 editProcessingTime: editProcessingTime,
                 editDocFee: editDocFee,
-                editMaxTimeClaim: editMaxTimeClaim
+                editMaxTimeClaim: editMaxTimeClaim,
+                editDocFeeType: editDocFeeType,
+                editDocPages: editDocPages
             },
             success: function(response) {
                 console.log(response);

@@ -208,6 +208,7 @@ class CustomAuthController extends Controller
                   $booking = new Booking();
                   $booking->user_id = $user_id;
                   $booking->appointment_id = $appointment->id;
+                  $booking->resched = 0;
                   $booking->save();
       
                   return response()->json(['success' => true, 'message' => 'Appointment booked successfully.']);

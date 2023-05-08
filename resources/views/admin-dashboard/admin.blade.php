@@ -70,6 +70,11 @@
                         >Appointment Requests</a
                     >
                 </li>
+                <li class="nav-item w-100">
+                    <a href="/dashboard-admin/request-reschedule" class="nav-link"
+                        >Appointment Remarks
+                    </a>
+                </li>
 
                 <hr />
                 <li class="nav-item w-100">

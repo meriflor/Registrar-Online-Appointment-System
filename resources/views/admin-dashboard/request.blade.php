@@ -76,7 +76,7 @@
                                 </a>
                             </td>
                             <td class="td-view">
-                                <a type="button" class="btn view-request p-0 remarks-btn" id="{{ $booking->id }}" data-remarks-id="{{ $booking->id }}" data-remarks-first="{{ $booking->user->firstName }}" data-remarks-last="{{ $booking->user->lastName }}">
+                                <a type="button" class="btn view-request p-0 remarks-btn" id="{{ $booking->id }}" data-remarks-id="{{ $booking->id }}" data-remarks-first="{{ $booking->user->firstName }}" data-remarks-last="{{ $booking->user->lastName }}" data-remarks-form="{{ $booking->appointment->form->name }}">
                                     Remarks
                                 </a>
                             </td>

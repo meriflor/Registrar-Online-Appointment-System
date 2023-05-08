@@ -16,6 +16,8 @@ use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\Session;
 use PhpParser\Node\Expr\FuncCall;
 
+use App\Notifications\AppRemarksUpdate;
+
 class adminController extends Controller
 {
     public function viewApp($id){
@@ -95,6 +97,7 @@ class adminController extends Controller
 //review =================================== Revised =================================================================
     public function viewAdminRecords(Request $request){
         $bookings = Booking::with('user', 'appointment')
+                ->where('resched', 0)
                 ->whereHas('appointment', function ($query) {
                     $query->where('status', 'claimed');
                 })->get();
@@ -106,6 +109,9 @@ class adminController extends Controller
         $futureDocs = Appointment::with('form')
                 ->where('appointment_date', '>',  $current_day)
                 ->where('status', 'Pending')
+                ->whereHas('bookings', function ($query) {
+                    $query->where('resched', 0);
+                })
                 ->orderBy('appointment_date', 'asc')
                 ->get()
                 ->groupBy('appointment_date');
@@ -144,21 +150,25 @@ class adminController extends Controller
         $selectedDate = Carbon::parse($date)->format('F d, Y');
 
         $pending = Booking::with('user', 'appointment')
+                        ->where('resched', 0)
                         ->whereHas('appointment', function($query) use($selectedDate){
                             $query->where('appointment_date', $selectedDate)->where('status', 'Pending');
                         })->get();
 
         $onprocess = Booking::with('user', 'appointment')
+                        ->where('resched', 0)
                         ->whereHas('appointment', function($query) use($selectedDate){
                             $query->where('appointment_date', $selectedDate)->where('status', 'On Process');
                         })->get();
 
         $ready = Booking::with('user', 'appointment')
+                        ->where('resched', 0)
                         ->whereHas('appointment', function($query) use($selectedDate){
                             $query->where('appointment_date', $selectedDate)->where('status', 'Ready to Claim');
                         })->get();
 
         $claimed = Booking::with('user', 'appointment')
+                        ->where('resched', 0)
                         ->whereHas('appointment', function($query) use($selectedDate){
                             $query->where('appointment_date', $selectedDate)->where('status', 'Claimed');
                         })->get();
@@ -169,11 +179,46 @@ class adminController extends Controller
     //review ===========================Returning all request ===========================================================
     public function viewAllRequest(Request $request){
         $bookings = Booking::with('user', 'appointment')
+                            ->where('resched', 0)
                             ->whereDoesntHave('appointment', function ($query) {
                                 $query->where('status', 'claimed');
                             })->get();
         return view('admin-dashboard.request-all', compact('bookings'));
     }
 
+    public function viewAllResched(Request $request){
+        $bookings = Booking::with('user', 'appointment')
+                            ->where('resched', 1)
+                            ->whereDoesntHave('appointment', function ($query) {
+                                $query->where('status', 'claimed');
+                            })->get();
+        return view('admin-dashboard.request-resched', compact('bookings'));
+    }
 
+    public function updateRemark(Request $request){
+        $app_id = $request->input('app_id');
+        $appointment = Appointment::find($app_id);
+        // dd($request->input('remarks'));
+        $appointment->remarks = $request->input('remarks');
+        $appointment->save();
+        // Create a new notification and store it in the database
+        $notif_type = $request->input('notif_type');
+        $title = $request->input('title');
+        $doc = $request->input('doc');
+        $resched = $request->input('resched_check');
+
+        $bookings = Booking::find($app_id);
+        if($resched == null){
+            $bookings->resched = 0;
+        }else{
+            
+            $bookings->resched = $resched;
+        }
+        $bookings->save();
+
+        $notification = new AppRemarksUpdate($appointment->remarks, $app_id, $notif_type, $title, $doc, $resched);
+        $appointment->user->notify($notification);
+        
+        return redirect()->back();
+    }
 }

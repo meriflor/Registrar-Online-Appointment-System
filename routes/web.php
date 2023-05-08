@@ -53,6 +53,8 @@ Route::middleware([AuthCheck::class, AdminCheck::class])->prefix('dashboard-admi
     Route::get('message',[MessageController::class,'viewMessage']);
     Route::get('announcement',[announcementController::class,'viewAnnouncementAdmin']);
     Route::get('faqs',[faqsController::class,'viewFaqAdmin']);
+    Route::get('request-reschedule',[adminController::class,'viewAllResched']);
+    Route::get('request-all', [adminController::class,'viewAllRequest']);
 
     //Admin Forms Function
     // Route::get('forms/{form}/edit', [FormController::class, 'edit'])->name('forms.edit');
@@ -107,7 +109,7 @@ Route::middleware([AuthCheck::class, AdminCheck::class])->prefix('dashboard-admi
 
     Route::delete('/appointment_slots/{appointmentSlot}', [AppointmentSlotController::class, 'destroy'])->name('appointment_slots.destroy');
     Route::put('appointment_slots/edit/{id}', [AppointmentSlotController::class, 'edit'])->name('slot.edit');
-    Route::get('dashboard-admin/request-all', [adminController::class,'viewAllRequest']);
 
     Route::delete('appointment/delete/{id}',[CustomAuthController::class,'cancel_appointment'])->name('cancelappointment');  
+    Route::put('appointment/remarks', [adminController::class,'updateRemark'])->name('appointmentremarks');
     
