@@ -62,7 +62,7 @@
                 <div class="form-group row">
                     <div class="col-lg-4">
                         <label for="">Status</label>
-                        <select class="form-control" disabled>
+                        <select class="form-control" id="inputStudentStatus" disabled>
                             <option value="junior_high_student"  {{ $status == 'junior_high_student' ? 'selected' : '' }}>Junior High School Student (Grades 7-10)</option>
                             <option value="senior_high_student" {{ $status == 'senior_high_student' ? 'selected' : '' }}>Senior High School Student (Grades 11-12)</option>
                             <option value="senior_high_graduate" {{ $status == 'senior_high_graduate' ? 'selected' : '' }}>Senior High School Graduate (High School Diploma)</option>

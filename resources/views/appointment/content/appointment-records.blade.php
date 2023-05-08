@@ -79,7 +79,7 @@
                                             @if($appointment->num_copies > 1)
                                             <div class="d-flex flex-wrap m-0 p-0">
                                                 <small class="font-bold me-1">Copies Requested: </small>
-                                                <small class="">{{ $appointment->num_copies }} pages</small>
+                                                <small class="">{{ $appointment->num_copies }} copies</small>
                                             </div>
                                             @endif
                                             <div class="d-flex flex-wrap m-0 p-0">

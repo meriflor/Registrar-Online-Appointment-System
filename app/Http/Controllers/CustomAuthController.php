@@ -251,7 +251,7 @@ class CustomAuthController extends Controller
             $user->email = $request->input('editEmail');
             $user->birthdate = $request->input('editBirthdate');
             $user->status = $request->input('editStatus');
-            if ($user->status === 'graduate') {
+            if ($user->status === 'senior_high_graduate'||$user->status === 'undergraduate_alumni'||$user->status === 'masteral_alumni') {
                   $user->acadYear = null;
                   $user->gradYear = $request->input('editGradYear');
             } else {
@@ -262,7 +262,7 @@ class CustomAuthController extends Controller
             $user->course = $request->input('editCourse');
             $user->save();
 
-            return redirect('/dashboard')->with('success', 'User information updated successfully.');
+            return redirect('/edit-profile')->with('success', 'User information updated successfully.');
       }
 
       public function cancel_appointment(Request $request, $id)

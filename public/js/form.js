@@ -1,6 +1,6 @@
 $(document).ready(function () {
     $("#inputStudentStatus").change(function () {
-        if ($(this).val() === "alumni") {
+        if ($(this).val() === "senior_high_graduate" ||$(this).val() === "undergraduate_alumni" ||$(this).val() === "masteral_alumni") {
             $("#reg-input-acadYear").hide();
             // $('#reg-input-acadYear').removeAttr('required');
             $("#reg-input-gradYear").show();
@@ -17,7 +17,7 @@ $(document).ready(function () {
 // fix
 $(document).ready(function () {
     $("#editStatus").change(function () {
-        if ($(this).val() === "alumni") {
+        if ($(this).val() === "senior_high_graduate" ||$(this).val() === "undergraduate_alumni" ||$(this).val() === "masteral_alumni") {
             $("#edit-AcadYear").hide();
             $("#edit-GradYear").show();
         } else {
@@ -25,8 +25,8 @@ $(document).ready(function () {
             $("#edit-AcadYear").show();
         }
     });
-    var status = $("#editStatus").val();
-    if (status === "alumni") {
+    // var status = $("#editStatus").val();
+    if ($("#editStatus").val() === "senior_high_graduate" ||$("#editStatus").val() === "undergraduate_alumni" ||$("#editStatus").val() === "masteral_alumni") {
         $("#edit-AcadYear").hide();
         $("#edit-GradYear").show();
     } else {
@@ -46,8 +46,8 @@ $(document).ready(function () {
 });
 
 $(document).ready(function () {
-    var status = $("#inputStudentStatus").val();
-    if (status === "alumni") {
+    // var status = $("#inputStudentStatus").val();
+    if ($("#inputStudentStatus").val() === "senior_high_graduate" ||$("#inputStudentStatus").val() === "undergraduate_alumni" ||$("#inputStudentStatus").val() === "masteral_alumni") {
         $("#input-acadYear").hide();
         $("#input-gradYear").show();
     } else {
