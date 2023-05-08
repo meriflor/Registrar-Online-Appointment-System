@@ -229,6 +229,61 @@ class FormSeeder extends Seeder
             ",
         ]);
         $faq -> save();
+
+        $course = new \App\Models\Course([
+            'course_name' => 'Secondary High School',
+        ]);
+        $course -> save();
+        $course = new \App\Models\Course([
+            'course_name' => 'Secondary Senior High School',
+        ]);
+        $course -> save();
+        $course = new \App\Models\Course([
+            'course_name' => 'Bachelor of Science in Computer Science',
+        ]);
+        $course -> save();
+        $course = new \App\Models\Course([
+            'course_name' => 'Bachelor of Technology and Livelihood Education',
+        ]);
+        $course -> save();
+        $course = new \App\Models\Course([
+            'course_name' => 'Bachelor of Technical-Vocational Teacher Education',
+        ]);
+        $course -> save();
+        $course = new \App\Models\Course([
+            'course_name' => 'Bachelor of Science in Hospitality Management',
+        ]);
+        $course -> save();
+
+        $course = new \App\Models\Course([
+            'course_name' => 'Bachelor of Industrial Technology Major in Drafting',
+        ]);
+        $course -> save();
+
+        $course = new \App\Models\Course([
+            'course_name' => 'Bachelor of Industrial Technology Major in Garments Fashion and Design',
+        ]);
+        $course -> save();
+
+        $course = new \App\Models\Course([
+            'course_name' => 'Bachelor of Industrial Technology Major in Mechanical Technology',
+        ]);
+        $course -> save();
+
+        $course = new \App\Models\Course([
+            'course_name' => 'Bachelor of Industrial  Technology Major in Food and Service Management',
+        ]);
+        $course -> save();
+
+        $course = new \App\Models\Course([
+            'course_name' => 'Bachelor of Industrial Technology Major in Electrical Technology',
+        ]);
+        $course -> save();
+
+        $course = new \App\Models\Course([
+            'course_name' => 'Bachelor of Industrial Technology Major in Automotive Technology',
+        ]);
+        $course -> save();
     }
     
 }

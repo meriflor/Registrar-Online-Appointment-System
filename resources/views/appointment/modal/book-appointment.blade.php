@@ -71,6 +71,20 @@
                         </div>
                         <div><hr class="row my-3"></div>
                         <div class="d-flex flex-column w-100 mb-3">
+                            <p class="fs-4 font-mont font-bold">Upload Requirements</p>
+                            <form>
+                                <div class="mb-3">
+                                  <label for="inputRequirements" class="form-label">Requirements</label>
+                                  <div class="input-group">
+                                    <input type="file" class="form-control" id="inputRequirement1" name="requirement1">
+                                    <button class="btn btn-outline-secondary btn-add-requirement" type="button" data-requirement-id="1">Add</button>
+                                  </div>
+                                  <div id="inputRequirementsContainer"></div>
+                                </div>
+                              </form>
+                              
+                        </div>
+                        <div class="d-flex flex-column w-100 mb-3">
                             <p class="fs-4 font-mont font-bold">Payment</p>
                             <div>
                                 <input type="radio" id="walk-in" name="payment_method" value="Walk-in">
@@ -123,3 +137,25 @@
         </div>
     </div>
 </div>
+
+<script>
+    $(document).ready(function() {
+      var requirementCounter = 1;
+    
+      // Add new requirement
+      $(".btn-add-requirement").click(function() {
+        requirementCounter++;
+        var newRequirement = '<div class="input-group mt-2" id="requirement' + requirementCounter + '">';
+        newRequirement += '<input type="file" class="form-control" name="requirement' + requirementCounter + '">';
+        newRequirement += '<button class="btn btn-outline-secondary btn-delete-requirement" type="button" data-requirement-id="' + requirementCounter + '">Delete</button>';
+        newRequirement += '</div>';
+        $("#inputRequirementsContainer").append(newRequirement);
+      });
+    
+      // Delete requirement
+      $(document).on("click", ".btn-delete-requirement", function() {
+        var requirementId = $(this).data("requirement-id");
+        $("#requirement" + requirementId).remove();
+      });
+    });
+</script>

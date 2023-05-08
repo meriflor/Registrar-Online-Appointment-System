@@ -61,7 +61,7 @@
             </div>
             <div id="slot_info" class="px-5 py-3 text-center font-nun">
                 <div id="info-text" class="text-center font-nun"></div>
-                There's
+                As of now, there are
                 <div class="font-bold" id="pending-text"></div>
                 <div class="font-bold" id="onProcess-text"></div>
                 <div class="font-bold" id="readyToClaim-text"></div>

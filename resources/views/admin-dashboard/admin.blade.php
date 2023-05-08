@@ -204,7 +204,7 @@
                                 $('#edit_div').show();
                                 if(event.currentSlot > 0){
                                     $('#slot_info').show();
-                                    $('#info-text').text("We have " + event.currentSlot + " user appointment(s) on this day.");
+                                    $('#info-text').text("There are currently " + event.currentSlot + " appointments scheduled for this day.");
                                     if(event.pending > 0){
                                         $('#pending-text').text(event.pending + " : pending ");
                                     }if(event.onProcess > 0){
@@ -386,6 +386,9 @@
         @include('admin-dashboard.modal.announcement.add-announcement')
         @include('admin-dashboard.modal.announcement.delete-announcement')
         @include('admin-dashboard.modal.announcement.edit-announcement')  
+        @include('admin-dashboard.modal.forms.add-course')
+        @include('admin-dashboard.modal.forms.delete-course')
+        @include('admin-dashboard.modal.forms.edit-course')
         @include('admin-dashboard.modal.faqs.add-faqs')
         @include('admin-dashboard.modal.faqs.delete-faqs')
         @include('admin-dashboard.modal.faqs.edit-faqs')

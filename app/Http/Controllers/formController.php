@@ -7,6 +7,7 @@ use Illuminate\Support\Facades\Validator;
 use Illuminate\Http\Request;
 use App\Models\User;
 use App\Models\Form;
+use App\Models\Course;
 use App\Models\Appointment;
 use App\Models\Booking;
 use Illuminate\Support\Facades\Auth;
@@ -58,10 +59,11 @@ class formController extends Controller
       }
   
 
-      public function viewForm(){
-            $forms = Form::all();
-            return view('admin-dashboard/forms', compact('forms'));
-      }
+  public function viewForm(){
+      $forms = Form::all();
+      $courses = Course::all();
+      return view('admin-dashboard/forms', compact('forms','courses'));
+}
 
       public function viewOneForm($id){
             $forms = Form::where('id', $id)->findOrFail($id);
