@@ -38,7 +38,7 @@
                 <thead class="table-head text-center">
                     <tr>
                         <th>Appointment Number</th>
-                        <th>School ID</th>
+                        <th>Student ID</th>
                         <th>First Name</th>
                         <th>Last Name</th>
                         <th>Document Requested</th>
@@ -101,7 +101,7 @@
                 <thead class="table-head text-center">
                     <tr>
                         <th>Appointment Number</th>
-                        <th>School ID</th>
+                        <th>Student ID</th>
                         <th>First Name</th>
                         <th>Last Name</th>
                         <th>Document Requested</th>
@@ -155,7 +155,7 @@
                 <thead class="table-head text-center">
                     <tr>
                         <th>Appointment Number</th>
-                        <th>School ID</th>
+                        <th>Student ID</th>
                         <th>First Name</th>
                         <th>Last Name</th>
                         <th>Document Requested</th>
@@ -209,7 +209,7 @@
                 <thead class="table-head text-center">
                     <tr>
                         <th>Appointment Number</th>
-                        <th>School ID</th>
+                        tudent</th>
                         <th>First Name</th>
                         <th>Last Name</th>
                         <th>Document Requested</th>

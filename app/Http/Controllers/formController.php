@@ -61,7 +61,8 @@ class formController extends Controller
 
   public function viewForm(){
       $forms = Form::all();
-      return view('admin-dashboard/forms', compact('forms'));
+      $courses = Course::all();
+      return view('admin-dashboard/forms', compact('forms','courses'));
 }
 
       public function viewOneForm($id){
