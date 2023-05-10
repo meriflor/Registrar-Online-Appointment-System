@@ -86,7 +86,6 @@
     <div class="site-content d-flex justify-content-center p-5">
         <!-- dashboard -->
         <div class="dashboard d-flex row flex-row w-100 font-mont" id="dashboard">
-            <!-- fix -->
             <div class="col-md-4 mb-4 font-mont">
                 <div class="content-box p-4">
                     <h5 class="font-bold font-maroon">Announcements</h5>
@@ -337,6 +336,7 @@
             var accordion_id = accordion_item.find('.accordion-collapse').attr('id');
             var modal = $('#appointmentModal');
 
+            // fix
             if(form_name === 'Issuance of Transcript of Records'){
                 $('#app-acad-year').show();
             }else{

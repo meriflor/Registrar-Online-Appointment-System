@@ -23,6 +23,7 @@
     <!-- homepage -->
     <link rel="stylesheet" href="css/homepage/homepage.css">
     <link rel="stylesheet" href="css/homepage/breakpoints.css">
+    <link rel="stylesheet" href="css/admin/fonts.css">
 
     <!-- others, modal and id="appointment01" -->
     <link rel="stylesheet" href="new-css/main-page/first-modals.css">

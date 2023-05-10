@@ -316,7 +316,7 @@
     </div>
 
     <div class="space"></div>
-    <div class="footer"></div>
+    <!-- <div class="footer"></div> -->
 
     <!-- CONTACT US SECTION floating button-->
     <div class="fixed-bottom" id="contactus">
@@ -331,6 +331,7 @@
         </button>
     </div>
 
+    @include('layout.footer-div')
     @include('layout.modal.data-privacy')
     @include('layout.modal.contact-us')
 

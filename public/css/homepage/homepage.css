@@ -135,7 +135,12 @@ p {
     height: 100px;
 }
 .footer {
-    height: 50px;
-    background-color: black;
+    /* height: 50px; */
+    padding: 5%;
+    background-color: #1e1e1e;
     box-shadow: 0 0 10px rgba(0, 0, 0, 0.5);
+}.border-custom{
+    height: 150px;
+    width: 0;
+    border: 1px solid white;
 }
