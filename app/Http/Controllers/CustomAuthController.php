@@ -94,7 +94,10 @@ class CustomAuthController extends Controller
 
                   if ($user->role == 1) {
                   return redirect()->route('dashboard-admin');
-                  } else {
+                  }else if($user->role == 2){
+                  return redirect()->route('subadmin-dashboard');
+                  }
+                  else {
                   return redirect()->route('user-dashboard');
                   }
             } else {

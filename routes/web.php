@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\subadminViewerController;
 use App\Http\Controllers\adminController;
 use App\Http\Controllers\announcementController;
 use App\Http\Controllers\courseController;
@@ -13,6 +14,7 @@ use App\Http\Controllers\formController;
 use App\Http\Controllers\MessageController;
 use App\Http\Controllers\UserController;
 use App\Http\Middleware\AlreadyLoggedIn;
+use App\Http\Middleware\SubAdminView;
 use App\Http\Controllers\AppointmentSlotController;
 use App\Models\Appointment;
 use App\Models\User;
@@ -63,6 +65,12 @@ Route::middleware([AuthCheck::class, AdminCheck::class])->prefix('dashboard-admi
     // Route::delete('forms/{form}', [FormController::class,'destroy'])->name('forms.destroy');
     
 });
+
+Route::middleware([AuthCheck::class, SubAdminView::class])->group(function () {
+    Route::get('/dashboard', [subadminViewerController::class, 'viewAdminRecords'])->name('subadmin-dashboard');
+});
+
+
 
     //Login and Registraion - Personal Information
     Route::post('/registration-user',[CustomAuthController::class,'registerUser'])->name('registration-user');  

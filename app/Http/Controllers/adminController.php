@@ -232,4 +232,8 @@ class adminController extends Controller
         
         return redirect()->back();
     }
+
+    public function viewSubadmin(Request $request){
+        return view('subadmin-dashboard.admin-viewer');
+    }
 }
