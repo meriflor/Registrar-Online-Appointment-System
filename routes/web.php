@@ -13,6 +13,7 @@ use App\Http\Controllers\CustomAuthController;
 use App\Http\Controllers\formController;
 use App\Http\Controllers\MessageController;
 use App\Http\Controllers\UserController;
+use App\Http\Controllers\SettingsController;
 use App\Http\Middleware\AlreadyLoggedIn;
 use App\Http\Middleware\SubAdminView;
 use App\Http\Controllers\AppointmentSlotController;
@@ -128,4 +129,10 @@ Route::middleware([AuthCheck::class, SubAdminView::class])->prefix('dashboard-ad
 
     Route::delete('appointment/delete/{id}',[CustomAuthController::class,'cancel_appointment'])->name('cancelappointment');  
     Route::put('appointment/remarks', [adminController::class,'updateRemark'])->name('appointmentremarks');
+
+    //Admin settings functions
+        Route::post('add-staffs', [SettingsController::class, 'registrarStaffStore'])->name('add-staffs');
+        Route::put('edit-staffs/{id}', [SettingsController::class, 'registrarStaffUpdate'])->name('edit-staffs');
+        Route::delete('delete-staffs/{id}', [SettingsController::class, 'registrarStaffDelete'])->name('delete-staffs');
     
+        Route::put('admin-contacts-update/{id}', [SettingsController::class, 'adminContactUpdate'])->name('admin-contacts-update');

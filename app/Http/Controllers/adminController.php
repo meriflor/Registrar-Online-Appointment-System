@@ -9,6 +9,7 @@ use App\Models\Form;
 use App\Models\Announcement;
 use App\Models\Appointment;
 use App\Models\Booking;
+use App\Models\RegistrarStaff;
 use Carbon\Carbon;
 use Illuminate\Support\Facades\Auth;
 use GrahamCampbell\ResultType\Success;
@@ -234,6 +235,12 @@ class adminController extends Controller
     }
 
     public function viewSettings(Request $request){
-        return view('admin-dashboard.settings');
+        $staffs = RegistrarStaff::all();
+        $user = User::where('role', 1)->first();
+        $admin_email = $user->email;
+        $admin_cell_no = $user->cell_no;
+        $admin_id = $user->id;
+
+        return view('admin-dashboard.settings', compact('staffs', 'admin_email', 'admin_cell_no', 'admin_id'));
     }
 }
