@@ -23,6 +23,7 @@
         <link rel="stylesheet" href="{{ asset('css/admin/forms.css') }}" />
         <link rel="stylesheet" href="{{ asset('css/admin/announcement.css') }}" />
         <link rel="stylesheet" href="{{ asset('css/admin/modal.css') }}" />
+        <link rel="stylesheet" href="{{ asset('css/admin/settings.css') }}" />
         <link rel="stylesheet" href="{{ asset('css/defaultcss/pagination.css') }}" />
         <link rel="stylesheet" href="{{ asset('css/defaultcss/calendar.css') }}" />
         <link

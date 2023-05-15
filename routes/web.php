@@ -58,6 +58,7 @@ Route::middleware([AuthCheck::class, AdminCheck::class])->prefix('dashboard-admi
     Route::get('faqs',[faqsController::class,'viewFaqAdmin']);
     Route::get('request-reschedule',[adminController::class,'viewAllResched']);
     Route::get('request-all', [adminController::class,'viewAllRequest']);
+    Route::get('settings', [adminController::class,'viewSettings']);
 
     //Admin Forms Function
     // Route::get('forms/{form}/edit', [FormController::class, 'edit'])->name('forms.edit');

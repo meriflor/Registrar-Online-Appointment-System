@@ -122,12 +122,10 @@
                                         <img src="/images/edit.png" alt="">
                                         <small class="m-0 ms-2 p-0 font-nun">Edit</small>
                                     </button>
-                                    
                                     <button class="btn btn-custom d-flex flex-row align-items-center open_delete_form_modal" type="button" data-form-delete-id="{{ $form->id }}" data-form-delete-name="{{ $form->name }}">
                                         <img src="/images/delete.png" alt="">
-                                    <small class="m-0 ms-2 p-0 font-nun">Delete</small>
-                                </button>
-
+                                        <small class="m-0 ms-2 p-0 font-nun">Delete</small>
+                                    </button>
                                 </div>
                             </div>
                         </div>

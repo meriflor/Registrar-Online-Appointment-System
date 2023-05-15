@@ -15,7 +15,7 @@
     <nav class="navigation this-box mb-3">
         <ul class="font-nun small-nav">
             <li><a href="#appRec">Appointment Records</a></li>
-            <li><a href="#">Print Records</a></li>
+            <li><a href="#appRec">Export Records</a></li>
         </ul>
     </nav>
 
@@ -51,8 +51,6 @@
                                 @endif
                             </ul>
                         </div>
-                        
-
                     </div>
                     
                     @foreach($futureDocs as $futureDate => $appointments)
