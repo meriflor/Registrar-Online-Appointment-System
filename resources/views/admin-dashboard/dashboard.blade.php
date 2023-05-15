@@ -23,11 +23,14 @@
         <div class="row d-flex flex-row">
             <div class="col-md-4">
                 <div id="track-boxes" class="track-boxes mb-3" style="padding: 0 10px 0 0;">
-                    <div class="p-shad-w">
+                    <div class="p-shad-w" style="background-color: #1e1e1e;">
+                        <h5 class="m-0 p-0 font-nun font-bold font-white">Pending List as of:</h5>
+                    </div>
+                    <div class="p-shad-w mt-3">
                         <a href="#list_day-{{ \Carbon\Carbon::now()->format('Y-m-d') }}" data-bs-toggle="collapse" class="w-100 d-flex flex-row align-items-center justify-content-between btn text-start" style="background-color: white; border: none; color: #1e1e1e;" role="button" aria-expanded="false" aria-controls="collapseExample">
                             <h5 class="m-0 font-nun font-bold" style="flex: 1;">Today: {{ ($current_day) }} </h5>
                             @if(count($formCounts) > 0)
-                            <small>Open</small>
+                            <small>count($formCounts)</small>
                             @endif
                         </a>
                         <div class="collapse" id="list_day-{{ \Carbon\Carbon::now()->format('Y-m-d') }}">
@@ -60,7 +63,9 @@
                                 aria-expanded="false" aria-controls="collapseExample"
                             >
                                 <h5 class="font-nun font-bold">On: {{ \Carbon\Carbon::parse($futureDate)->format('M d, Y') }}</h5>
-                                <small>Open</small>
+                                <span class="badge badge-dash-custom font-nun">
+                                    {{ count($appointments) }}
+                                </span>
                             </a>
                             <div class="collapse" id="list_day-{{ \Carbon\Carbon::parse($futureDate)->format('Y-m-d') }}">
                                 <ul class="list-group list-group-flush">

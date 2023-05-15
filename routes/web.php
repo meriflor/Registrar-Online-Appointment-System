@@ -66,7 +66,7 @@ Route::middleware([AuthCheck::class, AdminCheck::class])->prefix('dashboard-admi
     
 });
 
-Route::middleware([AuthCheck::class, SubAdminView::class])->group(function () {
+Route::middleware([AuthCheck::class, SubAdminView::class])->prefix('dashboard-admin-appointments')->group(function () {
     Route::get('/dashboard', [subadminViewerController::class, 'viewAdminRecords'])->name('subadmin-dashboard');
 });
 
