@@ -3,6 +3,9 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Hash;
+use Illuminate\Validation\Rule;
+use Illuminate\Support\Facades\Storage;
 use App\Models\RegistrarStaff;
 use App\Models\User;
 use Carbon\Carbon;
@@ -52,6 +55,12 @@ class SettingsController extends Controller
 
     public function registrarStaffDelete(Request $request, $id){
         $staffs = RegistrarStaff::find($id);
+        $imagePath = public_path($staffs->profile_image);
+        if (file_exists($imagePath)) {
+            Storage::delete($staffs->profile_image);
+        }else{
+            return response()->json(['success' => false, 'message' => 'Failed successfully.']);
+        }
         $staffs->delete();
         return redirect('/dashboard-admin/settings');
     }
@@ -62,5 +71,57 @@ class SettingsController extends Controller
         $admin->cell_no = $request->update_admin_cp_no;
         $admin->save();
         return redirect('/dashboard-admin/settings');
+    }
+
+    public function adminAccountAdd(Request $request){
+        $request->validate([
+            'add_admin_email' => 'required|unique:users,email',
+            'password' => 'required|min:8',
+        ], [
+            'add_admin_email.unique' => 'The email is already taken.',
+            'password.required' => 'The password is required.',
+            'password.min' => 'The password must be at least 8 characters.',
+        ]);
+        $admin = new User();
+        $admin->firstName = "Admin";
+        $admin->lastName = "Admin";
+        $admin->address = "Admin";
+        $admin->school_id = "admin-" . now();
+        $admin->cell_no = "admin-" . now();
+        $admin->email = $request->add_admin_email;
+        $admin->password = Hash::make($request->add_admin_pass);
+        $admin->role = $request->add_admin_role;
+        // dd($admin);
+        $admin->save();
+        return back();
+    }
+    
+    public function adminAccountUpdate(Request $request, $id){
+
+        $admin = User::find($id);
+        $request->validate([
+            'edit_admin_email' => [
+                'sometimes',
+                'nullable',
+                Rule::unique('users', 'email')->ignore($admin->email, 'email')
+            ],
+        ], [
+            'edit_admin_email.unique' => 'The email is already taken.',
+        ]);
+        if($request->edit_admin_email){
+            $admin->email = $request->edit_admin_email;
+        }if($request->edit_admin_pass){
+            $admin->password = Hash::make($request->edit_admin_pass);
+        }if($request->edit_admin_role){
+            $admin->role = $request->edit_admin_role;
+        }
+        $admin->save();
+        return back();
+    }
+
+    public function adminAccountDelete(Request $request, $id){
+        $admin = User::find($id);
+        $admin->delete();
+        return back();
     }
 }

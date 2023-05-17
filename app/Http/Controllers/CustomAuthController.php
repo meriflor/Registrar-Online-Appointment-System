@@ -93,12 +93,13 @@ class CustomAuthController extends Controller
                   $request->session()->put('loginId', $user->id);
 
                   if ($user->role == 1) {
-                  return redirect()->route('dashboard-admin');
+                        return redirect()->route('dashboard-admin');
                   }else if($user->role == 2){
-                  return redirect()->route('subadmin-dashboard');
-                  }
-                  else {
-                  return redirect()->route('user-dashboard');
+                        return redirect()->route('subadmin-dashboard');
+                  }else if($user->role == 3){
+                        return redirect()->route('subadmin-cashier-dashboard');
+                  }else {
+                        return redirect()->route('user-dashboard');
                   }
             } else {
                   return back()->with('fail', 'Email and password do not match.');

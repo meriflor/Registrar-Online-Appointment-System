@@ -30,7 +30,9 @@
                         <a href="#list_day-{{ \Carbon\Carbon::now()->format('Y-m-d') }}" data-bs-toggle="collapse" class="w-100 d-flex flex-row align-items-center justify-content-between btn text-start" style="background-color: white; border: none; color: #1e1e1e;" role="button" aria-expanded="false" aria-controls="collapseExample">
                             <h5 class="m-0 font-nun font-bold" style="flex: 1;">Today: {{ ($current_day) }} </h5>
                             @if(count($formCounts) > 0)
-                            <small>count($formCounts)</small>
+                            <span class="badge badge-dash-custom font-nun">
+                                {{ count($formCounts) }}
+                            </span>
                             @endif
                         </a>
                         <div class="collapse" id="list_day-{{ \Carbon\Carbon::now()->format('Y-m-d') }}">
@@ -114,13 +116,13 @@
         <div class="row d-flex flex-row m-2" id="appRec">
             <div class="appointment-records p-4">
                 <div class="d-flex flex-row align-items-center">
-                <div class="fs-2 font-bold font-nun mb-2" style="flex:1;">
-                    Appointment Records
+                    <div class="fs-2 font-bold font-nun mb-2" style="flex:1;">
+                        Appointment Records
+                    </div>
+                    <div class="d-flex-row ">
+                        <button class="btn btn-request-records" id="export-app-records">Export</button>
+                    </div>
                 </div>
-                <div class="d-flex-row ">
-                    <button class="btn btn-request-records" id="export-app-records">Export</button>
-                </div>
-            </div>
                 @if(count($bookings)>0)
                 <table
                     class="table font-nun"

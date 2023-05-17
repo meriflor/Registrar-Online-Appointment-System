@@ -241,6 +241,11 @@ class adminController extends Controller
         $admin_cell_no = $user->cell_no;
         $admin_id = $user->id;
 
-        return view('admin-dashboard.settings', compact('staffs', 'admin_email', 'admin_cell_no', 'admin_id'));
+        $admins = User::where('role', 2)
+                        ->orWhere('role', 3)
+                        ->orderBy('created_at', 'ASC')
+                        ->get();
+
+        return view('admin-dashboard.settings', compact('staffs', 'admin_email', 'admin_cell_no', 'admin_id', 'admins'));
     }
 }

@@ -14,6 +14,7 @@
     <nav class="navigation this-box mb-3 d-none d-md-block settings-nav" style="background-color: #1e1e1e !important;">
         <ul class="font-nun small-nav">
             <li><a href="#settings_acc-set">Account Settings</a></li>
+            <li><a href="#settings_admin-add">Admin Account List</a></li>
             <li><a href="#settings_registrar-staff">Registrar's Office Staff</a></li>
             <li><a href="#settings_homepage-content">Website Content</a></li>
         </ul>
@@ -84,6 +85,147 @@
                         </div>
                     </form>
                 </div>
+            </div>
+        </div>
+        <div id="settings_admin-add" class="font-nun">
+            <div class="d-flex flex-column" style="padding: 0 10%;">
+                <div class="d-flex flex-row align-items-center" style="flex: 1;">
+                    <h5 class="m-0 font-bold me-2">Admin Accounts</h5>
+                    <hr class="m-0" style="flex: 1;">
+                </div>
+                <div class="d-flex flex-row px-5 justify-content-end">
+                    <button class="btn settings-btn d-flex flex-row align-items-center" type="button" data-bs-toggle="collapse" data-bs-target="#add_admin_container">
+                        <div class="logo">
+                            <img src="/images/add_white.png" alt="">
+                        </div>
+                        <small class="m-0 ms-2 p-0 font-nun">Add</small>
+                    </button>
+                </div>
+                <!-- fix admin accounts -->
+                <!-- todo admin account add -->
+                <div class="collapse" id="add_admin_container">
+                    <div class="d-flex flex-column row px-5 py-4">
+                        <form action="{{ route('add-admin-account') }}" method="post">
+                            @csrf
+                            <div class="mb-2 d-flex flex-row row align-items-center">
+                                <div class="col-md-4">
+                                    <label for="add_admin_email">Email</label>
+                                </div>
+                                <div class="col-md-5">
+                                    <input type="email" class="form-control settings-input" id="add_admin_email" name="add_admin_email" placeholder="Enter a valid email" required>
+                                    <span class="text-danger">@error('add_admin_email'){{ $message }}@enderror</span>
+                                </div>
+                            </div>
+                            <div class="mb-2 d-flex flex-row row align-items-center">
+                                <div class="col-md-4">
+                                    <label for="add_admin_pass">Password</label>
+                                </div>
+                                <div class="col-md-5">
+                                    <input type="password" class="form-control settings-input" id="add_admin_pass" name="add_admin_pass" placeholder="Password" required>
+                                </div>
+                            </div>
+                            <div class="mb-2 d-flex flex-row row align-items-center">
+                                <div class="col-md-4">
+                                    <label for="add_admin_pass">Role</label>
+                                </div>
+                                <div class="col-md-5">
+                                    <select class="form-select" aria-label="Default select example" name="add_admin_role">
+                                        <option value="2">Appointment Handler</option>
+                                        <option value="3">Cashier</option>
+                                    </select>
+                                </div>
+                            </div>
+                            <div class="mt-2 d-flex flex-row justify-content-end">
+                                <button class="btn w-auto settings-btn" type="submit" id="add_admin_account_submit">
+                                    Save
+                                </button>
+                            </div>
+                        </form>
+                    </div>
+                </div>
+                <!-- todo admin account display -->
+                @foreach($admins as $admin)
+                <div class="d-flex flex-row px-5 py-2 flex-wrap">
+                    <div class="d-flex flex-column justify-content-end mt-2" style="flex: 1;">
+                        <p class="font-bold m-0">{{ $admin->email }}</p>
+                        @if($admin->role == 2)
+                        <p class="m-0 mb-2"><i>Appointment Handler</i></p>
+                        @elseif($admin->role == 3)
+                        <p class="m-0 mb-2"><i>Cashier</i></p>
+                        @endif
+                    </div>
+                    <div class="d-flex flex-row justify-content-start flex-wrap ">
+                        <button class="btn settings-btn-white d-flex flex-row align-items-center me-2" data-bs-toggle="collapse" data-bs-target="#edit_admin-{{ $admin->id }}" type="button">
+                            <img src="/images/edit.png" alt="">
+                            <small class="m-0 ms-2 p-0 font-nun">Edit</small>
+                        </button>
+                        <button class="btn settings-btn-white d-flex flex-row align-items-center" data-bs-toggle="collapse" data-bs-target="#delete_admin-{{ $admin->id }}" type="button">
+                            <img src="/images/delete.png" alt="">
+                        <small class="m-0 ms-2 p-0 font-nun">Delete</small>
+                        </button>
+                    </div>
+                </div>
+                <!-- todo admin account edit -->
+                <div id="edit_admin-{{ $admin->id }}" class="collapse">
+                    <div class="d-flex flex-column row px-5 py-4">
+                        <form action="{{ route('edit-admin-account', $admin->id) }}" method="post">
+                            @csrf
+                            @method('PUT')
+                            <div class="mb-2 d-flex flex-row row align-items-center">
+                                <div class="col-md-4">
+                                    <label for="edit_admin_email">Email</label>
+                                </div>
+                                <div class="col-md-5">
+                                    <input type="email" class="form-control settings-input" id="edit_admin_email" name="edit_admin_email" placeholder="Enter a valid email" autocomplete="off">
+                                    <span class="text-danger">@error('edit_admin_email'){{ $message }}@enderror</span>
+                                </div>
+                            </div>
+                            <div class="mb-2 d-flex flex-row row align-items-center">
+                                <div class="col-md-4">
+                                    <label for="edit_admin_pass">Password</label>
+                                </div>
+                                <div class="col-md-5">
+                                    <input type="password" class="form-control settings-input" id="edit_admin_pass" name="edit_admin_pass" placeholder="Password" autocomplete="off">
+                                </div>
+                            </div>
+                            <div class="mb-2 d-flex flex-row row align-items-center">
+                                <div class="col-md-4">
+                                    <label for="edit_admin_role">Role</label>
+                                </div>
+                                <div class="col-md-5">
+                                    <select class="form-select" aria-label="Default select example" id="edit_admin_role" name="edit_admin_role" placeholder="Choose.." autocomplete="off">
+                                        <option disabled selected hidden>Choose Role</option>
+                                        <option value="2">Appointment Handler</option>
+                                        <option value="3">Cashier</option>
+                                    </select>
+                                </div>
+                            </div>
+                            <div class="mt-2 d-flex flex-row justify-content-end">
+                                <button class="btn w-auto settings-btn" type="submit" id="add_admin_account_submit">
+                                    Save
+                                </button>
+                            </div>
+                        </form>
+                    </div>
+                </div>
+                <!-- todo delete admin -->
+                <div id="delete_admin-{{ $admin->id }}" class="collapse">
+                    <div class="d-flex flex-column row px-5 py-4">
+                        <form action="{{ route('delete-admin-account', $admin->id) }}" method="post">
+                            @csrf
+                            @method('DELETE')
+                            <div class="mb-2 d-flex flex-row row justify-content-center">
+                                Are you sure you want to remove this admin account?
+                            </div>
+                            <div class="mt-2 d-flex flex-row justify-content-end">
+                                <button class="btn w-auto settings-btn" type="submit" id="delete_admin_account_submit">
+                                    Delete
+                                </button>
+                            </div>
+                        </form>
+                    </div>
+                </div>
+                @endforeach
             </div>
         </div>
         <div id="settings_registrar-staff" class="font-nun">

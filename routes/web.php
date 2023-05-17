@@ -1,6 +1,8 @@
 <?php
 
 use App\Http\Controllers\subadminViewerController;
+use App\Http\Controllers\SubadminCashierController;
+use App\Http\Middleware\SubAdminCashier;
 use App\Http\Controllers\adminController;
 use App\Http\Controllers\announcementController;
 use App\Http\Controllers\courseController;
@@ -72,6 +74,11 @@ Route::middleware([AuthCheck::class, SubAdminView::class])->prefix('dashboard-ad
     Route::get('/dashboard', [subadminViewerController::class, 'viewAdminRecords'])->name('subadmin-dashboard');
 });
 
+Route::middleware([AuthCheck::class, SubAdminCashier::class])->prefix('dashboard-admin-cashier')->group(function () {
+    Route::get('/dashboard', [SubadminCashierController::class, 'viewCashierDashboard'])->name('subadmin-cashier-dashboard');
+    Route::get('/approved-payments', [SubadminCashierController::class, 'viewCashierApproved'])->name('subadmin-cashier-approved');
+    Route::get('/incomplete-payments', [SubadminCashierController::class, 'viewCashierIncomplete'])->name('subadmin-cashier-incomplete');
+});
 
 
     //Login and Registraion - Personal Information
@@ -136,3 +143,7 @@ Route::middleware([AuthCheck::class, SubAdminView::class])->prefix('dashboard-ad
         Route::delete('delete-staffs/{id}', [SettingsController::class, 'registrarStaffDelete'])->name('delete-staffs');
     
         Route::put('admin-contacts-update/{id}', [SettingsController::class, 'adminContactUpdate'])->name('admin-contacts-update');
+
+        Route::post('add-admin-account', [SettingsController::class, 'adminAccountAdd'])->name('add-admin-account');
+        Route::put('edit-admin-account/{id}', [SettingsController::class, 'adminAccountUpdate'])->name('edit-admin-account');
+        Route::delete('delete-admin-account/{id}', [SettingsController::class, 'adminAccountDelete'])->name('delete-admin-account');
