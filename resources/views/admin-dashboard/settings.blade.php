@@ -122,6 +122,7 @@
                                 </div>
                                 <div class="col-md-5">
                                     <input type="password" class="form-control settings-input" id="add_admin_pass" name="add_admin_pass" placeholder="Password" required>
+                                    <span class="text-danger">@error('add_admin_pass'){{ $message }}@enderror</span>
                                 </div>
                             </div>
                             <div class="mb-2 d-flex flex-row row align-items-center">
@@ -186,6 +187,7 @@
                                 </div>
                                 <div class="col-md-5">
                                     <input type="password" class="form-control settings-input" id="edit_admin_pass" name="edit_admin_pass" placeholder="Password" autocomplete="off">
+                                    <span class="text-danger">@error('edit_admin_pass'){{ $message }}@enderror</span>
                                 </div>
                             </div>
                             <div class="mb-2 d-flex flex-row row align-items-center">

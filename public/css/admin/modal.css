@@ -78,7 +78,10 @@
 #deleteFaqsModal .modal-content, 
 
 #status_appointment_modal .modal-content,
-#remarks_modal .modal-content{
+#remarks_modal .modal-content,
+
+#approve_payment_modal .modal-content,
+#incomplete_payment_modal .modal-content{
     background-color: white;
     color: #131313;
 }#addFormModal, 
@@ -96,7 +99,10 @@
 #deleteFaqsModal,
 
 #status_appointment_modal,
-#remarks_modal{
+#remarks_modal,
+
+#approve_payment_modal,
+#incomplete_payment_modal{
     --bs-modal-header-border-color: none;
     --bs-modal-footer-border-color: none;
     /* color: #131313 !important; */
@@ -109,7 +115,11 @@
 #editAnnouncementModal input, #editAnnouncementModal textarea,
 #addFaqsModal input, #addFaqsModal textarea,
 #editFaqsModal input, #editFaqsModal textarea,
-#remarks_modal input, #remarks_modal textarea{
+#remarks_modal input, #remarks_modal textarea,
+
+#approve_payment_modal input, #approve_payment_modal textarea,
+#incomplete_payment_modal input, #incomplete_payment_modal textarea
+{
     background-color: #f3f3f3;
     border: 0;
     border-bottom: 2px solid #131313;
@@ -128,7 +138,10 @@
 #deleteFaqsModal .modal-header,
 
 #status_appointment_modal .modal-header,
-#remarks_modal .modal-header{
+#remarks_modal .modal-header,
+
+#approve_payment_modal .modal-header,
+#incomplete_payment_modal .modal-header{
     background-color: #131313;
 }#addFormModal .btn-custom,
 #editFormModal .btn-custom,
@@ -145,7 +158,10 @@
 #deleteFaqsModal .btn-custom,
 
 #status_appointment_modal .btn-custom,
-#remarks_modal .btn-custom{
+#remarks_modal .btn-custom,
+
+#approve_payment_modal .btn-custom,
+#incomplete_payment_modal .btn-custom{
     border: 2px solid #131313;
     font-weight: bold;
 }
