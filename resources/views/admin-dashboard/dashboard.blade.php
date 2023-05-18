@@ -125,7 +125,7 @@
                 </div>
                 @if(count($bookings)>0)
                 <table
-                    class="table font-nun"
+                    class="table font-nun hover display compact row-border"
                     id="appointmentRecords">
                     <thead class="table-head text-center">
                         <tr>

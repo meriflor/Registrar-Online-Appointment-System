@@ -48,7 +48,7 @@ class CustomAuthController extends Controller
             $user -> address = $request->address;
             $user -> school_id = $request ->school_id;
             $user -> cell_no = $request ->cell_no;
-            $user->civil_status = $request->input('civil_status');
+            $user -> civil_status = $request->input('civil_status');
             $user -> email = $request->email;
             $user->birthdate = $request->input('birthdate');
             $user->status = $request->input('status');
@@ -68,6 +68,7 @@ class CustomAuthController extends Controller
                   $user->course = $courseInput ;
             }
             $user -> password = Hash::make($request->password);
+            $user -> account_status = "Pending";
             $res = $user -> save();
 
             if($res){

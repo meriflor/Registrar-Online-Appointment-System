@@ -20,9 +20,7 @@
             </div> -->
         </div>
         <!-- count -->
-        <table
-            class="table font-nun"
-            id="appointmentRecords">
+        <table class="table font-nun hover display compact cell-border" id="appointmentRecords">
             <thead class="table-head text-center">
                 <tr>
                     <th>Appointment Number</th>

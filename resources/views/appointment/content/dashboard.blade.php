@@ -70,11 +70,25 @@
                         <p class="fs-6"><b>Maximum Time to Claim: </b>
                             {{ $form->form_max_time }} after the request if filed
                     </div>
-                    <div class="row w-100 d-flex flex-row justify-content-end">
-                        <button type="button" class="btn btn-appoint open-modal" style="background-color:maroon!important;" data-form-max-time="{{ $form->form_max_time }}" data-form-id="{{ $form->id }}" data-form-name="{{ $form->name }}" data-form-fee="{{ $form->fee }}">
-                            Book Appoint
-                        </button>
-                    </div>
+                    @if($user->account_status === "Pending")
+                        <div class="w-100 d-flex flex-row row m-0">
+                            <div class="alert alert-success" role="alert">
+                                You can't book an appointment. Waiting for account verification from the admin.
+                            </div>
+                        </div>
+                    @elseif($user->account_status === "Approved")
+                        <div class="w-100 d-flex flex-row justify-content-end">
+                            <button type="button" class="btn btn-appoint open-modal" style="background-color:maroon!important;" data-form-max-time="{{ $form->form_max_time }}" data-form-id="{{ $form->id }}" data-form-name="{{ $form->name }}" data-form-fee="{{ $form->fee }}">
+                                Book Appoint
+                            </button>
+                        </div>
+                    @else
+                        <div class="w-100 d-flex flex-row row m-0">
+                            <div class="alert alert-danger" role="alert">
+                                Please update your information before 3 days or else it will permanently deleted in the system.
+                            </div>
+                        </div>
+                    @endif
 
                 </div>
             </div>
