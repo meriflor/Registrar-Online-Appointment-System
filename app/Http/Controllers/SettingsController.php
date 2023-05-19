@@ -76,11 +76,12 @@ class SettingsController extends Controller
     public function adminAccountAdd(Request $request){
         $request->validate([
             'add_admin_email' => 'required|unique:users,email',
-            'password' => 'required|min:8',
+            'add_admin_pass' => 'required|min:8',
         ], [
+            'add_admin_email.required' => 'The email field is required.',
             'add_admin_email.unique' => 'The email is already taken.',
-            'password.required' => 'The password is required.',
-            'password.min' => 'The password must be at least 8 characters.',
+            'add_admin_pass.required' => 'The password field is required.',
+            'add_admin_pass.min' => 'The password must be at least 8 characters.',
         ]);
         $admin = new User();
         $admin->firstName = "Admin";
