@@ -32,6 +32,9 @@ class CreateUsersTable extends Migration
             $table->string('password');
             $table->string('acadYear')->nullable();
             $table->string('gradYear')->nullable();
+            $table->string('account_status');
+            $table->date('account_rejected')->nullable();
+            $table->date('account_approved')->nullable();
             $table->timestamps();
         });
     }

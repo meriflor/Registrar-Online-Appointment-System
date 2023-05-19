@@ -20,6 +20,10 @@ class CreateAppointmentsTable extends Migration
             $table->string('appointment_date');
             $table->string('payment_method');
             $table->string('proof_of_payment')->nullable();
+            // review update reference number is for the payment=== not the OR number
+            $table->string('reference_number')->nullable();
+            $table->string('payment_approval')->nullable();
+            $table->string('date_approved')->nullable();
 
             $table->boolean('a_transfer');
             $table->string('a_transfer_school')->nullable();

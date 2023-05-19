@@ -13,7 +13,7 @@
         <div class="appointment-records p-4">
             <div class="w-100 fs-2 font-bold font-nun mb-2">Appointment Requests</div>
             <div class="table-rounded">
-                <table id="appointmentRecords" class="table table-bordered table-sm font-nun table-striped">
+                <table id="appointmentRecords" class="table font-nun hover display compact row-border">
                     <thead class="table-head text-center">
                         <tr>
                             <th>Appointment Number</th>

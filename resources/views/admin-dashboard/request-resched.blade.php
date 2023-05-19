@@ -14,7 +14,7 @@
             <div class="w-100 fs-2 font-bold font-nun mb-2">Appointment Remarks</div>
             @if(count($bookings)>0)
             <div class="table-rounded">
-                <table id="appointmentResched" class="table table-bordered table-sm font-nun table-striped">
+                <table id="appointmentResched" class="table font-nun hover display compact row-border">
                     <thead class="table-head text-center">
                         <tr>
                             <th>Appointment Number</th>

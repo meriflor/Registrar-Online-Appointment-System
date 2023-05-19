@@ -34,7 +34,7 @@
         </div> -->
         @if(count($pending)>0)
         <div class="table-rounded">
-            <table id="pendingRequests" class="table font-nun">
+            <table id="pendingRequests" class="table font-nun hover display compact row-border">
                 <thead class="table-head text-center">
                     <tr>
                         <th>Appointment Number</th>
@@ -97,7 +97,7 @@
     <div class="appointment-records p-4">
         <div class="w-100 fs-2 font-bold font-nun mb-2">On Process Documents</div>
         <div class="table-rounded">
-            <table id="onProcessDocuments" class="table font-nun">
+            <table id="onProcessDocuments" class="table font-nun hover display compact row-border">
                 <thead class="table-head text-center">
                     <tr>
                         <th>Appointment Number</th>
@@ -151,7 +151,7 @@
     <div class="appointment-records p-4">
         <div class="w-100 fs-2 font-bold font-nun mb-2">Ready to Claim Documents</div>
         <div class="table-rounded">
-            <table id="readyToClaimDocuments" class="table font-nun">
+            <table id="readyToClaimDocuments" class="table font-nun hover display compact row-border">
                 <thead class="table-head text-center">
                     <tr>
                         <th>Appointment Number</th>
@@ -205,7 +205,7 @@
     <div class="appointment-records p-4">
         <div class="w-100 fs-2 font-bold font-nun mb-2">Claimed Documents</div>
         <div class="table-rounded">
-            <table id="claimedDocuments" class="table font-nun">
+            <table id="claimedDocuments" class="table font-nun hover display compact row-border">
                 <thead class="table-head text-center">
                     <tr>
                         <th>Appointment Number</th>

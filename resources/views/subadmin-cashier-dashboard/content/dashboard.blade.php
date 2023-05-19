@@ -20,17 +20,17 @@
             </div> -->
         </div>
         <!-- count -->
-        <table
-            class="table font-nun"
-            id="appointmentRecords">
+        <table class="table font-nun hover display compact cell-border" id="appointmentRecords">
             <thead class="table-head text-center">
                 <tr>
                     <th>Appointment Number</th>
                     <th>Student ID</th>
                     <th>Document Requested</th>
                     <th>Copies Requested</th>
+                    <th>Reference Number</th>
                     <th>Date Requested</th>
                     <th>Payment Status</th>
+                    <th>Proof of Payment</th>
                     <th></th>
                 </tr>
             </thead>
@@ -44,17 +44,28 @@
                     <td></td>
                     <td></td>
                     <td>
-                        <div class="dropdown">
-                            <button class="btn btn-secondary dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false">
+                        
+                    </td>
+                    <td>
+                        <a
+                            type="button"
+                            class="btn view-request p-0 view-btn"
+                            id=""
+                            >View
+                        </a>
+                    </td>
+                    <td>
+                        <div class="dropdown d-flex flex-column justify-contents-center">
+                            <button class="btn sub-admin-btn dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false">
                                 Action
                             </button>
-                            <ul class="dropdown-menu dropdown-menu-dark">
-                                <li><a class="dropdown-item active" href="#">Approve</a></li>
-                                <li><a class="dropdown-item" href="#">Remarks</a></li>
+                            <ul class="dropdown-menu dropdown-menu-dark" style="background-color: #1e1e1e;">
+                                <li><a class="dropdown-item active" type="button" data-bs-toggle="modal" data-bs-target="#approve_payment_modal">Approve</a></li>
+                                <li><a class="dropdown-item"  type="button" data-bs-toggle="modal" data-bs-target="#incomplete_payment_modal">Remarks</a></li>
                                 <li><hr class="dropdown-divider"></li>
                                 <li>
-                                    <a class="dropdown-item" type="button" class="btn view-request p-0 view-btn" id="">
-                                        View
+                                    <a class="dropdown-item" type="button" class="view-request view-btn" id="">
+                                        View Information
                                     </a>
                                 </li>
                             </ul>

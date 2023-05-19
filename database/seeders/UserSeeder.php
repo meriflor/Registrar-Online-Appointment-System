@@ -32,6 +32,9 @@ class UserSeeder extends Seeder
         $user->password = Hash::make('admin123');
         $user->acadYear = '2022-2023';
         $user->gradYear = '';
+        $user->account_status = 'Pending';
+        $user->account_rejected = null;
+        $user->account_approved = null;
         $user->role = 1;
         $user->save();  
 
@@ -52,6 +55,9 @@ class UserSeeder extends Seeder
         $user->password = Hash::make('password123');
         $user->acadYear = '2022-2023';
         $user->gradYear = '';
+        $user->account_status = 'Pending';
+        $user->account_rejected = null;
+        $user->account_approved = null;
         $user->role = 0;
         $user->save();  
 
@@ -72,6 +78,9 @@ class UserSeeder extends Seeder
         $user->password = Hash::make('password123');
         $user->acadYear = '2022-2023';
         $user->gradYear = '';
+        $user->account_status = 'Pending';
+        $user->account_rejected = null;
+        $user->account_approved = null;
         $user->role = 0;
         $user->save();  
 
@@ -92,6 +101,9 @@ class UserSeeder extends Seeder
         $user->password = Hash::make('password123');
         $user->acadYear = '2022-2023';
         $user->gradYear = '';
+        $user->account_status = 'Pending';
+        $user->account_rejected = null;
+        $user->account_approved = null;
         $user->role = 0;
         $user->save(); 
     }

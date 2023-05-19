@@ -62,7 +62,7 @@ class UserController extends Controller
 
         return view('appointment.content.dashboard', compact('firstName','lastName','middleName','suffix','address','school_id','cell_no','civil_status','email','birthdate','gender','status', 'acadYear', 'gradYear', 'course',
         'forms',
-        'appointments', 'pending', 'announcements', 'bookings',
+        'appointments', 'pending', 'announcements', 'bookings', 'user'
         ));
     }
 
