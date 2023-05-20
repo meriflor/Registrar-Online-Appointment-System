@@ -31,7 +31,7 @@
                             <th>Status</th>
                             <th>Course</th>
                             <th>Academic Year</th>
-                            <th>Year Graudated</th>
+                            <th>Year Graduated</th>
                             <th class="right">Action</th>
                             <th>Cellphone Number: </th>
                             <th>Email: </th>
@@ -99,7 +99,7 @@
                             <th>Status</th>
                             <th>Course</th>
                             <th>Academic Year</th>
-                            <th>Year Graudated</th>
+                            <th>Year Graduated</th>
                             <th class="right">Action</th>
                             <th>Cellphone Number: </th>
                             <th>Email: </th>
@@ -167,7 +167,7 @@
                             <th>Status</th>
                             <th>Course</th>
                             <th>Academic Year</th>
-                            <th>Year Graudated</th>
+                            <th>Year Graduated</th>
                             <th class="right">Action</th>
                             <th>Cellphone Number: </th>
                             <th>Email: </th>

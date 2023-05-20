@@ -111,14 +111,14 @@
                         <label for="editStatus">Status</label>
                         <select name="editStatus" class="form-control" id="editStatus" required>
                             <option value=""{{ $status == null ? 'selected' : '' }}>Choose...</option>
-                            <option value="Junior High School Student (Grades 7-10)"  {{ $status == 'Junior High School Student (Grades 7-10)' ? 'selected' : '' }}>Junior High School Student (Grades 7-10)</option>
-                            <option value="Senior High School Student (Grades 11-12)" {{ $status == 'Senior High School Student (Grades 11-12)' ? 'selected' : '' }}>Senior High School Student (Grades 11-12)</option>
-                            <option value="Senior High School Graduate (High School Diploma)" {{ $status == 'Senior High School Graduate (High School Diploma)' ? 'selected' : '' }}>Senior High School Graduate (High School Diploma)</option>
-                            <option value="Undergraduate College Student (Bachelor's Degree Program)" {{ $status == "Undergraduate College Student (Bachelor's Degree Program)" ? 'selected' : '' }}>Undergraduate College Student (Bachelor's Degree Program)</option>
-                            <option value="Undergraduate College Alumni (Bachelor's Degree Completed)" {{ $status == "Undergraduate College Alumni (Bachelor's Degree Completed)" ? 'selected' : '' }}>Undergraduate College Alumni (Bachelor's Degree Completed)</option>
-                            <option value="Master's Degree Student (Master's Degree Program)" {{ $status == "Master's Degree Student (Master's Degree Program)" ? 'selected' : '' }}>Master's Degree Student (Master's Degree Program)</option>
-                            <option value="Master's Degree Alumni (Master's Degree Completed)"  {{ $status == "Master's Degree Alumni (Master's Degree Completed)" ? 'selected' : '' }}>Master's Degree Alumni (Master's Degree Completed)</option>   
-
+                            <option value="Junior High School"  {{ $status == 'Junior High School' ? 'selected' : '' }}>Junior High School</option>
+                            <option value="Senior High School" {{ $status == 'Senior High School' ? 'selected' : '' }}>Senior High School</option>
+                            <option value="High School Graduate (Before K-12)" {{ $status == 'High School Graduate (Before K-12)' ? 'selected' : '' }}>High School Graduate (Before K-12)</option>
+                            <option value="Senior High School Graduate" {{ $status == 'Senior High School Graduate' ? 'selected' : '' }}>Senior High School Graduate</option>
+                            <option value="College Undergraduate" {{ $status == "College Undergraduate" ? 'selected' : '' }}>College Undergraduate</option>
+                            <option value="College Graduate" {{ $status == "College Graduate" ? 'selected' : '' }}>College Graduate</option>
+                            <option value="Master's Degree" {{ $status == "Master's Degree" ? 'selected' : '' }}>Master's Degree</option>
+                            <option value="Master's Degree Graduate"  {{ $status == "Master's Degree Graduate" ? 'selected' : '' }}>Master's Degree Graduate</option>   
                         </select>
                     </div>
                     <div class="col-lg-6">

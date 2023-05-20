@@ -87,11 +87,13 @@ class SettingsController extends Controller
         $admin->firstName = "Admin";
         $admin->lastName = "Admin";
         $admin->address = "Admin";
-        $admin->school_id = "admin-" . now();
+        $admin->school_id = Carbon::now()->format('YHis');
         $admin->cell_no = "admin-" . now();
         $admin->email = $request->add_admin_email;
         $admin->password = Hash::make($request->add_admin_pass);
         $admin->account_status = "Approved";
+        $admin->account_approved = null;
+        $admin->account_rejected = null;
         $admin->role = $request->add_admin_role;
         // dd($admin);
         $admin->save();

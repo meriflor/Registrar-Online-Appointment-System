@@ -128,23 +128,22 @@
                         <p class="display-6 font-mont font-bold">Register</p>
                     </div>
                     <form action="{{ route('registration-user') }}" method="POST">
-                                @csrf
-                                @if (Session::has('success'))
-                                <div class="alert alert-success">{{ Session::get('success') }}</div>
-                                @endif
-                                @if (Session::has('fail'))
-                                <div class="alert alert-danger">{{ Session::get('fail') }}</div>
-                                @endif
-
+                        @csrf
+                        @if (Session::has('success'))
+                        <div class="alert alert-success">{{ Session::get('success') }}</div>
+                        @endif
+                        @if (Session::has('fail'))
+                        <div class="alert alert-danger">{{ Session::get('fail') }}</div>
+                        @endif
                         <div class="form-group row">
                             <div class="col-lg-6">
                                 <label for="inputFirstName">First Name</label>
-                                <input type="text" name="firstName" class="form-control" value="{{ old('firstName') }}" id="inputFirstName" placeholder="First Name">
+                                <input type="text" name="firstName" class="form-control" value="{{ old('firstName') }}" id="inputFirstName" placeholder="First Name" required>
                                 <span class="text-danger">@error('firstName'){{ $message }} @enderror </span>
                             </div>
                             <div class="col-lg-6">
                                 <label for="inputLastName">Last Name</label>
-                                <input type="text" class="form-control" name="lastName" value="{{ old('lastName') }}" id="inputLastName" placeholder="Last Name">
+                                <input type="text" class="form-control" name="lastName" value="{{ old('lastName') }}" id="inputLastName" placeholder="Last Name" required>
                                 <span class="text-danger">@error('lastName'){{ $message }} @enderror </span>
                             </div>
                         </div>
@@ -162,31 +161,31 @@
                         <div class="form-group row mt-3">
                             <div class="col-lg-7">
                                 <label for="inputAddress">Address</label>
-                                <input type="text" class="form-control" name="address" value="{{ old('address') }}" id="inputAddress" placeholder="Address">
+                                <input type="text" class="form-control" name="address" value="{{ old('address') }}" id="inputAddress" placeholder="Address" required>
                                 <span class="text-danger">@error('address'){{ $message }} @enderror </span>
                             </div>
                             <div class="col-lg-5">
                                 <label for="inputSchoolID">Student ID</label>
-                                <input type="number" class="form-control" name="school_id" value="{{ old('school_id') }}" id="inputSchoolID" placeholder="Student ID">
+                                <input type="number" class="form-control" name="school_id" value="{{ old('school_id') }}" id="inputSchoolID" placeholder="Student ID" required>
                                 <span class="text-danger">@error('school_id'){{ $message }} @enderror </span>
                             </div>
                         </div>
                         <div class="form-group row mt-3">
                             <div class="col-lg-6">
                                 <label for="inputCpNo">Cellphone No.</label>
-                                <input type="text" class="form-control" name="cell_no" id="inputCpNo" placeholder="Cellphone No.">
+                                <input type="text" class="form-control" name="cell_no" id="inputCpNo" placeholder="Cellphone No." required>
                                 <span class="text-danger">@error('cell_no'){{ $message }} @enderror </span>
                             </div>
                             <div class="col-lg-6">
                                 <label for="inputEmail">Email</label>
-                                <input type="email" class="form-control" value="{{ old('email') }}" name="email" id="inputEmail" placeholder="Email">
+                                <input type="email" class="form-control" value="{{ old('email') }}" name="email" id="inputEmail" placeholder="Email" required>
                                 <span class="text-danger">@error('email'){{ $message }} @enderror </span>
                             </div>
                         </div>
                         <div class="form-group row mt-3">
                             <div class="col-lg-6">
                                 <label for="inputCivilStatus">Civil Status</label>
-                                <select class="form-control" name="civil_status" id="inputCivilStatus">
+                                <select class="form-control" name="civil_status" id="inputCivilStatus" required>
                                   <option value="">Choose...</option>
                                   <option value="Single">Single</option>
                                   <option value="Married">Married</option>
@@ -200,14 +199,14 @@
                             </div>
                             <div class="col-lg-6">
                                 <label for="inputBirthdate">Birthdate</label>
-                                <input type="date" class="form-control" name="birthdate"  id="inputBirthdate">
+                                <input type="date" class="form-control" name="birthdate"  id="inputBirthdate" required>
                                 <span class="text-danger">@error('birthdate'){{ $message }} @enderror </span>
                             </div>
                         </div>
                         <div class="form-group row mt-3">
                             <div class="col-lg-3">
                                 <label for="inputGender">Gender</label>
-                                <select class="form-control" name="gender" id="inputGender">
+                                <select class="form-control" name="gender" id="inputGender" required>
                                   <option value="">Choose...</option>
                                   <option value="Female">Female</option>
                                   <option value="Male">Male</option>
@@ -217,7 +216,7 @@
                             @if(isset($courses) && count($courses) > 0)
                             <div class="col-lg-9">
                                 {{-- <label for="inputCourse">Course</label>
-                                <select class="form-control" name="course" value="{{ old('course') }}" id="inputCourse">
+                                <select class="form-control" name="course" value="{{ old('course') }}" id="inputCourse" required>
                                     <option value="">Choose...</option>
                                     <option value="Secondary High School / Senior High School">Secondary ( High School / Senior High School )</option>
                                     <option value="Bachelor of Science in Computer Science">Bachelor of Science in Computer Science</option>
@@ -233,7 +232,7 @@
                                   </select>
                                   <span class="text-danger">@error('course'){{ $message }} @enderror </span> --}}
                                   <label for="inputCourse">Course</label>
-                                    <select class="form-control" id="inputCourse" name="course">
+                                    <select class="form-control" id="inputCourse" name="course" required>
                                         <option value="">Choose..</option>
                                         @foreach($courses as $course)
                                             <option value="{{ $course->course_name }}">{{ $course->course_name }}</option>
@@ -254,14 +253,15 @@
                                 <label for="inputGender">Status</label>
                                 <select class="form-control" name="status" id="inputStudentStatus" required>
                                     <option value="">Choose...</option>
-                                    <option value="Junior High School Student (Grades 7-10)">Junior High School Student (Grades 7-10)</option>
-                                    <option value="Senior High School Student (Grades 11-12)">Senior High School Student (Grades 11-12)</option>
-                                    <option value="Senior High School Graduate (High School Diploma)">Senior High School Graduate (High School Diploma)</option>
-                                    <option value="Undergraduate College Student (Bachelor's Degree Program)">Undergraduate College Student (Bachelor's Degree Program)</option>
-                                    <option value="Undergraduate College Alumni (Bachelor's Degree Completed)">Undergraduate College Alumni (Bachelor's Degree Completed)</option>
-                                    <option value="Master's Degree Student (Master's Degree Program)">Master's Degree Student (Master's Degree Program)</option>
-                                    <option value="Master's Degree Alumni (Master's Degree Completed)">Master's Degree Alumni (Master's Degree Completed)</option>                                    
-                                    </select>
+                                    <option value="Junior High School">Junior High School</option>
+                                    <option value="Senior High School">Senior High School</option>
+                                    <option value="High School Graduate (Before K-12)">High School Graduate (Before K-12)</option>
+                                    <option value="Senior High School Graduate">Senior High School Graduate</option>
+                                    <option value="College Undergraduate">College Undergraduate</option>
+                                    <option value="College Graduate">College Graduate</option>
+                                    <option value="Master's Degree">Master's Degree</option>
+                                    <option value="Master's Degree Graduate">Master's Degree Graduate</option>                                    
+                                </select>
                                 <span class="text-danger">@error('status'){{ $message }} @enderror </span>
                             </div>
                             <div class="col-lg-9">

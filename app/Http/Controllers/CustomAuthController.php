@@ -52,7 +52,7 @@ class CustomAuthController extends Controller
             $user -> email = $request->email;
             $user->birthdate = $request->input('birthdate');
             $user->status = $request->input('status');
-            if ($user->status === "Senior High School Graduate (High School Diploma)"||$user->status === "Undergraduate College Alumni (Bachelor's Degree Completed)"||$user->status === "Master's Degree Alumni (Master's Degree Completed)") {
+            if ($user->status === "High School Graduate (Before K-12)" || $user->status === "Senior High School Graduate" || $user->status === "College Graduate" || $user->status === "Master's Degree Graduate") {
                   $user->acadYear = null;
                   $user->gradYear = $request->input('grad_year');
             } else {
@@ -82,32 +82,32 @@ class CustomAuthController extends Controller
 
       public function loginUser(Request $request)
       {
-      $request->validate([
-            'email' => 'required|email',
-            'password' => 'required|min:8',
-      ]);
+            $request->validate([
+                  'email' => 'required|email',
+                  'password' => 'required|min:8',
+            ]);
 
-      $user = User::where('email', '=', $request->email)->first();
+            $user = User::where('email', '=', $request->email)->first();
 
-      if ($user) {
-            if (Hash::check($request->password, $user->password)) {
-                  $request->session()->put('loginId', $user->id);
+            if ($user) {
+                  if (Hash::check($request->password, $user->password)) {
+                        $request->session()->put('loginId', $user->id);
 
-                  if ($user->role == 1) {
-                        return redirect()->route('dashboard-admin');
-                  }else if($user->role == 2){
-                        return redirect()->route('subadmin-dashboard');
-                  }else if($user->role == 3){
-                        return redirect()->route('subadmin-cashier-dashboard');
-                  }else {
-                        return redirect()->route('user-dashboard');
+                        if ($user->role == 1) {
+                              return redirect()->route('dashboard-admin');
+                        }else if($user->role == 2){
+                              return redirect()->route('subadmin-dashboard');
+                        }else if($user->role == 3){
+                              return redirect()->route('subadmin-cashier-dashboard');
+                        }else {
+                              return redirect()->route('user-dashboard');
+                        }
+                  } else {
+                        return back()->with('fail', 'Email and password do not match.');
                   }
             } else {
-                  return back()->with('fail', 'Email and password do not match.');
+                  return back()->with('fail', 'This email is not registered.');
             }
-      } else {
-            return back()->with('fail', 'This email is not registered.');
-      }
       }
 
       public function logout(){
@@ -215,6 +215,7 @@ class CustomAuthController extends Controller
 
             $appointment->user_id = $user_id;
             $appointment->form_id = $form->id;
+            $appointment->payment_status = "Pending";
 
             if ($appointment->save()) {
                   $year = date('Y');
@@ -265,7 +266,7 @@ class CustomAuthController extends Controller
             $user->email = $request->input('editEmail');
             $user->birthdate = $request->input('editBirthdate');
             $user->status = $request->input('editStatus');
-            if ($user->status === "Senior High School Graduate (High School Diploma)"||$user->status === "Undergraduate College Alumni (Bachelor's Degree Completed)"||$user->status === "Master's Degree Alumni (Master's Degree Completed)") {
+            if ($user->status === "High School Graduate (Before K-12)" || $user->status === "Senior High School Graduate" || $user->status === "College Graduate" || $user->status === "Master's Degree Graduate") {
                   $user->acadYear = null;
                   $user->gradYear = $request->input('editGradYear');
             } else {

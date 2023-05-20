@@ -33,6 +33,10 @@ class CreateAppointmentsTable extends Migration
             $table->string('status');
             $table->integer('num_copies');
             $table->text('remarks')->nullable();
+
+            $table->string('payment_status');
+            $table->boolean('app_moved')->default(0);
+            $table->date('org_app_date')->nullable();
             
             $table->string('booking_number')->unique()->nullable();
             $table->unsignedInteger('user_id');
