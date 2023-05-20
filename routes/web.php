@@ -49,12 +49,18 @@ Route::middleware([AuthCheck::class,AlreadyLoggedIn::class])->group(function () 
 Route::middleware([AuthCheck::class, AdminCheck::class])->prefix('dashboard-admin')->group(function () {
     Route::get('dashboard',[adminController::class,'viewAdminRecords'])->name('dashboard-admin');
     // Route::get('dashboard/request/{id}', [adminController::class, viewAdminRequest])
+
+    // Admin Functions
     Route::post('announcement-store',[announcementController::class,'storeAnnouncement'])->name('announcement-store');
     Route::post('faq-store',[faqsController::class,'storeFaq'])->name('faq-store');
-    
-    //Admin Functions and content
     Route::get('request/{date}',[adminController::class,'viewAdminRequest'])->name('request');
     Route::post('create-form',[formController::class,'createForm'])->name('create-form'); 
+    Route::get('/user/{id}/approved',[adminController::class,'approveUserRegistration'])->name('user-approve'); 
+    Route::get('/user/{id}/rejected',[adminController::class,'rejectUserRegistration'])->name('user-reject'); 
+    Route::get('/user/{id}/pending',[adminController::class,'pendingUserRegistration'])->name('user-pending'); 
+    Route::get('/user-pending-count', [adminController::class,'pendingUserCount'])->name('user-pending-count');
+    
+    //Admin Pages
     Route::any('config',[formController::class,'viewForm'])->name('config');
     Route::get('message',[MessageController::class,'viewMessage']);
     Route::get('announcement',[announcementController::class,'viewAnnouncementAdmin']);
@@ -62,6 +68,7 @@ Route::middleware([AuthCheck::class, AdminCheck::class])->prefix('dashboard-admi
     Route::get('request-reschedule',[adminController::class,'viewAllResched']);
     Route::get('request-all', [adminController::class,'viewAllRequest']);
     Route::get('settings', [adminController::class,'viewSettings']);
+    Route::get('registration-approval', [adminController::class,'viewUserRegistration']);
 
     //Admin Forms Function
     // Route::get('forms/{form}/edit', [FormController::class, 'edit'])->name('forms.edit');
