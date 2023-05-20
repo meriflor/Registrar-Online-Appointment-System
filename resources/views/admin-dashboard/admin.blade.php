@@ -296,8 +296,6 @@
                             $('#readyToClaim-text').text("");
                             $('#claimed-text').text("");
                         });
-
-                        
                     }
                 },
                 eventRender: function(event, element) {

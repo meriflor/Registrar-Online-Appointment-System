@@ -262,13 +262,16 @@
                     var event = events.find(e => moment(e.start).isSame(date, 'day'));
                     var jsDate = date.toDate();
                     var new_date;
+                    var currentDate = new Date();
                     
                     if (event && (event.isDisabled || event.status === "Full")) {
-                        // alert("Full or disabled");
+                        return false;
                     } else if (!event){
                         //kasni is gicheck nya if naa bay event aning mga adlawa,, like naa bay naset na appointment ang admin,, if wala then return false
                         return false;
-                    } else {
+                    } else if(event && date < currentDate){
+                        return false;
+                    }else {
                         var new_cell;
                         if(!appointment_date){
                         //if wa pay sulod, magset syag appointment
@@ -346,7 +349,7 @@
             modal.find('#exp_date').text(form_max_time);
             modal.find('#form-name').text(form_name);
             modal.find('#form_name').text(form_name);
-            modal.find('#doc_fee').text(form_fee);
+            modal.find('#doc_fee').text("PHP "+form_fee+".00");
             modal.find('#form_id').val(form_id);
             modal.find('#accordion_id').val(accordion_id);
             console.log(form_id);

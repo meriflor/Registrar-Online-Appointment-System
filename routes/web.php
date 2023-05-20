@@ -75,6 +75,17 @@ Route::middleware([AuthCheck::class, AdminCheck::class])->prefix('dashboard-admi
     // Route::put('forms/{form}', [FormController::class, 'update'])->name('forms.update');
     // Route::delete('forms/{form}', [FormController::class,'destroy'])->name('forms.destroy');
     
+    //Admin settings functions
+    Route::post('add-staffs', [SettingsController::class, 'registrarStaffStore'])->name('add-staffs');
+    Route::put('edit-staffs/{id}', [SettingsController::class, 'registrarStaffUpdate'])->name('edit-staffs');
+    Route::delete('delete-staffs/{id}', [SettingsController::class, 'registrarStaffDelete'])->name('delete-staffs');
+
+    Route::put('admin-contacts-update/{id}', [SettingsController::class, 'adminContactUpdate'])->name('admin-contacts-update');
+
+    Route::post('add-admin-account', [SettingsController::class, 'adminAccountAdd'])->name('add-admin-account');
+    Route::put('edit-admin-account/{id}', [SettingsController::class, 'adminAccountUpdate'])->name('edit-admin-account');
+    Route::delete('delete-admin-account/{id}', [SettingsController::class, 'adminAccountDelete'])->name('delete-admin-account');
+    
 });
 
 Route::middleware([AuthCheck::class, SubAdminView::class])->prefix('dashboard-admin-appointments')->group(function () {
@@ -146,14 +157,3 @@ Route::middleware([AuthCheck::class, SubAdminCashier::class])->prefix('dashboard
 
     Route::delete('appointment/delete/{id}',[CustomAuthController::class,'cancel_appointment'])->name('cancelappointment');  
     Route::put('appointment/remarks', [adminController::class,'updateRemark'])->name('appointmentremarks');
-
-    //Admin settings functions
-        Route::post('add-staffs', [SettingsController::class, 'registrarStaffStore'])->name('add-staffs');
-        Route::put('edit-staffs/{id}', [SettingsController::class, 'registrarStaffUpdate'])->name('edit-staffs');
-        Route::delete('delete-staffs/{id}', [SettingsController::class, 'registrarStaffDelete'])->name('delete-staffs');
-    
-        Route::put('admin-contacts-update/{id}', [SettingsController::class, 'adminContactUpdate'])->name('admin-contacts-update');
-
-        Route::post('add-admin-account', [SettingsController::class, 'adminAccountAdd'])->name('add-admin-account');
-        Route::put('edit-admin-account/{id}', [SettingsController::class, 'adminAccountUpdate'])->name('edit-admin-account');
-        Route::delete('delete-admin-account/{id}', [SettingsController::class, 'adminAccountDelete'])->name('delete-admin-account');
