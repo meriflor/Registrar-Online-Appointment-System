@@ -284,7 +284,7 @@
                                 
                                 <div id="reg-input-gradYear" style="display:block;">
                                     <label for="inputGradYear">Year Graduated</label>
-                                    <select name="grad_year" class="form-control" id="inputGradYear">
+                                    <select name="grad_year" class="form-control" id="inputGradYearSelect">
                                         <option value="">Select Year Graduated</option>
                                         <?php
                                         $currentYear = date("Y");
@@ -294,9 +294,9 @@
                                             echo "<option value=\"$year-$nextYear\" $selected>$year-$nextYear</option>";
                                         }
                                         ?>
-                                          <option value="other">Other</option>
+                                        <option value="other">Other</option>
                                     </select>
-                                    <input type="text" name="other_year" class="form-control" id="inputOtherYear" placeholder="Enter Custom Year" style="display: none;">
+                                    <input type="text" name="other_year" class="form-control" id="inputGradYearInput" placeholder="Enter Custom Year" style="display: none;">
                                 </div>
                             </div>
                         </div>
@@ -384,16 +384,16 @@
             }
         });
     </script>
-        <script>
-            document.getElementById("inputGradYear").addEventListener("change", function() {
-                var otherYearInput = document.getElementById("inputOtherYear");
-                if (this.value === "other") {
-                    otherYearInput.style.display = "block";
-                    otherYearInput.setAttribute("required", "required");
-                } else {
-                    otherYearInput.style.display = "none";
-                    otherYearInput.removeAttribute("required");
-                }
-            });
-        </script>
+    <script>
+        document.getElementById("inputGradYearSelect").addEventListener("change", function() {
+            var otherYearInput = document.getElementById("inputGradYearInput");
+            if (this.value === "other") {
+                otherYearInput.style.display = "block";
+                otherYearInput.setAttribute("required", "required");
+            } else {
+                otherYearInput.style.display = "none";
+                otherYearInput.removeAttribute("required");
+            }
+        });
+    </script>
 @endsection
