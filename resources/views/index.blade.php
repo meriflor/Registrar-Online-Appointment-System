@@ -282,9 +282,21 @@
                                     <input type="text" name="other_year" class="form-control" id="inputOtherYear" placeholder="Enter Custom Year" style="display: none;">
                                 </div>
                                 
-                                <div id="reg-input-gradYear" style="display:none;">
+                                <div id="reg-input-gradYear" style="display:block;">
                                     <label for="inputGradYear">Year Graduated</label>
-                                    <input type="text" name="grad_year" class="form-control" id="inputGradYear" placeholder="ex. 2022-2023">
+                                    <select name="grad_year" class="form-control" id="inputGradYear">
+                                        <option value="">Select Year Graduated</option>
+                                        <?php
+                                        $currentYear = date("Y");
+                                        for ($year = 2001; $year <= $currentYear + 1; $year++) {
+                                            $nextYear = $year + 1;
+                                            $selected = ($year == $currentYear) ? "selected" : "";
+                                            echo "<option value=\"$year-$nextYear\" $selected>$year-$nextYear</option>";
+                                        }
+                                        ?>
+                                          <option value="other">Other</option>
+                                    </select>
+                                    <input type="text" name="other_year" class="form-control" id="inputOtherYear" placeholder="Enter Custom Year" style="display: none;">
                                 </div>
                             </div>
                         </div>
@@ -372,4 +384,16 @@
             }
         });
     </script>
+        <script>
+            document.getElementById("inputGradYear").addEventListener("change", function() {
+                var otherYearInput = document.getElementById("inputOtherYear");
+                if (this.value === "other") {
+                    otherYearInput.style.display = "block";
+                    otherYearInput.setAttribute("required", "required");
+                } else {
+                    otherYearInput.style.display = "none";
+                    otherYearInput.removeAttribute("required");
+                }
+            });
+        </script>
 @endsection
