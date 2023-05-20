@@ -1,8 +1,8 @@
-@extends('admin-dashboard.admin')
+@extends('subadmin-dashboard.admin')
 
 @section('content')
     <div class="d-flex flex-row align-items-center mb-3">
-        <a class="btn btn-custom d-flex flex-row align-items-center" href="/dashboard-admin/dashboard">
+        <a class="btn btn-custom d-flex flex-row align-items-center" href="/dashboard-admin-appointments/dashboard">
             <img src="/images/back-arrow.png" class="me-3"
             style=" height: 10px;
                     width: 10px;"/>

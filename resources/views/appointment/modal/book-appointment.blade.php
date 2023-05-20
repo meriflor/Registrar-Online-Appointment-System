@@ -71,20 +71,6 @@
                         </div>
                         <div><hr class="row my-3"></div>
                         <div class="d-flex flex-column w-100 mb-3">
-                            <p class="fs-4 font-mont font-bold">Upload Requirements</p>
-                            <form>
-                                <div class="mb-3">
-                                  <label for="inputRequirements" class="form-label">Requirements</label>
-                                  <div class="input-group">
-                                    <input type="file" class="form-control" id="inputRequirement1" name="requirement1">
-                                    <button class="btn btn-outline-secondary btn-add-requirement" type="button" data-requirement-id="1">Add</button>
-                                  </div>
-                                  <div id="inputRequirementsContainer"></div>
-                                </div>
-                              </form>
-                              
-                        </div>
-                        <div class="d-flex flex-column w-100 mb-3">
                             <p class="fs-4 font-mont font-bold">Payment</p>
                             <div>
                                 <input type="radio" id="walk-in" name="payment_method" value="Walk-in">
@@ -105,7 +91,23 @@
                                 <label for="proof_of_payment" class="form-label">Upload the picture or screenshot of the proof of payment.</label>
                                 <input class="form-control" type="file" id="proof_of_payment" name="proof_of_payment" accept=".jpg,.png,.jpeg,.svg">
                             </div>
+                            <div class="d-flex flex-column w-100 mb-3">
+                                <br>
+                                <p class="fs-4 font-mont font-bold">Upload Requirements</p>
+                                <form>
+                                    <div class="mb-3">
+                                      <label for="inputRequirements" class="form-label">Requirements</label>
+                                      <div class="input-group">
+                                        <input type="file" class="form-control" id="inputRequirement1" name="requirement1">
+                                        <button class="btn btn-outline-secondary btn-add-requirement" type="button" data-requirement-id="1">Add</button>
+                                      </div>
+                                      <div id="inputRequirementsContainer"></div>
+                                    </div>
+                                  </form>
+                                  
+                            </div>
                         </div>
+
 
                     </div>
                     <div class="col-md-7">

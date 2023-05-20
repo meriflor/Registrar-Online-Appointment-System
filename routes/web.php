@@ -78,7 +78,10 @@ Route::middleware([AuthCheck::class, AdminCheck::class])->prefix('dashboard-admi
 });
 
 Route::middleware([AuthCheck::class, SubAdminView::class])->prefix('dashboard-admin-appointments')->group(function () {
-    Route::get('/dashboard', [subadminViewerController::class, 'viewAdminRecords'])->name('subadmin-dashboard');
+    Route::get('/dashboard', [subadminViewerController::class, 'viewSubAdminRecords'])->name('subadmin-dashboard');
+    Route::get('request/{date}',[subadminViewerController::class,'viewAdminRequest'])->name('sub-request');
+    Route::get('request-reschedule',[subadminViewerController::class,'viewAllResched']);
+    Route::get('request-all', [subadminViewerController::class,'viewAllRequest']);
 });
 
 Route::middleware([AuthCheck::class, SubAdminCashier::class])->prefix('dashboard-admin-cashier')->group(function () {

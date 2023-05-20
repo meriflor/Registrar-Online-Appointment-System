@@ -49,29 +49,24 @@
                     />
                 </div>
                 <p class="text-wrap fs-6 font-corm font-white ps-3 m-0">
-                    University Registrar
+                    University Registrar 
                 </p>
             </div>
             <ul class="navbar-nav d-flex flex-column mt-3 w-100">
                 <li class="nav-item w-100">
                     <a
-                        href="/dashboard-admin/dashboard"
+                        href="/dashboard-admin-appointments/dashboard"
                         class="nav-link"
                         >Dashboard
                     </a>
                 </li>
                 <li class="nav-item w-100">
-                    <a href="/dashboard-admin/message" class="nav-link" onclick="viewMessage()"
-                        >Message<span class="badge badge-custom">4</span></a
-                    >
-                </li>
-                <li class="nav-item w-100">
-                    <a href="/dashboard-admin/request-all" class="nav-link"
+                    <a href="/dashboard-admin-appointments/request-all" class="nav-link"
                         >Appointment Requests</a
                     >
                 </li>
                 <li class="nav-item w-100">
-                    <a href="/dashboard-admin/request-reschedule" class="nav-link"
+                    <a href="/dashboard-admin-appointments/request-reschedule" class="nav-link"
                         >Appointment Remarks
                     </a>
                 </li>
@@ -152,7 +147,7 @@
                     }else if(date <= currentDate){ //if past day na igo ra sila mkaview daretso sa mga appointment atu nga adlawa,, and unclickable ang mga wlay event na date
                         var date = moment(date).format("YYYY-MM-DD");
                         if(event){
-                            var url = '/dashboard-admin/request/'+ date;
+                            var url = '/dashboard-admin-appointments/request/'+ date;
                             console.log(url);
                             window.location.href = url;
                         } 

@@ -1,4 +1,4 @@
-@extends('admin-dashboard.admin')
+@extends('subadmin-dashboard.admin')
 
 @section('content')
     <!-- header -->
