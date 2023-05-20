@@ -35,12 +35,12 @@
                 </tr>
             </thead>
             <tbody class="table-group-divider">
-            <!-- foreach -->
+                @foreach($bookings as $booking)
                 <tr class="text-center">
-                    <td></td>
-                    <td></td>
-                    <td></td>
-                    <td></td>
+                    <td>{{ $booking->appointment->booking_number }}</td>
+                    <td>{{ $booking->user->id }}</td>
+                    <td>{{ $booking->appointment->form->name }}</td>
+                    <td>{{ $booking->appointment->form->name }}</td>
                     <td></td>
                     <td></td>
                     <td>
@@ -72,7 +72,7 @@
                         </div>
                     </td>
                 </tr>
-            <!-- end foreach -->
+                @endforeach
             </tbody>
         </table>
         <!-- else -->
