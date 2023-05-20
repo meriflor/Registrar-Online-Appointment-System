@@ -167,7 +167,7 @@
                             </div>
                             <div class="col-lg-5">
                                 <label for="inputSchoolID">Student ID</label>
-                                <input type="text" class="form-control" name="school_id" value="{{ old('school_id') }}" id="inputSchoolID" placeholder="School ID">
+                                <input type="number" class="form-control" name="school_id" value="{{ old('school_id') }}" id="inputSchoolID" placeholder="Student ID">
                                 <span class="text-danger">@error('school_id'){{ $message }} @enderror </span>
                             </div>
                         </div>

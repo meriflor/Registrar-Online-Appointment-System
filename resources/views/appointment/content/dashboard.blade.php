@@ -5,6 +5,19 @@
     <div class="doc-app-head">
         <p class="display-6 font-mont font-bold"> Document Lists</p>
     </div>
+    @if($user->account_status === "Pending")
+        <div class="w-100 d-flex flex-row row m-0">
+            <div class="alert alert-success" role="alert">
+                You can't book an appointment. Waiting for account verification from the admin.
+            </div>
+        </div>
+    @elseif($user->account_status === "Rejected")
+        <div class="w-100 d-flex flex-row row m-0">
+            <div class="alert alert-danger" role="alert">
+                Please update your information before <b>3 days</b> or else it will permanently deleted in the system.
+            </div>
+        </div>
+    @endif
     <small class="font-mont font-maroon notice-box d-flex flex-row w-100 mb-3">Please review your requirements and personal information first before scheduling an appointment.</small>
     {{-- <div class="d-flex flex-row font-mont justify-content-end mt-3">
         <div class="dropdown">
@@ -85,11 +98,10 @@
                     @else
                         <div class="w-100 d-flex flex-row row m-0">
                             <div class="alert alert-danger" role="alert">
-                                Please update your information before 3 days or else it will permanently deleted in the system.
+                                Please update your information before <b>3 days</b> or else it will permanently deleted in the system.
                             </div>
                         </div>
                     @endif
-
                 </div>
             </div>
         </div>

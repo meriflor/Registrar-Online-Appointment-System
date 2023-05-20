@@ -31,6 +31,7 @@
             rel="stylesheet"
         />
         <link rel="stylesheet" href="https://cdn.datatables.net/1.13.4/css/jquery.dataTables.css" />
+        <link rel="stylesheet" href="https://cdn.datatables.net/responsive/2.4.1/css/responsive.dataTables.min.css">
         <script src="https://code.jquery.com/jquery-3.5.1.min.js"></script>
         <script src="https://cdn.jsdelivr.net/npm/xlsx/dist/xlsx.full.min.js"></script>
     </head>
@@ -62,9 +63,15 @@
                     </a>
                 </li>
                 <li class="nav-item w-100">
-                    <a href="/dashboard-admin/message" class="nav-link" onclick="viewMessage()"
+                    <a href="/dashboard-admin/message" class="nav-link"
                         >Message<span class="badge badge-custom">4</span></a
                     >
+                </li>
+                <li class="nav-item w-100">
+                    <a href="/dashboard-admin/registration-approval" class="nav-link">
+                        User Registration Approval
+                        <span class="badge badge-custom" id="pending-registration-count"></span>
+                    </a>
                 </li>
                 <li class="nav-item w-100">
                     <a href="/dashboard-admin/request-all" class="nav-link"
@@ -128,14 +135,8 @@
         <script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.24.0/moment.min.js"></script>
         <script src="https://cdnjs.cloudflare.com/ajax/libs/fullcalendar/3.10.2/fullcalendar.min.js"></script>
         <script src="https://cdn.datatables.net/1.13.4/js/jquery.dataTables.js"></script>
+        <script src="https://cdn.datatables.net/responsive/2.4.1/js/dataTables.responsive.min.js"></script>
 
-        <script>  
-            $.ajaxSetup({
-                headers: {
-                    'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
-                }
-            });
-        </script>
         <script>        
             $.ajaxSetup({
                 headers: {
@@ -326,12 +327,43 @@
 
         <script>
             //sorting datable
-            $('#appointmentRecords').DataTable();
-            $('#appointmentRequests').DataTable();
-            $('#claimedDocuments').DataTable();
-            $('#readyToClaimDocuments').DataTable();
-            $('#onProcessDocuments').DataTable();
-            $('#pendingRequests').DataTable();
+            $(document).ready(function() {
+                $('#appointmentRecords').DataTable();
+                $('#appointmentRequests').DataTable();
+                $('#claimedDocuments').DataTable();
+                $('#readyToClaimDocuments').DataTable();
+                $('#onProcessDocuments').DataTable();
+                $('#pendingRequests').DataTable();
+                $('#pendingUsers').DataTable( {
+                    responsive: true
+                } );
+                $('#approvedUsers').DataTable( {
+                    responsive: true
+                } );
+                $('#rejectedUsers').DataTable( {
+                    responsive: true
+                } );
+
+                $.ajax({
+                    url: "{{ route('user-pending-count') }}",
+                    method: 'GET',
+                    dataType: 'json',
+                    success: function(response) {
+                        // Update the badge count with the retrieved count
+                        console.log(response.count)
+                        $('#pending-registration-count').text(response.count);
+                    },
+                    error: function(xhr, status, error) {
+                        console.error(error);
+                    }
+                });
+
+                $('.toggle-expand').on('click', function() {
+                    var row = $(this).closest('.expandable-row');
+                    var content = row.find('.expandable-content');
+                    content.toggle();
+                });
+            } );
 
             //export appointment records to excel
             $('#export-app-records').on('click', function() {
@@ -374,6 +406,22 @@
 
         <script>
             var url = "{{ url('') }}";
+
+            // $(document).ready(function() {
+            //     $.ajax({
+            //         url: "{{ route('user-pending-count') }}",
+            //         method: 'GET',
+            //         dataType: 'json',
+            //         success: function(response) {
+            //             // Update the badge count with the retrieved count
+            //             console.log(response.count)
+            //             $('#pending-registration-count').text(response.count);
+            //         },
+            //         error: function(xhr, status, error) {
+            //             console.error(error);
+            //         }
+            //     });
+            // });
         </script>
         
         

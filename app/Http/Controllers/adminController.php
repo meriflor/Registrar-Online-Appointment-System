@@ -248,4 +248,48 @@ class adminController extends Controller
 
         return view('admin-dashboard.settings', compact('staffs', 'admin_email', 'admin_cell_no', 'admin_id', 'admins'));
     }
+
+    public function viewUserRegistration(Request $request){
+        $pending = User::where('account_status', 'Pending')
+                        ->where('role', 0)
+                        ->get();
+        $approved = User::where('account_status', 'Approved')
+                        ->where('role', 0)
+                        ->get();
+        $rejected = User::where('account_status', 'Rejected')
+                        ->where('role', 0)
+                        ->get();
+        return view('admin-dashboard.registration-approval', compact('pending', 'approved', 'rejected'));
+    }
+
+    public function approveUserRegistration(Request $request, $id){
+        $user = User::find($id);
+        $user->account_status = "Approved";
+        $user->account_approved = now();
+        $user->account_rejected = null;
+        $user->save();
+        return back();
+    }public function rejectUserRegistration(Request $request, $id){
+        $user = User::find($id);
+        $user->account_status = "Rejected";
+        $user->account_approved = null;
+        $user->account_rejected = now();
+        $user->save();
+        return back();
+    }public function pendingUserRegistration(Request $request, $id){
+        $user = User::find($id);
+        $user->account_status = "Pending";
+        $user->account_approved = null;
+        $user->account_rejected = null;
+        $user->save();
+        return back();
+    }
+
+    public function pendingUserCount(){
+        $count = User::where('account_status', 'Pending')
+                        ->where('role', 0)
+                        ->count();
+    
+        return response()->json(['count' => $count]);
+    }
 }

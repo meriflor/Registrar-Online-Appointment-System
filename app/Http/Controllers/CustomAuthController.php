@@ -284,6 +284,12 @@ class CustomAuthController extends Controller
             }else{
                   $user->course = $courseInput ;
             }
+            if($user->account_status == "Rejected"){
+                  $user->account_status = "Pending";
+                  $user->account_approved = null;
+                  $user->account_rejected = null;
+            }
+
             // dd($user->course);
             $user->save();
 

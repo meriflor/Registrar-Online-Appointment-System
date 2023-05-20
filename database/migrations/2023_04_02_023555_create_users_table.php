@@ -21,7 +21,7 @@ class CreateUsersTable extends Migration
             $table->string('middleName')->nullable();
             $table->string('suffix')->nullable();
             $table->string('address');
-            $table->string('school_id');
+            $table->integer('school_id');
             $table->string('cell_no');
             $table->string('civil_status')->nullable();
             $table->string('email')->unique();
@@ -33,8 +33,8 @@ class CreateUsersTable extends Migration
             $table->string('acadYear')->nullable();
             $table->string('gradYear')->nullable();
             $table->string('account_status');
-            $table->date('account_rejected')->nullable();
-            $table->date('account_approved')->nullable();
+            $table->timestamp('account_rejected')->nullable();
+            $table->timestamp('account_approved')->nullable();
             $table->timestamps();
         });
     }

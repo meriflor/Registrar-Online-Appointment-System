@@ -36,8 +36,8 @@
                 </div>
                 <div class="form-group row">
                     <div class="col-md-6">
-                        <label for="editSchoolID">School ID</label>
-                        <input id="editSchoolID" name="editSchoolID" class="form-control" type="text" value="{{ $school_id }}" aria-label="default input example" required>
+                        <label for="editSchoolID">Student ID</label>
+                        <input id="editSchoolID" name="editSchoolID" class="form-control" type="number" value="{{ $school_id }}" aria-label="default input example" required>
                     </div> 
                     <div class="col-md-6">
                         <label for="editCpNo">Cellphone No.</label>

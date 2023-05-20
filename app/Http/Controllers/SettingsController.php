@@ -91,6 +91,7 @@ class SettingsController extends Controller
         $admin->cell_no = "admin-" . now();
         $admin->email = $request->add_admin_email;
         $admin->password = Hash::make($request->add_admin_pass);
+        $admin->account_status = "Approved";
         $admin->role = $request->add_admin_role;
         // dd($admin);
         $admin->save();
