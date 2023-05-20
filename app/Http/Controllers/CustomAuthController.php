@@ -218,10 +218,8 @@ class CustomAuthController extends Controller
 
             if ($appointment->save()) {
                   $year = date('Y');
-                  $month = date('m');
                   $appointmentId = str_pad($appointment->id, 4, '0', STR_PAD_LEFT);
-                  $randomNumber = rand(10,99); // Generate a random 2-digit number
-                  $bookingNumber = sprintf("MSUMSAT%s-%s-%s-%s", $year, $month, $appointmentId, $randomNumber);
+                  $bookingNumber = sprintf("%s-%s", $year,$appointmentId);
                   $appointment->booking_number = $bookingNumber;
                   $appointment->save();
 
