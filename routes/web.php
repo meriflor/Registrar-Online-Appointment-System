@@ -157,3 +157,6 @@ Route::middleware([AuthCheck::class, SubAdminCashier::class])->prefix('dashboard
 
     Route::delete('appointment/delete/{id}',[CustomAuthController::class,'cancel_appointment'])->name('cancelappointment');  
     Route::put('appointment/remarks', [adminController::class,'updateRemark'])->name('appointmentremarks');
+
+    //Message
+    Route::post('/messages', [MessageController::class, 'store'])->name('messages.store');

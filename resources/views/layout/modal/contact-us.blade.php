@@ -32,27 +32,29 @@
             </div>
         </div>
     </div> -->
-
     <div class="modal fade" id="contact-us-modal" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-hidden="true">
         <div class="modal-dialog modal-dialog-scrollable modal-dialog-centered">
             <div class="modal-content modal-dialog-confirm modal-confirm-padding">
                 <div class="modal-body text-center m-0 p-4">
-                    <div class="d-flex flex-row justify-content-between align-items-center">
-                        <h1 class="modal-title fs-3 font-white font-nun" id="staticBackdropLabel">Contact Us</h1>
-                        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-                    </div>
-                    <div class="d-flex flex-column align-items-start pt-3">
-                        <label for="inputName">Full Name</label>
-                        <input class="form-control" name="inputName" id="inputName" type="text" value="" aria-label="default input example" placeholder="">
-                        <label for="inputEmail" class="pt-2">Email</label>
-                        <input type="email" class="form-control" name="inputEmail" id="inputEmail" placeholder="">
-                        <label for="inputMessage" class="pt-2">Message</label>
-                        <textarea type="text" class="form-control" name="inputMessage" id="inputMessage" placeholder=""></textarea>
-                    </div>
-                    <div class="d-flex flex-row justify-content-end pt-3">
-                        <button type="button" class="btn btn-cancel" data-bs-dismiss="modal">Back</button>
-                        <button type="submit" class="btn btn-submit ms-3">Submit</button>
-                    </div>
+                    <form method="POST" action="{{ route('messages.store') }}">
+                        @csrf
+                        <div class="d-flex flex-row justify-content-between align-items-center">
+                            <h1 class="modal-title fs-3 font-white font-nun" id="staticBackdropLabel">Contact Us</h1>
+                            <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                        </div>
+                        <div class="d-flex flex-column align-items-start pt-3">
+                            <label for="inputName">Full Name</label>
+                            <input class="form-control" name="fullname" id="inputName" type="text" value="" aria-label="default input example" placeholder="Fullname">
+                            <label for="inputEmail" class="pt-2">Email</label>
+                            <input type="email" class="form-control" name="email" id="inputEmail" placeholder="Email">
+                            <label for="inputMessage" class="pt-2">Message</label>
+                            <textarea type="text" class="form-control" name="message" id="inputMessage" placeholder="Message"></textarea>
+                        </div>
+                        <div class="d-flex flex-row justify-content-end pt-3">
+                            <button type="button" class="btn btn-cancel" data-bs-dismiss="modal">Back</button>
+                            <button type="submit" class="btn btn-submit ms-3">Submit</button>
+                        </div>
+                    </form>
                 </div>
             </div>
         </div>
