@@ -290,8 +290,8 @@
                                         $currentYear = date("Y");
                                         for ($year = 2001; $year <= $currentYear + 1; $year++) {
                                             $nextYear = $year + 1;
-                                            $selected = ($year == $currentYear) ? "selected" : "";
-                                            echo "<option value=\"$year-$nextYear\" $selected>$year-$nextYear</option>";
+                                            // $selected = ($year == $currentYear) ? "selected" : ""; $selected
+                                            echo "<option value=\"$year-$nextYear\" >$year-$nextYear</option>";
                                         }
                                         ?>
                                         <option value="other">Other</option>

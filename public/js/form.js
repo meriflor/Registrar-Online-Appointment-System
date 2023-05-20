@@ -1,4 +1,5 @@
 $(document).ready(function () {
+    $("#reg-input-gradYear").hide();
     $("#inputStudentStatus").change(function () {
         // if ($(this).val() === "senior_high_graduate" ||$(this).val() === "undergraduate_alumni" ||$(this).val() === "masteral_alumni") {
             if($(this).val() === "High School Graduate (Before K-12)" ||
