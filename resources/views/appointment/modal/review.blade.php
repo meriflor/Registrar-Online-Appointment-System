@@ -101,16 +101,19 @@
                 </div>
             </div>
             <div class="form-group row mt-2">
-                <div class="col-md-6 d-flex flex-row flex-wrap">
+                <div class="col-md-4 d-flex flex-row flex-wrap">
                     <span><b>Payment Method: </b> <span id="payment_method_01"></span></span> 
                 </div>
-                <div class="col-md-6 d-flex flex-row flex-wrap">
+                <div class="col-md-4 d-flex flex-row flex-wrap">
+                    <span><b>Reference Number: </b> <span id="reference_number_01"></span></span> 
+                </div>
+                <div class="col-md-4 d-flex flex-row flex-wrap">
                     <span><b>Number of Copy: </b> <span id="num_copies_01"></span></span> 
                 </div>
             </div>
         </div>
         <div class="modal-footer">
-            <small class="font-maroon d-flex flex-row justify-content-start" style="flex: 1;">*You can change your personal information located at the <a href="{{ route('edit-profile') }}" class="font-maroon" style="font-weight:bold; padding-left:5px; padding-right:5px;"> Edit Profile </a> section.</small>
+            <small class="font-maroon d-flex flex-row justify-content-start" style="flex: 1;"><span>*You can change your personal information located at the<span> <a href="{{ route('edit-profile') }}" class="font-maroon font-bold">Edit Profile</a> </span>section.</span></small>
             <button type="button" class="btn btn-appoint" data-bs-toggle="modal" data-bs-target="#appointmentModal">Back</button>
             <button type="submit" id="submitButton" class="btn btn-appoint">Submit</button>
             <!-- data-bs-toggle="modal" data-bs-target="#confirmedModal" -->

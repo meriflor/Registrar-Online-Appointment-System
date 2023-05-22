@@ -188,6 +188,7 @@ class CustomAuthController extends Controller
             $appointment->acad_year = $request ->acad_year;
             $appointment->appointment_date = $request ->appointment_date;
             $appointment->payment_method = $request ->payment_method;
+            $appointment->reference_number = $request ->reference_number;
 
             if ($request->hasFile('proof_of_payment')) {
                   $proof_of_payment = $request->file('proof_of_payment');

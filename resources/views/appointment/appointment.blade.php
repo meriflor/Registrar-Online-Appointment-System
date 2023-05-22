@@ -62,7 +62,11 @@
                                         <a href="/appointment-records" class="nav-link {{ Request::is('appointment-records') ? 'active' : '' }}">Appointments</a>
                                     </li>
                                     <li class="nav-item">
-                                        <a href="/notification" class="nav-link {{ Request::is('notification') ? 'active' : '' }}">Notification</a>
+                                        <a href="/notification" class="nav-link {{ Request::is('notification') ? 'active' : '' }}">Notification
+                                            @if(isset($_SESSION['user']['unreadNotifications']) && count($_SESSION['user']['unreadNotifications']) > 0)
+                                            <span class="badge bg-danger">{{ count($_SESSION['user']['unreadNotifications']) }}</span> <!-- Display the count of unread notifications -->
+                                            @endif
+                                        </a>
                                     </li>
                                     <li class="nav-item dropdown">
                                         <a class="nav-link dropdown-toggle {{ Request::is('edit-profile', 'settings') ? 'active' : '' }}" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
@@ -367,6 +371,7 @@
             var num_copies = parseInt(document.querySelector('select[name="num_copies"]').value);
             var payment_method = $('input[name=payment_method]:checked').val();
             var proof_of_payment = $('#proof_of_payment')[0].files[0];
+            var reference_number = $('#reference_number').val();
 
             a_transfer = $('input[name=isATransfer]:checked').val();
             b_transfer = $('input[name=isBTransfer]:checked').val();
@@ -376,8 +381,11 @@
             if(app_purpose === "" || payment_method === undefined || payment_method === undefined || a_transfer === undefined || b_transfer === undefined){
                 alert('Please fill up the provided inputs.');
                 return false;
+            }if(payment_method === "GCash" && (reference_number === null || reference_number === "" || reference_number === undefined)){
+                alert('Please type your reference number from your proof of payment.');
+                return false;
             }if(payment_method === "GCash" && proof_of_payment === undefined){
-                alert('Please upload your proof of payment.')
+                alert('Please upload your proof of payment.');
                 return false;
             }if(appointment_date === undefined){
                 alert('Please choose your appointment date.');
@@ -398,7 +406,6 @@
                     $('#num_copies_02').val(num_copies);
                 }
                 
-
                 //todo
                 if(a_transfer == "Yes"){
                     $('#inputATransferInfo').val(a_transfer + ", " + a_transfer_school);
@@ -412,6 +419,10 @@
 
                 if (typeof proof_of_payment !== 'undefined') {
                     $('#proof_of_payment_01').val(proof_of_payment);
+                }if(payment_method === "Walk-in"){
+                    $('#reference_number_01').text("N/A");
+                }else{
+                    $('#reference_number_01').text(reference_number);
                 }
 
                 console.log(form_id);
@@ -432,6 +443,7 @@
             var proof_of_payment = $('#proof_of_payment').prop('files')[0];
             var appointment_date = $('#appointment_date').val();
             var num_copies = $('#num_copies_02').val();
+            var reference_number = $('#reference_number_01').text();
             console.log(num_copies);
             if(a_transfer === "yes"){
                 a_transfer = 1;
@@ -445,6 +457,8 @@
             }else{
                 b_transfer = 0;
                 b_transfer_school = null;
+            }if(payment_method === "Walk-in"){
+                proof_of_payment = null;
             }
 
             console.log(form_id);
@@ -472,6 +486,7 @@
             formData.append('payment_method', payment_method);
             formData.append('proof_of_payment', proof_of_payment);
             formData.append('num_copies', num_copies);
+            formData.append('reference_number', reference_number);
 
             $.ajax({
                 url: "{{ route('bookAppointment') }}",

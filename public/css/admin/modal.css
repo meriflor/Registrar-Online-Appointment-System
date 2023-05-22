@@ -81,7 +81,9 @@
 #remarks_modal .modal-content,
 
 #approve_payment_modal .modal-content,
-#incomplete_payment_modal .modal-content{
+#incomplete_payment_modal .modal-content,
+#proof_of_payment_modal .modal-content,
+#incomplete_remarks_modal .modal-content{
     background-color: white;
     color: #131313;
 }#addFormModal, 
@@ -102,7 +104,9 @@
 #remarks_modal,
 
 #approve_payment_modal,
-#incomplete_payment_modal{
+#incomplete_payment_modal,
+#proof_of_payment_modal,
+#incomplete_remarks_modal{
     --bs-modal-header-border-color: none;
     --bs-modal-footer-border-color: none;
     /* color: #131313 !important; */
@@ -141,7 +145,9 @@
 #remarks_modal .modal-header,
 
 #approve_payment_modal .modal-header,
-#incomplete_payment_modal .modal-header{
+#incomplete_payment_modal .modal-header,
+#proof_of_payment_modal .modal-header,
+#incomplete_remarks_modal .modal-header{
     background-color: #131313;
 }#addFormModal .btn-custom,
 #editFormModal .btn-custom,
@@ -161,7 +167,9 @@
 #remarks_modal .btn-custom,
 
 #approve_payment_modal .btn-custom,
-#incomplete_payment_modal .btn-custom{
+#incomplete_payment_modal .btn-custom,
+#proof_of_payment_modal .btn-custom,
+#incomplete_remarks_modal .btn-custom{
     border: 2px solid #131313;
     font-weight: bold;
 }

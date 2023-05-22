@@ -44,6 +44,9 @@ Route::middleware([AuthCheck::class,AlreadyLoggedIn::class])->group(function () 
     Route::get('/notification', [UserController::class, 'viewUserNotification']);
     Route::get('/edit-profile', [UserController::class, 'viewUserEditProfile'])->name('edit-profile');
     Route::get('/settings', [UserController::class, 'viewUserSettings']);
+    
+    //Functions
+    Route::delete('/notif-delete/{id}/{notif_type}', [UserController::class, 'notifDelete'])->name('notif-delete');
 });
 
 Route::middleware([AuthCheck::class, AdminCheck::class])->prefix('dashboard-admin')->group(function () {
@@ -99,6 +102,9 @@ Route::middleware([AuthCheck::class, SubAdminCashier::class])->prefix('dashboard
     Route::get('/dashboard', [SubadminCashierController::class, 'viewCashierDashboard'])->name('subadmin-cashier-dashboard');
     Route::get('/approved-payments', [SubadminCashierController::class, 'viewCashierApproved'])->name('subadmin-cashier-approved');
     Route::get('/incomplete-payments', [SubadminCashierController::class, 'viewCashierIncomplete'])->name('subadmin-cashier-incomplete');
+
+    Route::post('/payment-status-update', [SubadminCashierController::class, 'updatePaymentStatus'])->name('payment-status-update');
+    Route::get('/incomplete-remarks/{id}', [SubadminCashierController::class, 'getIncompleteRemarks']);
 });
 
 

@@ -290,9 +290,17 @@ class UserController extends Controller
             return redirect()->back();
       }
 
-      // delete a specific notification by ID (in case code)
-      // $user->notifications()->find($notificationId)->delete();
-
-      // delete all the notifications for the user
-      // $user->notifications()->delete();
+      public function notifDelete($id, $notif_type){
+            $bookings = Booking::find($id);
+            $user = $bookings->user;
+            // delete a specific notification by ID (in case code)
+            $user->notifications()
+                  ->where('data->app_id', $id)
+                  ->where('data->notif_type', $notif_type)
+                  ->delete();
+            return back();
+            // // delete all the notifications for the user
+            // $user->notifications()->delete();
+      }
+      
 }

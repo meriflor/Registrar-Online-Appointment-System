@@ -1,58 +1,60 @@
 @extends('subadmin-cashier-dashboard.subadmin-cashier')
 
 @section('content')
-    <div class="d-flex flex-row align-items-center mb-3">
-        <a class="btn d-flex flex-row align-items-center" id="menu-btn">
-            <img src="/images/back-arrow.png" alt="" />
-            <p class="m-0 p-0 font-nun fs-6 ms-2" id="page-title">
-                Dashboard
-            </p>
-        </a>
+    <div class="fs-2 font-bold font-nun mb-4" style="flex:1;">
+        Pending Payments
     </div>
-
-    <div class="p-shad-w p-4">
-        <div class="d-flex flex-row align-items-center">
-            <div class="fs-2 font-bold font-nun mb-2" style="flex:1;">
-                Pending Payments
-            </div>
-            <!-- <div class="d-flex-row ">
-                <button class="btn btn-request-records" id="export-app-records">Export</button>
-            </div> -->
-        </div>
-        <!-- count -->
-        <table class="table font-nun hover display compact cell-border" id="appointmentRecords">
-            <thead class="table-head text-center">
+    <!-- small navigation -->
+    <nav class="navigation this-box mb-3">
+        <ul class="font-nun small-nav">
+            <li><a href="#online_p">Online Payments</a></li>
+            <li><a href="#walkin_p">Walk-in</a></li>
+        </ul>
+    </nav>
+    <div class="p-shad-w p-4 mb-4" id="online_p">
+        <h3 class="font-bold font-nun mb-4" style="flex:1;">
+            Online Payments
+        </h3>
+        @if(count($bookings_onlinep) > 0)
+        <table class="table font-nun hover display compact cell-border" id="onlineptable">
+            <thead class="table-head text-center" style="font-size: 0.9rem;">
                 <tr>
                     <th>Appointment Number</th>
                     <th>Student ID</th>
+                    <th>Student Name</th>
                     <th>Document Requested</th>
-                    <th>Copies Requested</th>
-                    <th>Reference Number</th>
+                    <th>Copies</th>
                     <th>Date Requested</th>
-                    <th>Payment Status</th>
+                    <th>Payment Method</th>
                     <th>Proof of Payment</th>
                     <th></th>
                 </tr>
             </thead>
             <tbody class="table-group-divider">
-                @foreach($bookings as $booking)
+                @foreach($bookings_onlinep as $booking)
                 <tr class="text-center">
                     <td>{{ $booking->appointment->booking_number }}</td>
-                    <td>{{ $booking->user->id }}</td>
-                    <td>{{ $booking->appointment->form->name }}</td>
-                    <td>{{ $booking->appointment->form->name }}</td>
-                    <td></td>
-                    <td></td>
+                    <td>{{ $booking->user->school_id }}</td>
+                    <td>{{ $booking->user->lastName . ", " . $booking->user->firstName . " " . substr($booking->user->middleName, 0, 1) . ". ". $booking->user->suffix }}</td>
+                    <td >{{ $booking->appointment->form->name }}</td>
+                    <td>{{ $booking->appointment->num_copies }}</td>
+                    <td>{{ \Carbon\Carbon::parse($booking->appointment->created_at)->format('F d, Y') }}</td>
+                    @if($booking->appointment->payment_method === "Walk-in")
+                    <td>{{ $booking->appointment->payment_method }}</td>
+                    @else
+                    <td style="background-color: #e5f3ff;" class="align-middle">{{ $booking->appointment->payment_method }}</td>
+                    @endif
                     <td>
-                        
-                    </td>
-                    <td>
+                        @if($booking->appointment->proof_of_payment == null)
+                        None
+                        @else
                         <a
                             type="button"
-                            class="btn view-request p-0 view-btn"
-                            id=""
+                            class="btn sub-admin-btn view-btn-pop"
+                            id="{{ $booking->id }}"
                             >View
                         </a>
+                        @endif
                     </td>
                     <td>
                         <div class="dropdown d-flex flex-column justify-contents-center">
@@ -60,14 +62,8 @@
                                 Action
                             </button>
                             <ul class="dropdown-menu dropdown-menu-dark" style="background-color: #1e1e1e;">
-                                <li><a class="dropdown-item active" type="button" data-bs-toggle="modal" data-bs-target="#approve_payment_modal">Approve</a></li>
-                                <li><a class="dropdown-item"  type="button" data-bs-toggle="modal" data-bs-target="#incomplete_payment_modal">Remarks</a></li>
-                                <li><hr class="dropdown-divider"></li>
-                                <li>
-                                    <a class="dropdown-item" type="button" class="view-request view-btn" id="">
-                                        View Information
-                                    </a>
-                                </li>
+                                <li><a class="dropdown-item active approve-payment-btn" type="button" data-app-id="{{ $booking->id }}" id="">Approve Payment</a></li>
+                                <li><a class="dropdown-item incomplete-payment-btn"  type="button" data-app-id="{{ $booking->id }}" id="">Incomplete Payment</a></li>
                             </ul>
                         </div>
                     </td>
@@ -75,10 +71,55 @@
                 @endforeach
             </tbody>
         </table>
-        <!-- else -->
-            <tr>
-                <td colspan="9" class="text-center">There's no claimed documents on our records yet.</td>
-            </tr>
-        <!-- endif -->
+        @else
+        <div class="w-100 text-center">There are no payments to review.</div>
+        @endif
     </div>
+
+    <div class="p-shad-w p-4 mb-5" id="walkin_p">
+        <h3 class="font-bold font-nun mb-4" style="flex:1;">
+            Walk-in
+        </h3>
+        @if(count($bookings_walkinp) > 0)
+        <table class="table font-nun hover display compact cell-border" id="walkintable">
+            <thead class="table-head text-center" style="font-size: 0.9rem;">
+                <tr>
+                    <th>Appointment Number</th>
+                    <th>Student ID</th>
+                    <th>Student Name</th>
+                    <th>Document Requested</th>
+                    <th>Copies</th>
+                    <th>Date Requested</th>
+                    <th></th>
+                </tr>
+            </thead>
+            <tbody class="table-group-divider">
+                @foreach($bookings_walkinp as $booking)
+                <tr class="text-center">
+                    <td>{{ $booking->appointment->booking_number }}</td>
+                    <td>{{ $booking->user->school_id }}</td>
+                    <td>{{ $booking->user->lastName . ", " . $booking->user->firstName . " " . substr($booking->user->middleName, 0, 1) . ". ". $booking->user->suffix }}</td>
+                    <td>{{ $booking->appointment->form->name }}</td>
+                    <td>{{ $booking->appointment->num_copies }}</td>
+                    <td>{{ \Carbon\Carbon::parse($booking->appointment->created_at)->format('F d, Y') }}</td>
+                    <td>
+                        <div class="dropdown d-flex flex-column justify-contents-center">
+                            <button class="btn sub-admin-btn dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false">
+                                Action
+                            </button>
+                            <ul class="dropdown-menu dropdown-menu-dark" style="background-color: #1e1e1e;">
+                                <li><a class="dropdown-item active approve-payment-btn" type="button" data-app-id="{{ $booking->id }}" id="">Approve Payment</a></li>
+                            </ul>
+                        </div>
+                    </td>
+                </tr>
+                @endforeach
+            </tbody>
+        </table>
+        @else
+        <div class="w-100 text-center">There are no payments to review.</div>
+        @endif
+    </div>
+    
+    <button id="back-to-top-btn" class="btn btn-custom show" style="color: #131313;">Back to top</button>
 @endsection

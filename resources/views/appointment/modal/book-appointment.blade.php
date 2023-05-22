@@ -87,6 +87,10 @@
                                 <p class="m-0"><b>Document Fee: </b><span id="doc_fee"></span></p>
                             </div>
                             <img src="/images/g-cash-temp.png" alt="">
+                            <div class="d-flex flex-column w-100 my-3">
+                                <label for="reference_number">Reference No.</label>
+                                <input type="text" class="form-control" name="reference_number" id="reference_number" placeholder="Reference No.">
+                            </div>
                             <div class="mt-3">
                                 <label for="proof_of_payment" class="form-label">Upload the picture or screenshot of the proof of payment.</label>
                                 <input class="form-control" type="file" id="proof_of_payment" name="proof_of_payment" accept=".jpg,.png,.jpeg,.svg">
@@ -96,15 +100,14 @@
                                 <p class="fs-4 font-mont font-bold">Upload Requirements</p>
                                 <form>
                                     <div class="mb-3">
-                                      <label for="inputRequirements" class="form-label">Requirements</label>
-                                      <div class="input-group">
-                                        <input type="file" class="form-control" id="inputRequirement1" name="requirement1">
-                                        <button class="btn btn-outline-secondary btn-add-requirement" type="button" data-requirement-id="1">Add</button>
-                                      </div>
-                                      <div id="inputRequirementsContainer"></div>
+                                        <label for="inputRequirements" class="form-label">Requirements</label>
+                                        <div class="input-group">
+                                            <input type="file" class="form-control" id="inputRequirement1" name="requirement1">
+                                            <button class="btn btn-outline-secondary btn-add-requirement" type="button" data-requirement-id="1">Add</button>
+                                        </div>
+                                        <div id="inputRequirementsContainer"></div>
                                     </div>
-                                  </form>
-                                  
+                                </form>
                             </div>
                         </div>
 

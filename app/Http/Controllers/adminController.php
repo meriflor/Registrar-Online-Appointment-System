@@ -59,6 +59,7 @@ class adminController extends Controller
             'doc_fee' => $booking->appointment->form->fee,
             'payment_method' => $booking->appointment->payment_method,
             'proof_of_payment' => $booking->appointment->proof_of_payment,
+            'reference_number' => $booking->appointment->reference_number,
         ]);
     }
 

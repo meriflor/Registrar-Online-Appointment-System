@@ -15,7 +15,7 @@
             crossorigin="anonymous"
         />
         <link rel="icon" type="image/png" href="{{ asset('images/msat-logo.png') }}">
-        <link rel="stylesheet" href="{{ asset('css/admin/navbar.css') }}"  />
+        <!-- <link rel="stylesheet" href="{{ asset('css/admin/navbar.css') }}"  /> -->
         <link rel="stylesheet" href="{{ asset('css/admin/fonts.css') }}"  />
         <link rel="stylesheet" href="{{ asset('css/admin/dashboard.css') }}" />
         <link rel="stylesheet" href="{{ asset('css/admin/display.css') }}" />
@@ -26,6 +26,7 @@
         <link rel="stylesheet" href="{{ asset('css/admin/settings.css') }}" />
         <link rel="stylesheet" href="{{ asset('css/defaultcss/pagination.css') }}" />
         <link rel="stylesheet" href="{{ asset('css/defaultcss/calendar.css') }}" />
+        <link rel="stylesheet" href="{{ asset('css/admin/subadmin-cashier/navbar.css') }}" />
         <link
             href="https://cdnjs.cloudflare.com/ajax/libs/fullcalendar/3.10.2/fullcalendar.min.css"
             rel="stylesheet"
@@ -37,61 +38,52 @@
     <body>
 
         <!-- //TODO: NAVBAR -->
-        <nav
-            class="navbar navbar-expand navbar-dark d-flex flex-column align-item-start"
-            id="sidebar"
-        >
-            <div class="navbar-brand d-flex flex-row m-0 align-items-center">
-                <div class="logo">
-                    <img
-                        class="image-fluid"
-                        src="{{ asset('images/msat-logo.png') }}"
-                        alt=""
-                    />
+        <nav class="navbar navbar-expand-lg pt-5 pb-3 bg-dark" data-bs-theme="dark">
+            <div class="container">
+                <div class="navbar-brand d-flex flex-row m-0 pe-4 align-items-center">
+                    <div class="logo" style="width: 40px; height: 40px;">
+                        <img
+                            class="image-fluid"
+                            src="{{ asset('images/msat-logo.png') }}"
+                            alt=""
+                        />
+                    </div>
+                    <p class="text-wrap font-nun font-white ps-2 m-0">
+                        University Cashier
+                    </p>
                 </div>
-                <p class="text-wrap fs-6 font-corm font-white ps-3 m-0">
-                    University Cashier
-                </p>
+                <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#cashierNavbar" aria-controls="navbarNavDropdown" aria-expanded="false" aria-label="Toggle navigation">
+                    <span class="navbar-toggler-icon"></span>
+                </button>
+                <div class="collapse navbar-collapse" id="cashierNavbar">
+                    <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+                        <li class="nav-item">
+                            <a href="/dashboard-admin-cashier/dashboard" class="nav-link {{ Request::is('dashboard-admin-cashier/dashboard') ? 'active' : '' }}">
+                                Dashboard
+                            </a>
+                        </li>
+                        <li class="nav-item">
+                            <a href="/dashboard-admin-cashier/approved-payments" class="nav-link {{ Request::is('dashboard-admin-cashier/approved-payments') ? 'active' : '' }}">
+                                Approved Payments
+                            </a>
+                        </li>
+                        <li class="nav-item">
+                            <a href="/dashboard-admin-cashier/incomplete-payments" class="nav-link {{ Request::is('dashboard-admin-cashier/incomplete-payments') ? 'active' : '' }}">
+                                Incomplete Payments
+                            </a>
+                        </li>
+                        <li class="nav-item">
+                            <a href="{{ route('logout') }}" class="nav-link">Logout</a>
+                        </li>
+                    </ul>
+                </div>
             </div>
-            <ul class="navbar-nav d-flex flex-column mt-3 w-100">
-                <li class="nav-item w-100">
-                    <a
-                        href="/dashboard-admin-cashier/dashboard"
-                        class="nav-link"
-                        >Dashboard
-                    </a>
-                </li>
-                <li class="nav-item w-100">
-                    <a href="" class="nav-link"
-                        >Notification<span class="badge badge-custom">4</span></a
-                    >
-                </li>
-                <li class="nav-item w-100">
-                    <a href="/dashboard-admin-cashier/approved-payments" class="nav-link"
-                        >Approved Payments</a
-                    >
-                </li>
-                <li class="nav-item w-100">
-                    <a href="/dashboard-admin-cashier/incomplete-payments" class="nav-link"
-                        >Incomplete Payments
-                    </a>
-                </li>
-                <li class="nav-item w-100">
-                    <a href="{{ route('logout') }}" class="nav-link">Logout</a>
-                </li>
-            </ul>
         </nav>
-
-        <div class="content-container px-5 py-3">
+        <div class="container py-5">
             <div class="content-main">
                 @yield('content')
             </div>
         </div>
-
-
-        <!-- modal -->
-        @include('subadmin-cashier-dashboard.modal.approve')
-        @include('subadmin-cashier-dashboard.modal.incomplete')
 
         <!-- FIX footer -->
         <script
@@ -99,19 +91,12 @@
             integrity="sha384-qKXV1j0HvMUeCBQ+QVp7JcfGl760yU08IQ+GpUo5hlbpg51QRiuqHAJz8+BrxE/N"
             crossorigin="anonymous"
         ></script>
-        <!-- <script src="{{ asset('js/admin/divheight.js') }}"></script>
-        <script src="{{ asset('js/admin/appointment/status-button.js') }}"></script>
-        <script src="{{ asset('js/admin/appointment/info-display.js') }}"></script>
-        <script src="{{ asset('js/admin/admin.js') }}"></script>
-
-        
-        <script src="{{ asset('js/admin/form-config.js') }}"></script>
-        <script src="{{ asset('js/admin/announcement-config.js') }}"></script>
-        <script src="{{ asset('js/admin/faq-config.js') }}"></script> -->
-
         <script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.24.0/moment.min.js"></script>
         <script src="https://cdnjs.cloudflare.com/ajax/libs/fullcalendar/3.10.2/fullcalendar.min.js"></script>
         <script src="https://cdn.datatables.net/1.13.4/js/jquery.dataTables.js"></script>
+        <script src="{{ asset('js/subadmin-cashier/info-display.js') }}"></script>
+        <script src="{{ asset('js/admin/appointment/info-display.js') }}"></script>
+        <script src="{{ asset('js/subadmin-cashier/approve-incomplete.js') }}"></script>
 
         <script>  
             $.ajaxSetup({
@@ -122,12 +107,8 @@
         </script>
         <script>
             //sorting datable
-            $('#appointmentRecords').DataTable();
-            $('#appointmentRequests').DataTable();
-            $('#claimedDocuments').DataTable();
-            $('#readyToClaimDocuments').DataTable();
-            $('#onProcessDocuments').DataTable();
-            $('#pendingRequests').DataTable();
+            $('#onlineptable').DataTable();
+            $('#walkintable').DataTable();
 
             //export appointment records to excel
             $('#export-app-records').on('click', function() {
@@ -143,13 +124,13 @@
                 // Save data to Excel file
                 XLSX.writeFile(wb, "appointment-records.xlsx");
             });
-            var menu_btn = document.querySelector("#menu-btn");
-            var sidebar = document.querySelector("#sidebar");
-            var container = document.querySelector(".content-container");
-            menu_btn.addEventListener("click", () => {
-                sidebar.classList.toggle("active-nav");
-                container.classList.toggle("active-cont");
-            });
+            // var menu_btn = document.querySelector("#menu-btn");
+            // var sidebar = document.querySelector("#sidebar");
+            // var container = document.querySelector(".content-container");
+            // menu_btn.addEventListener("click", () => {
+            //     sidebar.classList.toggle("active-nav");
+            //     container.classList.toggle("active-cont");
+            // });
 
             const backToTopBtn = document.querySelector("#back-to-top-btn");
 
@@ -172,9 +153,11 @@
             var url = "{{ url('') }}";
         </script>
         
-        
         <!-- todo modals -->
-        
-
+        @include('subadmin-cashier-dashboard.modal.proof-of-payment')
+        @include('admin-dashboard.modal.info')
+        @include('subadmin-cashier-dashboard.modal.approve')
+        @include('subadmin-cashier-dashboard.modal.incomplete')
+        @include('subadmin-cashier-dashboard.modal.incomplete-remarks')
     </body>
 </html>
