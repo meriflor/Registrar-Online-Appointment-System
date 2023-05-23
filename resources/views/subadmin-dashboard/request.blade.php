@@ -20,84 +20,15 @@
 
 <!-- review ===================pending================================================== -->
 <div class="row d-flex flex-row m-2" id="pending">
-    <div class="appointment-records p-4">
-        <div class="w-100 fs-2 font-bold font-nun mb-2">Pending Requests</div>
-        <!-- <div class="d-flex flex-row justify-content-end mb-2">
-            <select name="sort" id="colors" class="btn text-start">
-                <option value="">Sort by:</option>
-                <option value="booking_id">Appointment ID</option>
-                <option value="created_at">Date Filled</option>
-                <option value="documents">Documents</option>
-                <option value="first_name">First Name</option>
-                <option value="last_name">Last Name</option>
-            </select>
-        </div> -->
-        @if(count($pending)>0)
-        <div class="table-rounded">
-            <table id="pendingRequests" class="table font-nun">
-                <thead class="table-head text-center">
-                    <tr>
-                        <th>Appointment Number</th>
-                        <th>Student ID</th>
-                        <th>First Name</th>
-                        <th>Last Name</th>
-                        <th>Document Requested</th>
-                        <th>Date Requested</th>
-                        <th>Status</th>
-                        <th>Action</th>
-                        <th></th>
-                        <th></th>
-                    </tr>
-                </thead>
-                <tbody class="table-group-divider">
-                    @foreach ($pending as $booking)
-                        <tr class="text-center">
-                            <td>{{ $booking->appointment->booking_number }}</td>
-                            <td>{{ $booking->user->school_id }}</td>
-                            <td>{{ $booking->user->firstName }}</td>
-                            <td>{{ $booking->user->lastName }}</td>
-                            <td>{{ $booking->appointment->form->name}}</td>
-                            <td>{{ $booking->created_at->format('M d, Y') }}</td>
-                            <td class="status">{{ $booking->appointment->status }}</td>
-                            <td>
-                                <a  type="button" class="btn view-request p-0 accept-btn" id="accept-btn" style="display: block;" data-accept-id="{{ $booking->appointment->id }}">
-                                    Accept
-                                </a>
-                                <a  type="button" class="btn view-request p-0 done-btn"  id="done-btn" style="display: none;" data-done-id="{{ $booking->appointment->id }}" data-bs-toggle="modal" data-bs-target="#status_appointment_modal">
-                                    Done
-                                </a>
-                                <a  type="button"  class="btn view-request p-0 claimed-btn"  id="claimed-btn" style="display: none;" data-claimed-id="{{ $booking->appointment->id }}" data-bs-toggle="modal" data-bs-target="#status_appointment_modal">
-                                    Claimed
-                                </a>
-                            </td>
-                            <td class="td-view">
-                                <a type="button" class="btn view-request p-0 view-btn" id="{{ $booking->id }}">
-                                    View
-                                </a>
-                            </td>
-                            <td class="td-view">
-                                <a type="button" class="btn view-request p-0 remarks-btn" id="{{ $booking->id }}" data-remarks-id="{{ $booking->id }}" data-remarks-first="{{ $booking->user->firstName }}" data-remarks-last="{{ $booking->user->lastName }}" data-remarks-form="{{ $booking->appointment->form->name }}">
-                                    Remarks
-                                </a>
-                            </td>
-                        </tr>
-                    @endforeach
-                </tbody>
-            </table>
-        </div>
-        @else
-            <div class="text-center">We haven't received any appointment requests for this day yet.</div>
-        @endif
-    </div>
+    @include('admin-dashboard.tables.request-pending-online-payment')
 </div>
-<!-- review ===============
 <!-- review ======================================= on process=========================================== -->
 @if(count($onprocess)>0)
 <div class="row d-flex flex-row m-2 mt-5" id="onprocess">
     <div class="appointment-records p-4">
         <div class="w-100 fs-2 font-bold font-nun mb-2">On Process Documents</div>
         <div class="table-rounded">
-            <table id="onProcessDocuments" class="table font-nun">
+            <table id="onProcessDocuments" class="table font-nun hover display compact row-border">
                 <thead class="table-head text-center">
                     <tr>
                         <th>Appointment Number</th>
@@ -106,9 +37,7 @@
                         <th>Last Name</th>
                         <th>Document Requested</th>
                         <th>Date Requested</th>
-                        <th>Status</th>
                         <th>Action</th>
-                        <th></th>
                     </tr>
                 </thead>
                 <tbody class="table-group-divider">
@@ -120,22 +49,32 @@
                             <td>{{ $booking->user->lastName }}</td>
                             <td>{{ $booking->appointment->form->name}}</td>
                             <td>{{ $booking->created_at->format('M d, Y') }}</td>
-                            <td class="status">{{ $booking->appointment->status }}</td>
                             <td>
-                                <a  type="button" class="btn view-request p-0 accept-btn" id="accept-btn" style="display: block;" data-accept-id="{{ $booking->appointment->id }}">
-                                    Accept
-                                </a>
-                                <a  type="button" class="btn view-request p-0 done-btn"  id="done-btn" style="display: none;" data-done-id="{{ $booking->appointment->id }}" data-bs-toggle="modal" data-bs-target="#status_appointment_modal">
-                                    Done
-                                </a>
-                                <a  type="button"  class="btn view-request p-0 claimed-btn"  id="claimed-btn" style="display: none;" data-claimed-id="{{ $booking->appointment->id }}" data-bs-toggle="modal" data-bs-target="#status_appointment_modal">
-                                    Claimed
-                                </a>
-                            </td>
-                            <td class="td-view">
-                                <a type="button" class="btn view-request p-0 view-btn" id="{{ $booking->id }}">
-                                    View
-                                </a>
+                                <div class="dropdown d-flex flex-column justify-contents-center">
+                                    <button class="btn sub-admin-btn dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false">
+                                        Action
+                                    </button>
+                                    <ul class="dropdown-menu dropdown-menu-dark" style="background-color: #1e1e1e !important;">
+                                        <li>
+                                            @if($booking->appointment->status == "On Process")
+                                            <a  type="button" class="dropdown-item view-request done-btn"  id="done-btn" data-done-id="{{ $booking->appointment->id }}" data-bs-toggle="modal" data-bs-target="#status_appointment_modal">
+                                                Done
+                                            </a>
+                                            @endif
+                                        </li>
+                                        <li><hr class="dropdown-divider" style="border-top: 1px solid rgba(255,255,255,0.4);"></li>
+                                        <li>
+                                            <a type="button" class="dropdown-item view-request view-btn" id="{{ $booking->id }}">
+                                                View
+                                            </a>
+                                        </li>
+                                        <li>
+                                            <a type="button" class="dropdown-item view-request remarks-btn" id="{{ $booking->id }}" data-remarks-id="{{ $booking->id }}" data-remarks-first="{{ $booking->user->firstName }}" data-remarks-last="{{ $booking->user->lastName }}" data-remarks-form="{{ $booking->appointment->form->name }}">
+                                                Remarks
+                                            </a>
+                                        </li>
+                                    </ul>
+                                </div>
                             </td>
                         </tr>
                         @endforeach
@@ -151,7 +90,7 @@
     <div class="appointment-records p-4">
         <div class="w-100 fs-2 font-bold font-nun mb-2">Ready to Claim Documents</div>
         <div class="table-rounded">
-            <table id="readyToClaimDocuments" class="table font-nun">
+            <table id="readyToClaimDocuments" class="table font-nun hover display compact row-border">
                 <thead class="table-head text-center">
                     <tr>
                         <th>Appointment Number</th>
@@ -160,9 +99,7 @@
                         <th>Last Name</th>
                         <th>Document Requested</th>
                         <th>Date Requested</th>
-                        <th>Status</th>
                         <th>Action</th>
-                        <th></th>
                     </tr>
                 </thead>
                 <tbody class="table-group-divider">
@@ -174,22 +111,32 @@
                             <td>{{ $booking->user->lastName }}</td>
                             <td>{{ $booking->appointment->form->name}}</td>
                             <td>{{ $booking->created_at->format('M d, Y') }}</td>
-                            <td class="status">{{ $booking->appointment->status }}</td>
                             <td>
-                                <a  type="button" class="btn view-request p-0 accept-btn" id="accept-btn" style="display: block;" data-accept-id="{{ $booking->appointment->id }}">
-                                    Accept
-                                </a>
-                                <a  type="button" class="btn view-request p-0 done-btn"  id="done-btn" style="display: none;" data-done-id="{{ $booking->appointment->id }}" data-bs-toggle="modal" data-bs-target="#status_appointment_modal">
-                                    Done
-                                </a>
-                                <a  type="button"  class="btn view-request p-0 claimed-btn"  id="claimed-btn" style="display: none;" data-claimed-id="{{ $booking->appointment->id }}" data-bs-toggle="modal" data-bs-target="#status_appointment_modal">
-                                    Claimed
-                                </a>
-                            </td>
-                            <td class="td-view">
-                                <a type="button" class="btn view-request p-0 view-btn" id="{{ $booking->id }}">
-                                    View
-                                </a>
+                                <div class="dropdown d-flex flex-column justify-contents-center">
+                                    <button class="btn sub-admin-btn dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false">
+                                        Action
+                                    </button>
+                                    <ul class="dropdown-menu dropdown-menu-dark" style="background-color: #1e1e1e !important;">
+                                        <li>
+                                            @if($booking->appointment->status == "Ready to Claim")
+                                            <a  type="button"  class="dropdown-item view-request claimed-btn"  id="claimed-btn" data-claimed-id="{{ $booking->appointment->id }}" data-bs-toggle="modal" data-bs-target="#status_appointment_modal">
+                                                Claimed
+                                            </a>
+                                            @endif
+                                        </li>
+                                        <li><hr class="dropdown-divider" style="border-top: 1px solid rgba(255,255,255,0.4);"></li>
+                                        <li>
+                                            <a type="button" class="dropdown-item view-request view-btn" id="{{ $booking->id }}">
+                                                View
+                                            </a>
+                                        </li>
+                                        <li>
+                                            <a type="button" class="dropdown-item view-request remarks-btn" id="{{ $booking->id }}" data-remarks-id="{{ $booking->id }}" data-remarks-first="{{ $booking->user->firstName }}" data-remarks-last="{{ $booking->user->lastName }}" data-remarks-form="{{ $booking->appointment->form->name }}">
+                                                Remarks
+                                            </a>
+                                        </li>
+                                    </ul>
+                                </div>
                             </td>
                         </tr>
                         @endforeach
@@ -205,7 +152,7 @@
     <div class="appointment-records p-4">
         <div class="w-100 fs-2 font-bold font-nun mb-2">Claimed Documents</div>
         <div class="table-rounded">
-            <table id="claimedDocuments" class="table font-nun">
+            <table id="claimedDocuments" class="table font-nun hover display compact row-border">
                 <thead class="table-head text-center">
                     <tr>
                         <th>Appointment Number</th>

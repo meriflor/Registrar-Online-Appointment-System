@@ -55,4 +55,4 @@
     </div>
 </div>
 
-<script src="js/admin/appointment/remarks.js"></script>
+<script src="{{ asset('js/admin/appointment/remarks.js') }}"></script>

@@ -225,6 +225,7 @@ class adminController extends Controller
 
         $existingNotification = $appointment->user->notifications()
             ->where('data->app_id', $app_id)
+            ->where('data->notif_type', 'remarks')
             ->first();
         if($existingNotification){
             $existingNotification->delete();

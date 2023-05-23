@@ -105,8 +105,9 @@ Route::middleware([AuthCheck::class, SubAdminCashier::class])->prefix('dashboard
     Route::get('/incomplete-payments', [SubadminCashierController::class, 'viewCashierIncomplete'])->name('subadmin-cashier-incomplete');
 
     Route::post('/payment-status-update', [SubadminCashierController::class, 'updatePaymentStatus'])->name('payment-status-update');
-    Route::get('/incomplete-remarks/{id}', [SubadminCashierController::class, 'getIncompleteRemarks']);
+    // Route::get('/incomplete-remarks/{id}', [SubadminCashierController::class, 'getIncompleteRemarks']);
 });
+Route::get('/incomplete-remarks/{id}', [SubadminCashierController::class, 'getIncompleteRemarks']);
 
 
     //Login and Registraion - Personal Information

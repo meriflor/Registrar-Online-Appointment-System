@@ -13,7 +13,7 @@ $('.incomplete-payment-btn').on('click', function() {
 $('.view-remarks-incomplete').on('click', function() {
     var id = $(this).data('app-id');
     console.log(id);
-    fetch('/dashboard-admin-cashier/incomplete-remarks/' + id)
+    fetch('/incomplete-remarks/' + id)
         .then(response => response.json())
         .then(data => {
             $('#incomplete_remarks_modal').modal('show');

@@ -282,6 +282,7 @@ class UserController extends Controller
             $bookings->save();
 
             $existingNotification = $appointment->user->notifications()
+                  ->where('data->notif_type', "remarks")
                   ->where('data->app_id', $app_id)
                   ->first();
             if($existingNotification){

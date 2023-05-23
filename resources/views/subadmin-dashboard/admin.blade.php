@@ -99,6 +99,8 @@
         <script src="{{ asset('js/admin/announcement-config.js') }}"></script>
         <script src="{{ asset('js/admin/faq-config.js') }}"></script>
 
+        <script src="{{ asset('js/subadmin-cashier/approve-incomplete.js') }}"></script>
+
         <script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.24.0/moment.min.js"></script>
         <script src="https://cdnjs.cloudflare.com/ajax/libs/fullcalendar/3.10.2/fullcalendar.min.js"></script>
         <script src="https://cdn.datatables.net/1.13.4/js/jquery.dataTables.js"></script>
@@ -181,6 +183,8 @@
             $('#readyToClaimDocuments').DataTable();
             $('#onProcessDocuments').DataTable();
             $('#pendingRequests').DataTable();
+            $('#onlinePaymentPending').DataTable();
+            $('#walkinPaymentPending').DataTable();
 
             //export appointment records to excel
             $('#export-app-records').on('click', function() {
@@ -196,14 +200,6 @@
                 // Save data to Excel file
                 XLSX.writeFile(wb, "appointment-records.xlsx");
             });
-            var menu_btn = document.querySelector("#menu-btn");
-            var sidebar = document.querySelector("#sidebar");
-            var container = document.querySelector(".content-container");
-            menu_btn.addEventListener("click", () => {
-                sidebar.classList.toggle("active-nav");
-                container.classList.toggle("active-cont");
-            });
-
             const backToTopBtn = document.querySelector("#back-to-top-btn");
 
             window.addEventListener("scroll", () => {
@@ -219,6 +215,15 @@
             backToTopBtn.addEventListener("click", () => {
                 window.scrollTo({ top: 0, behavior: "smooth" });
             });
+            var menu_btn = document.querySelector("#menu-btn");
+            var sidebar = document.querySelector("#sidebar");
+            var container = document.querySelector(".content-container");
+            menu_btn.addEventListener("click", () => {
+                sidebar.classList.toggle("active-nav");
+                container.classList.toggle("active-cont");
+            });
+
+            
         </script>
 
         <script>
@@ -243,6 +248,7 @@
         @include('admin-dashboard.modal.faqs.delete-faqs')
         @include('admin-dashboard.modal.faqs.edit-faqs')
         @include('admin-dashboard.modal.remarks')
+        @include('subadmin-cashier-dashboard.modal.incomplete-remarks')
 
     </body>
 </html>
