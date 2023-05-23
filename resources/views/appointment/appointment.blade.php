@@ -62,10 +62,11 @@
                                         <a href="/appointment-records" class="nav-link {{ Request::is('appointment-records') ? 'active' : '' }}">Appointments</a>
                                     </li>
                                     <li class="nav-item">
+                                        <!-- fix -->
                                         <a href="/notification" class="nav-link {{ Request::is('notification') ? 'active' : '' }}">Notification
-                                            @if(isset($_SESSION['user']['unreadNotifications']) && count($_SESSION['user']['unreadNotifications']) > 0)
-                                            <span class="badge bg-danger">{{ count($_SESSION['user']['unreadNotifications']) }}</span> <!-- Display the count of unread notifications -->
-                                            @endif
+                                            <span id="notif-space">
+                                                <span class="badge bg-danger" id="unread-notif"></span>
+                                            </span>
                                         </a>
                                     </li>
                                     <li class="nav-item dropdown">
@@ -502,6 +503,25 @@
                 }
             });
             
+        });
+
+        $.ajax({
+            url: "{{ route('unread-notif') }}",
+            method: 'GET',
+            dataType: 'json',
+            success: function(response) {
+                // Update the badge count with the retrieved count
+                console.log(response.count)
+                if(response.count <=0){
+                   $('#notif-space').hide();
+                }else{
+                   $('#notif-space').show();
+                    $('#unread-notif').text(response.count);
+                }
+            },
+            error: function(xhr, status, error) {
+                console.error(error);
+            }
         });
             
     </script>

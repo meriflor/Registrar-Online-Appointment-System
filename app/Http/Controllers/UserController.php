@@ -303,4 +303,9 @@ class UserController extends Controller
             // $user->notifications()->delete();
       }
       
+      public function unreadNotif(){
+            $user = User::find(session('loginId'));
+            $unreadNotifications = $user->notifications()->whereNull('read_at')->count();
+            return response()->json(['count' => $unreadNotifications]);
+      }
 }

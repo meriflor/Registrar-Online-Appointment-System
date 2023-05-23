@@ -47,6 +47,7 @@ Route::middleware([AuthCheck::class,AlreadyLoggedIn::class])->group(function () 
     
     //Functions
     Route::delete('/notif-delete/{id}/{notif_type}', [UserController::class, 'notifDelete'])->name('notif-delete');
+    Route::get('/unread-notif', [UserController::class, 'unreadNotif'])->name('unread-notif');
 });
 
 Route::middleware([AuthCheck::class, AdminCheck::class])->prefix('dashboard-admin')->group(function () {
