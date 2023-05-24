@@ -178,7 +178,6 @@ class CustomAuthController extends Controller
             $request->validate([
                   'app_purpose' => 'required',
                   'appointment_date' => 'required',
-                  'payment_method' => 'required',
                   'a_transfer' => 'required',
                   'b_transfer' => 'required'
             ]);

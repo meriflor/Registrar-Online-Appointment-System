@@ -60,7 +60,7 @@
 
                                     </div>
                                 @endif
-                                <div class="receipt-box p-3 my-3" id="my-div">
+                                <div class="receipt-box p-3 my-3" id="my-div-{{ $appointment->id }}">
                                     <div class="receipt-content fs-6 d-flex flex-column font-mont">
                                         <div class="content-head d-flex flex-column">
                                             <small class="font-bold">Mindanao State University - Maigo School of Arts and Trades</small>
@@ -127,8 +127,8 @@
                                     </div>
                                 </div>
                                 <div class="d-flex flex-row justify-content-end">
-                                    <button id="download-button" class="btn user-button">Download PDF</button>
-                                    <button id="print-button" class="btn user-button ms-3">Print</button>
+                                    <button id="download-button" class="btn user-button download-button" data-app-id="{{ $appointment->id }}">Download PDF</button>
+                                    <button id="print-button" class="btn user-button ms-3 print-button" data-app-id="{{ $appointment->id }}">Print</button>
                                 </div>
                                 <!-- <div class="more-info d-flex flex-row row font-mont p-3">
                                     <div class="col-md-6">

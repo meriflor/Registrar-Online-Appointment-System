@@ -70,17 +70,20 @@
                             </div>
                         </div>
                         <div><hr class="row my-3"></div>
-                        <div class="d-flex flex-column w-100 mb-3">
-                            <p class="fs-4 font-mont font-bold">Payment</p>
-                            <div>
-                                <input type="radio" id="walk-in" name="payment_method" value="Walk-in">
-                                <label for="walk-in">Walk-in</label>
-                            </div>
-                            <div>
-                                <input type="radio" id="g-cash" name="payment_method" value="GCash">
-                                <label for="gcash">G-Cash</label>
+                        <div id="payment_section">
+                            <div class="d-flex flex-column w-100 mb-3">
+                                <p class="fs-4 font-mont font-bold">Online Payment</p>
+                                <div>
+                                    <input type="radio" id="walk-in" name="payment_method" value="Walk-in">
+                                    <label for="walk-in">Walk-in</label>
+                                </div>
+                                <div>
+                                    <input type="radio" id="g-cash" name="payment_method" value="GCash">
+                                    <label for="gcash">G-Cash</label>
+                                </div>
                             </div>
                         </div>
+                        
                         
                         <div class="row mb-3" id="gcash-sect">
                             <div class="notice-box p-1 mb-2">
@@ -91,6 +94,7 @@
                                 <label for="reference_number">Reference No.</label>
                                 <input type="text" class="form-control" name="reference_number" id="reference_number" placeholder="Reference No.">
                             </div>
+                            <input type="hidden" id="form_fee_val">
                             <div class="mt-3">
                                 <label for="proof_of_payment" class="form-label">Upload the picture or screenshot of the proof of payment.</label>
                                 <input class="form-control" type="file" id="proof_of_payment" name="proof_of_payment" accept=".jpg,.png,.jpeg,.svg">

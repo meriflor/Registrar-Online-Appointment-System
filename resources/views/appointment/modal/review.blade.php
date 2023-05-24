@@ -101,11 +101,15 @@
                 </div>
             </div>
             <div class="form-group row mt-2">
-                <div class="col-md-4 d-flex flex-row flex-wrap">
-                    <span><b>Payment Method: </b> <span id="payment_method_01"></span></span> 
+                <div id="payment_method_val">
+                    <div class="col-md-4 d-flex flex-row flex-wrap">
+                        <span><b>Payment Method: </b> <span id="payment_method_01"></span></span> 
+                    </div>
                 </div>
-                <div class="col-md-4 d-flex flex-row flex-wrap">
-                    <span><b>Reference Number: </b> <span id="reference_number_01"></span></span> 
+                <div id="reference_number_val">
+                    <div class="col-md-4 d-flex flex-row flex-wrap">
+                        <span><b>Reference Number: </b> <span id="reference_number_01"></span></span> 
+                    </div>
                 </div>
                 <div class="col-md-4 d-flex flex-row flex-wrap">
                     <span><b>Number of Copy: </b> <span id="num_copies_01"></span></span> 

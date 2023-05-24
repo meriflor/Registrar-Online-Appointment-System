@@ -1,34 +1,33 @@
-var viewBtns = document.querySelectorAll('.view-btn');
+var viewBtns = document.querySelectorAll(".view-btn");
 for (var i = 0; i < viewBtns.length; i++) {
-    viewBtns[i].addEventListener('click', function() {
+    viewBtns[i].addEventListener("click", function () {
         var bookingId = this.id;
 
-            // Send a request to the server to get the booking information
-        fetch('/bookings/' + bookingId)
-            .then(response => response.json())
-            .then(data => {
+        // Send a request to the server to get the booking information
+        fetch("/bookings/" + bookingId)
+            .then((response) => response.json())
+            .then((data) => {
                 console.log(data.email);
                 console.log(data.status);
                 console.log(data.doc_req_year);
-                    
+
                 // Set the booking information in the modal
-                $('#viewFullName').text(data.fullName);
-                $('#viewEmail').text(data.email);
-                $('#viewCpNo').text(data.cell_no);
-                $('#viewSchoolID').text(data.school_id);
-                $('#viewCourse').text(data.course);
-                $('#viewStudentStatus').text(data.status);
-                
+                $("#viewFullName").text(data.fullName);
+                $("#viewEmail").text(data.email);
+                $("#viewCpNo").text(data.cell_no);
+                $("#viewSchoolID").text(data.school_id);
+                $("#viewCourse").text(data.course);
+                $("#viewStudentStatus").text(data.status);
 
-
-                $('#viewAcadYear').text(data.acadYear);
-                $('#viewGradYear').text(data.gradYear);
-                if(data.acadYear === null){
-                    $('#viewGradYearSect').show();
-                    $('#viewAcadYearSect').hide();
-                }if(data.gradYear === null){
-                    $('#viewAcadYearSect').show();
-                    $('#viewGradYearSect').hide();
+                $("#viewAcadYear").text(data.acadYear);
+                $("#viewGradYear").text(data.gradYear);
+                if (data.acadYear === null) {
+                    $("#viewGradYearSect").show();
+                    $("#viewAcadYearSect").hide();
+                }
+                if (data.gradYear === null) {
+                    $("#viewAcadYearSect").show();
+                    $("#viewGradYearSect").hide();
                 }
                 $("#viewGender").text(data.gender);
                 $("#viewCivilStats").text(data.civil_status);
@@ -40,44 +39,54 @@ for (var i = 0; i < viewBtns.length; i++) {
                 $("#viewDocDateReq").text(data.doc_created);
                 $("#viewDocName").text(data.doc_name);
                 $("#viewDocReqYear").text(data.doc_req_year);
-                if(data.doc_req_year === null){
-                    $('#viewTOR').hide();
-                }else{
-                    $('#viewTOR').show();
+                if (data.doc_req_year === null) {
+                    $("#viewTOR").hide();
+                } else {
+                    $("#viewTOR").show();
                 }
                 $("#viewPurpose").text(data.app_purpose);
                 $("#viewDocFee").text("PHP " + data.doc_fee + ".00");
-                
-                if(data.a_transfer == 0){
+
+                if (data.a_transfer == 0) {
                     $("#viewATransfer").text("No");
-                }else{
+                } else {
                     $("#viewATransfer").text("No, " + data.a_transfer_school);
-                }if(data.b_transfer == 0){
+                }
+                if (data.b_transfer == 0) {
                     $("#viewBTransfer").text("No");
-                }else{
+                } else {
                     $("#viewBTransfer").text("No, " + data.b_transfer_school);
                 }
 
-                if(data.remarks == null || data.remarks == ""){
-                    $('#remarks_info').hide();
-                }else{
-                    $('#remarks_info').show();
+                if (data.remarks == null || data.remarks == "") {
+                    $("#remarks_info").hide();
+                } else {
+                    $("#remarks_info").show();
                     $("#viewRemarks").text(data.remarks);
                 }
 
+                if (data.payment_method === null) {
+                    $("#payment_sect_modal").hide();
+                }
                 $("#viewMethod").text(data.payment_method);
 
-                if(data.payment_method === "Walk-in"){
-                    $('#viewPopButton').hide();
-                    $('#viewPopImage').hide();
-                }else{
-                    $('#viewPopButton').show();
-                    $('#viewPopImage').show();
-                $('#viewProofOfPayment').attr('src', url + "/" + data.proof_of_payment);
-                $('#downloadProofOfPayment').attr('href', url + "/" + data.proof_of_payment);
+                if (data.payment_method === "Walk-in") {
+                    $("#viewPopButton").hide();
+                    $("#viewPopImage").hide();
+                } else {
+                    $("#viewPopButton").show();
+                    $("#viewPopImage").show();
+                    $("#viewProofOfPayment").attr(
+                        "src",
+                        url + "/" + data.proof_of_payment
+                    );
+                    $("#downloadProofOfPayment").attr(
+                        "href",
+                        url + "/" + data.proof_of_payment
+                    );
                 }
-                
-                $('#view-request-modal').modal('show');
-        });
+
+                $("#view-request-modal").modal("show");
+            });
     });
 }

@@ -35,7 +35,7 @@
                     class="btn btn-custom"
                     data-bs-dismiss="modal"
                 >
-                    Dissmis
+                Dismiss
                 </button>
                 <button type="submit" class="btn btn-custom ms-3" id="submit_faq_update">
                     Update

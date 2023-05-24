@@ -12,7 +12,7 @@
                     <b id="announcementName">Issuance of Transcript of Records (TOR)</b>
                 </div>
                 <div class="modal-footer">
-                    <button type="button" class="btn btn-custom" data-bs-dismiss="modal">Dissmis</button>
+                    <button type="button" class="btn btn-custom" data-bs-dismiss="modal">Dismiss</button>
                     <button type="submit" class="btn btn-custom ms-3" id="submit_delete_announcement">Delete</button>
                 </div>
             </div>

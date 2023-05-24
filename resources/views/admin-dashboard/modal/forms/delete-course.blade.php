@@ -12,7 +12,7 @@
                 <p class="m-0 p-0"> Are you sure to delete this course?</p>
             </div>
             <div class="modal-footer">
-                <button type="button" class="btn btn-custom" data-bs-dismiss="modal">Dissmis</button>
+                <button type="button" class="btn btn-custom" data-bs-dismiss="modal">Dismiss</button>
                 <button type="submit" class="btn btn-custom ms-3" id="submit_delete_course">Delete</button>
             </div>
         </div>

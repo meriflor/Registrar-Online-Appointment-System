@@ -88,7 +88,7 @@
         </nav>
     </div>
     <!-- content sa user page,, mgchange2 gamit atung extend2 section2 chu2, idivide nlng daun palihog-->
-    <div class="site-content d-flex justify-content-center p-5">
+    <div class="site-content d-flex justify-content-center py-5 container">
         <!-- dashboard -->
         <div class="dashboard d-flex row flex-row w-100 font-mont" id="dashboard">
             <div class="col-md-4 mb-4 font-mont">
@@ -210,10 +210,11 @@
         var appointment_date;
         $(document).ready(function() { 
             var cell;
-            $('#download-button').on('click', function() {
+            $('.download-button').on('click', function() {
+                var app_id = $(this).data('app-id');
                 window.jsPDF = window.jspdf.jsPDF;
 
-                html2canvas(document.querySelector('#my-div')).then(function(canvas) {
+                html2canvas(document.querySelector('#my-div-' + app_id)).then(function(canvas) {
                     var imgData = canvas.toDataURL('image/png');
                     var pdf = new jsPDF();
                     var imgWidth = 190;
@@ -228,8 +229,9 @@
                 });
             });
 
-            $('#print-button').on('click', function() {
-                html2canvas(document.querySelector('#my-div')).then(function(canvas) {
+            $('.print-button').on('click', function() {
+                var app_id = $(this).data('app-id');
+                html2canvas(document.querySelector('#my-div-' + app_id)).then(function(canvas) {
                     var imgData = canvas.toDataURL('image/png');
                     var pdf = new jsPDF();
                     var imgWidth = 190;
@@ -351,10 +353,16 @@
                 $('#app-acad-year').hide();
             }
             
+            if(form_fee == 0){
+                modal.find('#payment_section').hide();
+            }else{
+                modal.find('#payment_section').show();
+            }
             modal.find('#exp_date').text(form_max_time);
             modal.find('#form-name').text(form_name);
             modal.find('#form_name').text(form_name);
             modal.find('#doc_fee').text("PHP "+form_fee+".00");
+            modal.find('#form_fee_val').val(form_fee);
             modal.find('#form_id').val(form_id);
             modal.find('#accordion_id').val(accordion_id);
             console.log(form_id);
@@ -373,22 +381,31 @@
             var payment_method = $('input[name=payment_method]:checked').val();
             var proof_of_payment = $('#proof_of_payment')[0].files[0];
             var reference_number = $('#reference_number').val();
+            var form_fee = $('#form_fee_val').val();
 
             a_transfer = $('input[name=isATransfer]:checked').val();
             b_transfer = $('input[name=isBTransfer]:checked').val();
             a_transfer_school = $('#inputATransferSchool').val();
             b_transfer_school = $('#inputBTransferSchool').val();
 
-            if(app_purpose === "" || payment_method === undefined || payment_method === undefined || a_transfer === undefined || b_transfer === undefined){
+            if(app_purpose === "" || a_transfer === undefined || b_transfer === undefined){
                 alert('Please fill up the provided inputs.');
                 return false;
-            }if(payment_method === "GCash" && (reference_number === null || reference_number === "" || reference_number === undefined)){
-                alert('Please type your reference number from your proof of payment.');
-                return false;
-            }if(payment_method === "GCash" && proof_of_payment === undefined){
-                alert('Please upload your proof of payment.');
-                return false;
-            }if(appointment_date === undefined){
+            }
+            if(form_fee != 0){
+                if(payment_method === undefined){
+                    alert('Please fill up the provided inputs.');
+                    return false;
+                }if(payment_method === "GCash" && (reference_number === null || reference_number === "" || reference_number === undefined)){
+                    alert('Please type your reference number from your proof of payment.');
+                    return false;
+                }if(payment_method === "GCash" && proof_of_payment === undefined){
+                    alert('Please upload your proof of payment.');
+                    return false;
+                }
+            }
+
+            if(appointment_date === undefined){
                 alert('Please choose your appointment date.');
                 return false;
             }else{
@@ -405,6 +422,13 @@
                 }else{
                     $('#num_copies_01').text(num_copies + " copies");
                     $('#num_copies_02').val(num_copies);
+                }
+                if(form_fee == 0){
+                    $('#payment_method_val').hide();
+                    $('#reference_number_val').hide();
+                }else{
+                    $('#payment_method_val').show();
+                    $('#reference_number_val').show();
                 }
                 
                 //todo
@@ -460,6 +484,8 @@
                 b_transfer_school = null;
             }if(payment_method === "Walk-in"){
                 proof_of_payment = null;
+            }if(payment_method === null || payment_method === undefined){
+                payment_method = null;
             }
 
             console.log(form_id);

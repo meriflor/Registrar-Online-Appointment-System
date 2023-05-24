@@ -229,6 +229,7 @@
                         </div>
                     </div>
                 </div>
+                <div id="payment_sect_modal">
                 <div class="p-info-pay d-flex flex-column m-0 px-5 py-4 mt-5">
                     <div
                         class="p-info-head d-flex flex-row align-items-end"
@@ -290,6 +291,7 @@
                             </div>
                         </div>
                     </div>
+                </div>
                 </div>
                 <div
                     class="d-flex flex-row justify-content-end m-0 mt-5"

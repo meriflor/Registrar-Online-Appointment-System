@@ -18,7 +18,7 @@ class CreateAppointmentsTable extends Migration
             $table->text('app_purpose');
             $table->string('acad_year')->nullable();
             $table->string('appointment_date');
-            $table->string('payment_method');
+            $table->string('payment_method')->nullable();
             $table->string('proof_of_payment')->nullable();
             // review update reference number is for the payment=== not the OR number
             $table->string('reference_number')->nullable();

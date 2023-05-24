@@ -79,7 +79,7 @@
                     data-bs-dismiss="modal"
                     id="dismiss_cal"
                 >
-                    Dissmis
+                Dismiss
                 </button>
                 <button id="submit_slot" type="submit" class="btn btn-custom ms-2">
                     Set
