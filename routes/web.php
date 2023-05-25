@@ -63,6 +63,7 @@ Route::middleware([AuthCheck::class, AdminCheck::class])->prefix('dashboard-admi
     Route::get('/user/{id}/rejected',[adminController::class,'rejectUserRegistration'])->name('user-reject'); 
     Route::get('/user/{id}/pending',[adminController::class,'pendingUserRegistration'])->name('user-pending'); 
     Route::get('/user-pending-count', [adminController::class,'pendingUserCount'])->name('user-pending-count');
+    Route::get('/messages/{id}', [MessageController::class, 'messageViewRequest']);
     
     //Admin Pages
     Route::any('config',[formController::class,'viewForm'])->name('config');
@@ -168,3 +169,6 @@ Route::get('/incomplete-remarks/{id}', [SubadminCashierController::class, 'getIn
 
     //Message
     Route::post('/messages', [MessageController::class, 'store'])->name('messages.store');
+    Route::get('/messages/{message}', [MessageController::class, 'show'])->name('messages.show');
+    Route::delete('/messages/{message}', [MessageController::class, 'destroy'])->name('messages.destroy');
+

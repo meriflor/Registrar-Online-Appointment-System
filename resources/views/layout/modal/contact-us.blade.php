@@ -43,12 +43,12 @@
                             <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                         </div>
                         <div class="d-flex flex-column align-items-start pt-3">
-                            <label for="inputName">Full Name</label>
+                            <label for="inputName" class="font-white">Full Name</label>
                             <input class="form-control" name="fullname" id="inputName" type="text" value="" aria-label="default input example" placeholder="Fullname">
-                            <label for="inputEmail" class="pt-2">Email</label>
+                            <label for="inputEmail" class="pt-2 font-white">Email</label>
                             <input type="email" class="form-control" name="email" id="inputEmail" placeholder="Email">
-                            <label for="inputMessage" class="pt-2">Message</label>
-                            <textarea type="text" class="form-control" name="message" id="inputMessage" placeholder="Message"></textarea>
+                            <label for="inputMessage" class="pt-2 font-white">Message</label>
+                            <textarea type="text" class="form-control font-nun" name="message" id="inputMessage" placeholder="Message"></textarea>
                         </div>
                         <div class="d-flex flex-row justify-content-end pt-3">
                             <button type="button" class="btn btn-cancel" data-bs-dismiss="modal">Back</button>
