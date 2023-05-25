@@ -36,16 +36,16 @@
                     <small class="text-body-secondary" id="email_message"></small>
                     <small class="text-body-secondary" id="date_posted_message"><!--{{-- $message->created_at->format('Fj,Y') --}}--></small>
                 </div>
-                    <div class="head-button d-flex flex-row col-lg-3 justify-content-end align-items-center">
-                        <!-- <button class="btn d-flex flex-row align-items-center">
-                            <img src="/images/post.png" alt="">
-                            <small class="m-0 ms-1 p-0 font-nun">Post </small>
-                        </button> -->
-                        <button class="btn d-flex flex-row align-items-center delete-button" data-message-id="{{ $message->id }}">
-                            <img src="/images/delete.png" alt="">
-                            <small class="m-0 ms-1 p-0 font-nun">Delete</small>
-                        </button>                        
-                    </div>
+                <div class="head-button d-flex flex-row col-lg-3 justify-content-end align-items-center">
+                    <!-- <button class="btn d-flex flex-row align-items-center">
+                        <img src="/images/post.png" alt="">
+                        <small class="m-0 ms-1 p-0 font-nun">Post </small>
+                    </button> -->
+                    <button class="btn d-flex flex-row align-items-center delete-button" data-message-id="{{ $message->id }}">
+                        <img src="/images/delete.png" alt="">
+                        <small class="m-0 ms-1 p-0 font-nun">Delete</small>
+                    </button>                        
+                </div>
             </div>
             <div class="message-body mt-5 font-13 px-5 flex-1">
                 <pre class="fs-6" id="body_message">
@@ -58,12 +58,14 @@
         </div>
     </div>
 </div>
+
+
 <div class="modal fade" id="delete-modal" tabindex="-1" role="dialog" aria-labelledby="delete-modal-title" aria-hidden="true">
     <div class="modal-dialog" role="document">
         <div class="modal-content">
             <div class="modal-header">
                 <h5 class="modal-title" id="delete-modal-title">Confirmation</h5>
-                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                <button type="button" class="close" data-bs-dismiss="modal" aria-label="Close">
                     <span aria-hidden="true">&times;</span>
                 </button>
             </div>
@@ -71,7 +73,7 @@
                 <p>Are you sure you want to delete this message?</p>
             </div>
             <div class="modal-footer">
-                <button type="button" class="btn btn-secondary" data-dismiss="modal">Cancel</button>
+                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancel</button>
                 <button type="button" class="btn btn-danger" id="confirm-delete-btn">Delete</button>
             </div>
         </div>
