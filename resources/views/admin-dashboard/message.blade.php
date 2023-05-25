@@ -58,6 +58,8 @@
         </div>
     </div>
 </div>
+
+
 <div class="modal fade" id="delete-modal" tabindex="-1" role="dialog" aria-labelledby="delete-modal-title" aria-hidden="true">
     <div class="modal-dialog" role="document">
         <div class="modal-content">

@@ -67,4 +67,5 @@
         </div>
     </div>
 </div>
+<button id="back-to-top-btn" class="btn btn-custom show" style="color: #131313;">Back to top</button>
 @endsection

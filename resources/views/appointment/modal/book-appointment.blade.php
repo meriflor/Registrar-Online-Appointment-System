@@ -89,7 +89,7 @@
                             </div>
                             <img src="/images/g-cash-temp.png" alt="">
                             <div class="d-flex flex-column w-100 my-3">
-                                <label for="reference_number">Reference No.</label>
+                                <label for="reference_number">Gcash Reference No.</label>
                                 <input type="text" class="form-control" name="reference_number" id="reference_number" placeholder="Reference No.">
                             </div>
                             <input type="hidden" id="form_fee_val">
