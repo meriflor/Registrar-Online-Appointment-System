@@ -185,6 +185,7 @@
             $('#pendingRequests').DataTable();
             $('#onlinePaymentPending').DataTable();
             $('#walkinPaymentPending').DataTable();
+            $('#noFeesTable').DataTable();
 
             //export appointment records to excel
             $('#export-app-records').on('click', function() {

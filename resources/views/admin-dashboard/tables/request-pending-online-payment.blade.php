@@ -170,7 +170,7 @@
         No Collection of Fees
     </div>
     <div class="table-rounded">
-        <table id="onlinePaymentPending" class="table font-nun hover display compact cell-border">
+        <table id="noFeesTable" class="table font-nun hover display compact cell-border">
             <thead class="table-head text-center">
                 <tr>
                     <th>Appointment No.</th>

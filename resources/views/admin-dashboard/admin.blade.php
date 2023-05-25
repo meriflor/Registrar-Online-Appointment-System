@@ -337,6 +337,7 @@
                 $('#pendingRequests').DataTable();
                 $('#onlinePaymentPending').DataTable();
                 $('#walkinPaymentPending').DataTable();
+                $('#noFeesTable').DataTable();
                 $('#pendingUsers').DataTable( {
                     responsive: true
                 } );
