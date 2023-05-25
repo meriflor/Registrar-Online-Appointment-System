@@ -229,6 +229,28 @@
                         </div>
                     </div>
                 </div>
+                <div id="requirements_info_section">
+                    <div class="p-info d-flex flex-column m-0 px-5 py-4 mt-5">
+                        <div class="p-info-head d-flex flex-row align-items-end" >
+                            <div class="d-flex" style="width:30px; height:30px;">
+                                <img class="w-100 h-100" src="/images/requirements_file.png" alt="requirments icon">
+                            </div>
+                            <p class="p-0 m-0 ms-2 font-nun fs-6 font-bold font-13" >
+                                Requirements Uploaded
+                            </p>
+                        </div>
+                        <table class="table font-nun" id="requirementsTable">
+                            <thead>
+                                <tr>
+                                    <th scope="col">File Name</th>
+                                    <th scope="col"></th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
                 <div id="payment_sect_modal">
                 <div class="p-info-pay d-flex flex-column m-0 px-5 py-4 mt-5">
                     <div
@@ -270,13 +292,17 @@
                             </div>
                             <div class="row w-100 p-0 my-2" id="viewPopButton" style="display: none;">
                                 <!-- ichange sab ang image pareha sa payment proof of payment para anytime madownload nila if gamay ra kaau para maview -->
-                                <a
+                                <!-- <a
                                     href=""
                                     class="btn btn-slot"
                                     download
                                     id="downloadProofOfPayment"
                                     >Download image</a
-                                >
+                                > -->
+                                <div class="d-flex flex-row flex-wrap">
+                                    <a href="" class="btn btn-slot m-2" style="flex:1;" target="_blank" id="viewProofOfPaymentPic">View image</a>
+                                    <a href="" class="btn btn-slot m-2" style="flex:1;" download id="downloadProofOfPayment">Download image</a>
+                                </div>
                             </div>
                         </div>
                         <div class="col-md-4">

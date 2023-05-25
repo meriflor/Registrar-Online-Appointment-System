@@ -101,13 +101,13 @@
                 </div>
             </div>
             <div class="form-group row mt-2">
-                <div id="payment_method_val">
-                    <div class="col-md-4 d-flex flex-row flex-wrap">
+                <div id="payment_method_val" class="col-md-4">
+                    <div class="d-flex flex-row flex-wrap">
                         <span><b>Payment Method: </b> <span id="payment_method_01"></span></span> 
                     </div>
                 </div>
-                <div id="reference_number_val">
-                    <div class="col-md-4 d-flex flex-row flex-wrap">
+                <div id="reference_number_val" class="col-md-4">
+                    <div class="d-flex flex-row flex-wrap">
                         <span><b>Reference Number: </b> <span id="reference_number_01"></span></span> 
                     </div>
                 </div>

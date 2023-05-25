@@ -7,6 +7,20 @@
             </div>
             <div class="modal-body px-5">
                 <input type="hidden" id="form-id">
+                <div class="d-flex flex-row justify-content-end flex-wrap">
+                    <div class="d-flex flex-row">
+                        <input class="form-check-input" id="edit_ask_acad_year" type="checkbox" value="1" name="edit_ask_acad_year" style="border: 2px solid #131313;">
+                        <label class="form-check-label font-karma ms-2" for="edit_ask_acad_year">
+                            Asks for Academic Year
+                        </label>
+                    </div>
+                    <div class="d-flex flex-row ms-4">
+                        <input class="form-check-input" id="edit_ask_requirements" type="checkbox" value="1" name="edit_ask_requirements" style="border: 2px solid #131313;">
+                        <label class="form-check-label font-karma ms-2" for="edit_ask_requirements">
+                            Asks for Requirements
+                        </label>
+                    </div>
+                </div>
                 <div class="mb-3">
                     <label for="editFormName" class="form-label">Form Name</label>
                     <input type="text" class="form-control" name="editFormName" id="editFormName" placeholder="">
@@ -76,7 +90,20 @@
         var editMaxTimeClaim = $('#editMaxTimeClaim').val();
         var editDocFeeType = $('#editDocFeeType').val();
         var editDocPages = $('#editDocPages').val();
+        var editAcadYear, editRequirements;
+        if ($("#edit_ask_acad_year").is(":checked")) {
+            editAcadYear = 1;
+        } else {
+            editAcadYear = 0;
+        }
 
+        if ($("#edit_ask_requirements").is(":checked")) {
+            editRequirements = 1;
+        } else {
+            editRequirements = 0;
+        }
+        console.log(editAcadYear);
+        console.log(editRequirements);
         $.ajax({
             url: "{{ route('editform') }}",
             method: "PUT",
@@ -90,7 +117,9 @@
                 editDocFee: editDocFee,
                 editMaxTimeClaim: editMaxTimeClaim,
                 editDocFeeType: editDocFeeType,
-                editDocPages: editDocPages
+                editDocPages: editDocPages,
+                editAcadYear: editAcadYear,
+                editRequirements: editRequirements
             },
             success: function(response) {
                 console.log(response);

@@ -190,7 +190,7 @@
 
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha2/dist/js/bootstrap.bundle.min.js" integrity="sha384-qKXV1j0HvMUeCBQ+QVp7JcfGl760yU08IQ+GpUo5hlbpg51QRiuqHAJz8+BrxE/N" crossorigin="anonymous"></script>
     <script src="js/dashboard/navbar.js"></script>
-    <script src="js/navbar.js"></script>
+    <!-- <script src="js/navbar.js"></script> -->
     <script src="js/form.js"></script>
     <script src='https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.24.0/moment.min.js'></script>
     <script src='https://cdnjs.cloudflare.com/ajax/libs/fullcalendar/3.10.2/fullcalendar.min.js'></script>
@@ -306,6 +306,8 @@
                         cell.addClass('fc-selected-date');
                         $('#app_date').text(appointment_date);
                         console.log(appointment_date + " is now your new appointment date");
+                        
+                        
                     }
                 },
                 eventRender: function(event, element) {
@@ -342,15 +344,22 @@
             var form_name = $(this).data('form-name');
             var form_fee = $(this).data('form-fee');
             var form_max_time = $(this).data('form-max-time');
+            var form_acad_year = $(this).data('form-acad_year');
+            var form_requirements = $(this).data('form-requirements');
             var accordion_item = $(this).closest('.accordion-item');
             var accordion_id = accordion_item.find('.accordion-collapse').attr('id');
             var modal = $('#appointmentModal');
 
-            // fix
-            if(form_name === 'Issuance of Transcript of Records'){
+            console.log("acad year:"+ form_acad_year);
+            console.log("form_requirements:"+ form_requirements);
+            if(form_acad_year == 1){
                 $('#app-acad-year').show();
             }else{
                 $('#app-acad-year').hide();
+            }if(form_requirements == 1){
+                $('#requirements_section').show();
+            }else{
+                $('#requirements_section').hide();
             }
             
             if(form_fee == 0){
@@ -371,7 +380,21 @@
             $('#appointmentModal').modal('show');
         });
 
-
+        $('.dismissButton').click(function() {
+            // Clear all inputs with the 'inputToClear' class
+            $('#app_purpose').val('');
+            $('#acad_year').val('');
+            $('input[name="isATransfer"]').prop('checked', false);
+            $('input[name="isBTransfer"]').prop('checked', false);
+            $('#inputATransferSchool').val('');
+            $('#inputBTransferSchool').val('');
+            $('input[name="payment_method"]').prop('checked', false);
+            $('#reference_number').val('');
+            $('input[type="file"]').val(null);
+            appointment_date = null;
+            $('#app_date').text('Select a date first.');
+            $('.fc-selected-date').removeClass('fc-selected-date');
+        });
 // review
         $('#proceedButton').on('click', function(event) {
             var form_id = $('#form_id').val();
@@ -388,6 +411,10 @@
             a_transfer_school = $('#inputATransferSchool').val();
             b_transfer_school = $('#inputBTransferSchool').val();
 
+            // fix requriements
+            var files = $('#inputRequirements')[0].files;
+            //fix end of requriements
+
             if(app_purpose === "" || a_transfer === undefined || b_transfer === undefined){
                 alert('Please fill up the provided inputs.');
                 return false;
@@ -402,10 +429,13 @@
                 }if(payment_method === "GCash" && proof_of_payment === undefined){
                     alert('Please upload your proof of payment.');
                     return false;
+                }if(payment_method === "GCash" && files.length == 0){
+                    alert('Please upload your requirements.');
+                    return false;
                 }
             }
 
-            if(appointment_date === undefined){
+            if(appointment_date === undefined || appointment_date === null){
                 alert('Please choose your appointment date.');
                 return false;
             }else{
@@ -457,6 +487,7 @@
                 console.log(acad_year);
                 console.log(appointment_date);
                 console.log(num_copies);
+                console.log(files);
             }
         });
 
@@ -488,15 +519,8 @@
                 payment_method = null;
             }
 
-            console.log(form_id);
-            console.log(app_purpose);
-            console.log(payment_method);
-            console.log(proof_of_payment);
-            console.log(acad_year);
-            console.log(appointment_date);
-            console.log(a_transfer);
-            console.log(b_transfer);
-            console.log(num_copies);
+            var files = $('#inputRequirements')[0].files;
+
             $('#reviewModal').modal('hide');
             $('#confirmedModal').modal('show');
             
@@ -514,6 +538,10 @@
             formData.append('proof_of_payment', proof_of_payment);
             formData.append('num_copies', num_copies);
             formData.append('reference_number', reference_number);
+            for (var i = 0; i < files.length; i++) {
+                formData.append('requirements[]', files[i]);
+                console.log(files[i]);
+            }
 
             $.ajax({
                 url: "{{ route('bookAppointment') }}",
@@ -536,7 +564,6 @@
             method: 'GET',
             dataType: 'json',
             success: function(response) {
-                // Update the badge count with the retrieved count
                 console.log(response.count)
                 if(response.count <=0){
                    $('#notif-space').hide();

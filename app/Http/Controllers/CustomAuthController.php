@@ -10,6 +10,7 @@ use App\Models\Form;
 use App\Models\Appointment;
 use App\Models\Booking;
 use App\Models\Announcement;
+use App\Models\Requirement;
 use Illuminate\Support\Facades\Auth;
 use GrahamCampbell\ResultType\Success;
 use Illuminate\Support\Facades\Hash;
@@ -229,7 +230,20 @@ class CustomAuthController extends Controller
                   $booking->appointment_id = $appointment->id;
                   $booking->resched = 0;
                   $booking->save();
-      
+                  if ($request->hasFile('requirements')) {
+                        $requirements = $request->requirements;
+                        foreach ($requirements as $fileName) {
+                              $timestamp_req = time();
+                              $fileName_req = $appointment->user->id . '_' . $timestamp_req . '_' . $fileName->getClientOriginalName();
+                              $fileName_orig = $fileName->getClientOriginalName();
+                              $requirementPath = $fileName->move(public_path('images/requirements'), $fileName_req);
+                              $req = new Requirement();
+                              $req->booking_id = $booking->id;
+                              $req->file_path = 'images/requirements/'.$fileName_req;
+                              $req->file_name = $fileName_orig;
+                              $req->save();
+                        }
+                  }
                   return response()->json(['success' => true, 'message' => 'Appointment booked successfully.']);
             } else {
                   return response()->json(['success' => false, 'message' => 'Appointment booking failed.']);

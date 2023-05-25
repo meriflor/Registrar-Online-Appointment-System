@@ -49,6 +49,16 @@ class formController extends Controller
             }else{
                   $form->pages = $request->pages;
             }
+
+            if ($request->has('ask_acad_year')) {
+                  // Checkbox is checked
+                  $form->acad_year = 1;
+            }
+            if ($request->has('ask_requirements')) {
+                  // Checkbox is checked
+                  $form->requirements = 1;
+            }
+
             $form = $form -> save();
             if($form){
                   return back()-> with ('success','Form created successfully');
@@ -77,7 +87,9 @@ class formController extends Controller
                   'form_avail' => $forms->form_avail,
                   'form_max_time' => $forms->form_max_time,
                   'fee_type' => $forms->fee_type,
-                  'pages' => $forms->pages
+                  'pages' => $forms->pages,
+                  'acad_year' => $forms->acad_year,
+                  'requirements' => $forms->requirements
             ]);
       }
 
@@ -100,10 +112,13 @@ class formController extends Controller
             }else{
                   $forms->pages = $request->editDocPages;
             }
+
+            $forms->acad_year = $request->editAcadYear;
+            $forms->requirements = $request->editRequirements;
             
             $forms->save();
 
-            return response()->json(['success' => true, 'message' => 'The Forms is chu2.']);
+            return response()->json(['success' => true, 'message' => 'The Forms is successfully updated.']);
       }
 
       public function delete(Request $request, $id){

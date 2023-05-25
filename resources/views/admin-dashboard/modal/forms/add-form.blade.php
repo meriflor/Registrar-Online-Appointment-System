@@ -8,6 +8,20 @@
             <div class="modal-body px-5 font-nun">
                 <form action="{{ route('create-form') }}" method="POST">
                     @csrf
+                    <div class="d-flex flex-row justify-content-end flex-wrap">
+                        <div class="d-flex flex-row">
+                            <input class="form-check-input" id="ask_acad_year" type="checkbox" value="1" name="ask_acad_year" style="border: 2px solid #131313;">
+                            <label class="form-check-label font-karma ms-2" for="ask_acad_year">
+                                Asks for Academic Year
+                            </label>
+                        </div>
+                        <div class="d-flex flex-row ms-4">
+                            <input class="form-check-input" id="ask_requirements" type="checkbox" value="1" name="ask_requirements" style="border: 2px solid #131313;">
+                            <label class="form-check-label font-karma ms-2" for="ask_requirements">
+                                Asks for Requirements
+                            </label>
+                        </div>
+                    </div>
                     <div class="mb-3">
                         <label for="addFormName" class="form-label">Form Name</label>
                         <input type="text" class="form-control" name="name"  id="addFormName"  placeholder="Type Here . . .">

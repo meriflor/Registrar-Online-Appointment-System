@@ -45,6 +45,25 @@
                         <div id="{{ $form->id }}" class="accordion-collapse collapse" data-bs-parent="#forms-list">
                             <div class="accordion-body d-flex flex-column">
                                 <div class="body-content">
+                                    <div class="d-flex flex-row p-0 my-2">
+                                        @if($form->acad_year == 1)
+                                        <div class="d-flex flex-row align-items-center">
+                                            <div class="d-flex" style="width: 20px; height: 20px;">
+                                                <img class="w-100 h-100" src="/images/checkbox.png" alt="">
+                                            </div>
+                                            <small class="ms-2 p-0" style="color: maroon;">Asks for Academic Year</small>
+                                        </div>
+                                        @endif
+                                        @if($form->requirements == 1)
+                                        <div class="d-flex flex-row align-items-center ms-5">
+                                            <div class="d-flex" style="width: 20px; height: 20px;">
+                                                <img class="w-100 h-100" src="/images/checkbox.png" alt="">
+                                            </div>
+                                            <small class="ms-2 p-0" style="color: maroon;">Asks for Requirements</small>
+                                        </div>
+                                        @endif
+                                    </div>
+                                    <hr class="font-88">
                                     <div class="row w-100 p-0 my-2">
                                         <div class="col-md-6">
                                             <p class="info-title">Availability of the Service</p>

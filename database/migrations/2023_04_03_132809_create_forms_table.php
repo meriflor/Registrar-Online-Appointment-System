@@ -26,6 +26,10 @@ class CreateFormsTable extends Migration
             $table->integer('fee'); //document fee
             $table->text('fee_type'); //fee type like per page, collected aspart of graduation fee or none
             $table->text('pages');
+
+            
+            $table->boolean('acad_year')->default(0);
+            $table->boolean('requirements')->default(0);
             $table->timestamps();
         });
     }

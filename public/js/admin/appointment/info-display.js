@@ -84,6 +84,29 @@ for (var i = 0; i < viewBtns.length; i++) {
                         "href",
                         url + "/" + data.proof_of_payment
                     );
+                    $("#viewProofOfPaymentPic").attr(
+                        "href",
+                        url + "/" + data.proof_of_payment
+                    );
+                }
+
+                var requirements = data.requirements;
+        
+                if (requirements.length > 0) {
+                    $("#requirements_info_section").show();
+                    var requirementsHtml = '';
+                    data.requirements.forEach(function (requirement) {
+                        var fileName = requirement.file_name;
+                        var baseUrl = window.location.origin; // Get the base URL
+                        var fileLink = baseUrl + '/' + requirement.file_path;
+                        requirementsHtml += '<tr class="font-nun">';
+                        requirementsHtml += '<td>' + fileName + '</td>';
+                        requirementsHtml += '<td><a href="' + fileLink + '" target="_blank" class="btn btn-primary font-nun" style="background-color: #1e1e1e; color:white; border:none;">View</a></td>';
+                        requirementsHtml += '</tr>';
+                    });
+                    $("#requirementsTable tbody").html(requirementsHtml);
+                } else {
+                    $("#requirements_info_section").hide();
                 }
 
                 $("#view-request-modal").modal("show");

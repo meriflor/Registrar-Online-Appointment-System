@@ -16,6 +16,8 @@ class Form extends Model
         'form_avail',
         'form_who_avail',
         'form_max_time',
+        'acad_year',
+        'requirements',
 
 
     ];

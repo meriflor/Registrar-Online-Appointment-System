@@ -3,7 +3,7 @@
         <div class="modal-content">
         <div class="modal-header">
             <h1 class="modal-title fs-5" id="form_name"></h1>
-            <button type="button" class="btn-close btn-close-white" data-bs-dismiss="modal" aria-label="Close"></button>
+            <button type="button" class="btn-close btn-close-white dismissButton" data-bs-dismiss="modal" aria-label="Close"></button>
         </div>
         <div class="modal-body modal-doc font-mont">
                 <input type="hidden" name="form_id" id="form_id">
@@ -11,11 +11,11 @@
                     <div class="col-md-5">
                         <div class="mb-3">
                             <label for="app_purpose">Purpose: </label>
-                            <textarea placeholder="Enter your purpose here" class="form-control form-control" id="app_purpose" name="app_purpose" style="height: 150px;" type="text" placeholder="" aria-label="default input example"></textarea>
+                            <textarea placeholder="Enter your purpose here" class="form-control" id="app_purpose" name="app_purpose" style="height: 150px;" type="text" placeholder="" aria-label="default input example"></textarea>
                         </div>
                         <div class="mb-3" id="app-acad-year">
                             <label for="inputDocAcadYear">Academic Year: </label>
-                            <input class="form-control form-control" type="text" name="acad_year" id="acad_year" placeholder="Academic Year" aria-label="default input example">
+                            <input class="form-control" type="text" name="acad_year" id="acad_year" placeholder="Academic Year" aria-label="default input example">
                         </div>
                         <div class="mb-3">
                             <label for="num_copies">Number of Copy: </label>
@@ -72,7 +72,7 @@
                         <div><hr class="row my-3"></div>
                         <div id="payment_section">
                             <div class="d-flex flex-column w-100 mb-3">
-                                <p class="fs-4 font-mont font-bold">Online Payment</p>
+                                <p class="fs-4 font-mont font-bold">Payment Method</p>
                                 <div>
                                     <input type="radio" id="walk-in" name="payment_method" value="Walk-in">
                                     <label for="walk-in">Walk-in</label>
@@ -83,8 +83,6 @@
                                 </div>
                             </div>
                         </div>
-                        
-                        
                         <div class="row mb-3" id="gcash-sect">
                             <div class="notice-box p-1 mb-2">
                                 <p class="m-0"><b>Document Fee: </b><span id="doc_fee"></span></p>
@@ -99,23 +97,15 @@
                                 <label for="proof_of_payment" class="form-label">Upload the picture or screenshot of the proof of payment.</label>
                                 <input class="form-control" type="file" id="proof_of_payment" name="proof_of_payment" accept=".jpg,.png,.jpeg,.svg">
                             </div>
-                            <div class="d-flex flex-column w-100 mb-3">
-                                <br>
-                                <p class="fs-4 font-mont font-bold">Upload Requirements</p>
-                                <form>
-                                    <div class="mb-3">
-                                        <label for="inputRequirements" class="form-label">Requirements</label>
-                                        <div class="input-group">
-                                            <input type="file" class="form-control" id="inputRequirement1" name="requirement1">
-                                            <button class="btn btn-outline-secondary btn-add-requirement" type="button" data-requirement-id="1">Add</button>
-                                        </div>
-                                        <div id="inputRequirementsContainer"></div>
-                                    </div>
-                                </form>
+                            <div id="requirements_section" class="mt-3">
+                                <div class="d-flex flex-column w-100 mb-3">
+                                    <p class="fs-4 font-mont font-bold">Upload Requirements</p>
+                                    <label for="inputRequirements" class="form-label">Requirements</label>
+                                    <input type="file" class="form-control" id="inputRequirements" name="requirements[]" multiple accept=".doc,.docx,.pdf,.jpg,.png,.jpeg,.svg">
+                                    <div id="selectedFiles" class="p-3" style="-webkit-text-stroke-width: medium;"></div>
+                                </div>
                             </div>
                         </div>
-
-
                     </div>
                     <div class="col-md-7">
                         <div class="d-flex flex-row flex-wrap">
@@ -140,7 +130,7 @@
             
         </div>
         <div class="modal-footer">
-            <button type="button" class="btn btn-appoint" data-bs-dismiss="modal">Close</button>
+            <button type="button" id="dismissButton" class="btn btn-appoint dismissButton" data-bs-dismiss="modal">Close</button>
             <button type="button" id="proceedButton" class="btn btn-appoint">Proceed</button>
         </div>
         </div>
@@ -148,23 +138,12 @@
 </div>
 
 <script>
-    $(document).ready(function() {
-      var requirementCounter = 1;
-    
-      // Add new requirement
-      $(".btn-add-requirement").click(function() {
-        requirementCounter++;
-        var newRequirement = '<div class="input-group mt-2" id="requirement' + requirementCounter + '">';
-        newRequirement += '<input type="file" class="form-control" name="requirement' + requirementCounter + '">';
-        newRequirement += '<button class="btn btn-outline-secondary btn-delete-requirement" type="button" data-requirement-id="' + requirementCounter + '">Delete</button>';
-        newRequirement += '</div>';
-        $("#inputRequirementsContainer").append(newRequirement);
-      });
-    
-      // Delete requirement
-      $(document).on("click", ".btn-delete-requirement", function() {
-        var requirementId = $(this).data("requirement-id");
-        $("#requirement" + requirementId).remove();
-      });
+    $('#inputRequirements').on('change', function() {
+        var files = $(this)[0].files;
+        var selectedFiles = '';
+        for (var i = 0; i < files.length; i++) {
+            selectedFiles += files[i].name + '<br>';
+        }
+        $('#selectedFiles').html(selectedFiles);
     });
 </script>

@@ -18,6 +18,15 @@ for (var i = 0; i < editForms.length; i++) {
                 $("#editMaxTimeClaim").text(data.form_max_time);
                 $("#editDocFeeType").val(data.fee_type);
                 $("#editDocPages").val(data.pages);
+                if(data.acad_year == 1){
+                    $("#edit_ask_acad_year").prop("checked", true);
+                }else{
+                    $("#edit_ask_acad_year").prop("checked", false);
+                }if(data.requirements == 1){
+                    $("#edit_ask_requirements").prop("checked", true);
+                }else{
+                    $("#edit_ask_requirements").prop("checked", false);
+                }
             });
     });
 }

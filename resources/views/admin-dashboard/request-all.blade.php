@@ -40,6 +40,10 @@
                                 <td>
                                     {{ $booking->appointment->payment_method }}
                                 </td>
+                                @elseif($booking->appointment->payment_method == null)
+                                <td style="background-color: #f5f5f5;">
+                                    No collection of fee
+                                </td>
                                 @else
                                 <td style="background-color: #e5f3ff;">
                                     {{ $booking->appointment->payment_method }}

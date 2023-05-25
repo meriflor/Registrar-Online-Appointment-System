@@ -9,6 +9,7 @@ use App\Models\Form;
 use App\Models\Announcement;
 use App\Models\Appointment;
 use App\Models\Booking;
+use App\Models\Requirement;
 use App\Models\RegistrarStaff;
 use Carbon\Carbon;
 use Illuminate\Support\Facades\Auth;
@@ -29,7 +30,17 @@ class adminController extends Controller
         }if ($booking->user->suffix) {
             $fullName .= ' ' . $booking->user->suffix;
         }
+        $requirements = Requirement::where('booking_id', $id)->get(['file_name', 'file_path']);
 
+        $fileNames = [];
+        foreach ($requirements as $requirement) {
+            $fileName = basename($requirement->file_name);
+            $filePath = $requirement->file_path;
+            $fileNames[] = [
+                'file_name' => $fileName,
+                'file_path' => $filePath,
+            ];
+        }
         return response()->json([
             'fullName' => $fullName,
             'address' => $booking->user->address,
@@ -60,6 +71,7 @@ class adminController extends Controller
             'payment_method' => $booking->appointment->payment_method,
             'proof_of_payment' => $booking->appointment->proof_of_payment,
             'reference_number' => $booking->appointment->reference_number,
+            'requirements' => $fileNames
         ]);
     }
 

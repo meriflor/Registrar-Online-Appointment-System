@@ -91,7 +91,13 @@
                         </div>
                     @elseif($user->account_status === "Approved")
                         <div class="w-100 d-flex flex-row justify-content-end">
-                            <button type="button" class="btn btn-appoint open-modal" style="background-color:maroon!important;" data-form-max-time="{{ $form->form_max_time }}" data-form-id="{{ $form->id }}" data-form-name="{{ $form->name }}" data-form-fee="{{ $form->fee }}">
+                            <button type="button" class="btn btn-appoint open-modal" style="background-color:maroon!important;" 
+                                    data-form-max-time="{{ $form->form_max_time }}" 
+                                    data-form-id="{{ $form->id }}" 
+                                    data-form-name="{{ $form->name }}" 
+                                    data-form-fee="{{ $form->fee }}" 
+                                    data-form-acad_year="{{ $form->acad_year }}"
+                                    data-form-requirements="{{ $form->requirements }}">
                                 Book Appoint
                             </button>
                         </div>
