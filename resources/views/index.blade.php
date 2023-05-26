@@ -73,7 +73,7 @@
             <div class="col-md-6 faq-sect">
                 <div class="faq-sect-body">
                     <div class="faq-sect-head d-flex flex-row align-items-center">
-                        <div class="msat-logo"><img src="http://127.0.0.1:8000/images/msat-logo.png" alt="MSAT logo"></div>
+                        <div class="msat-logo"><img src="/images/msat-logo.png" alt="MSAT logo"></div>
                         <div class="msat-faq title font-mont font-bold font-white mx-3">Frequently Asked Questions (FAQs)</div>
                     </div>
                     <div class="article-list d-flex flex-column mt-3">
@@ -333,7 +333,8 @@
             <div class="about-title display-text font-mont font-bold">MSU-MSAT Registrar</div>    
             <div class="about-subtitle font-este font-body">
                 <p>The Registrar's office is a crucial department in Mindanao State University - Maigo School of Arts and Trades, that plays a vital role in maintaining academic integrity. The office manages student records, ensuring that information is up-to-date and complete, and coordinates the issuance of transcripts and diplomas. Additionally, the Registrar's office is responsible for enforcing academic policies and procedures, such as grading and credit transfer, and provides guidance and support to students regarding registration and academic requirements. <br><br>
-                    The Registrar's office in Mindanao State University - Maigo School of Arts and Trades is often the main point of contact for students seeking academic assistance. They provide academic counseling and support services to students who are struggling with their coursework and ensure that students receive the support they need to succeed academically. Overall, the Registrar's office is an essential part of Mindanao State University - Maigo School of Arts and Trades as it ensures the accuracy of student records, enforces academic policies, and supports student success.</p>
+                    The Registrar's office in Mindanao State University - Maigo School of Arts and Trades is often the main point of contact for students seeking academic assistance. They provide academic counseling and support services to students who are struggling with their coursework and ensure that students receive the support they need to succeed academically. Overall, the Registrar's office is an essential part of Mindanao State University - Maigo School of Arts and Trades as it ensures the accuracy of student records, enforces academic policies, and supports student success.
+                </p>
             </div>
         </div>
         <div class="col-md-6 about-image">

@@ -5,8 +5,10 @@
             <h1 class="modal-title fs-5" id="form_name"></h1>
             <button type="button" class="btn-close btn-close-white dismissButton" data-bs-dismiss="modal" aria-label="Close"></button>
         </div>
-        <div class="modal-body modal-doc font-mont">
+        <div class="modal-body font-mont">
                 <input type="hidden" name="form_id" id="form_id">
+                <input type="hidden" name="form_acad_year" id="form_acad_year">
+                <input type="hidden" name="form_requirements" id="form_requirements">
                 <div class="row">
                     <div class="col-md-5">
                         <div class="mb-3">

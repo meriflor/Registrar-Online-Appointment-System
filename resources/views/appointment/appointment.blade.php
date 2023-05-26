@@ -24,6 +24,8 @@
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.5.1/jspdf.umd.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/html2canvas/1.3.2/html2canvas.min.js"></script>
 
+    <style>
+    </style>
 
 </head>
 <body> 
@@ -264,6 +266,7 @@
                 events:'/appointment_slots',
                 selectable:true,
                 selectHelper: true,
+                longPressDelay: 0,
                 select: function(date, jsEvent, view, event, element){
                     var events = $('#calendar').fullCalendar('clientEvents');
                     var event = events.find(e => moment(e.start).isSame(date, 'day'));
@@ -306,8 +309,6 @@
                         cell.addClass('fc-selected-date');
                         $('#app_date').text(appointment_date);
                         console.log(appointment_date + " is now your new appointment date");
-                        
-                        
                     }
                 },
                 eventRender: function(event, element) {
@@ -370,6 +371,8 @@
             modal.find('#exp_date').text(form_max_time);
             modal.find('#form-name').text(form_name);
             modal.find('#form_name').text(form_name);
+            modal.find('#form_acad_year').text(form_acad_year);
+            modal.find('#form_requirements').text(form_requirements);
             modal.find('#doc_fee').text("PHP "+form_fee+".00");
             modal.find('#form_fee_val').val(form_fee);
             modal.find('#form_id').val(form_id);
@@ -405,6 +408,8 @@
             var proof_of_payment = $('#proof_of_payment')[0].files[0];
             var reference_number = $('#reference_number').val();
             var form_fee = $('#form_fee_val').val();
+            var form_acad_year = $('#form_acad_year').val();
+            var form_requirements = $('#form_requirements').val();
 
             a_transfer = $('input[name=isATransfer]:checked').val();
             b_transfer = $('input[name=isBTransfer]:checked').val();
@@ -429,10 +434,10 @@
                 }if(payment_method === "GCash" && proof_of_payment === undefined){
                     alert('Please upload your proof of payment.');
                     return false;
-                }if(payment_method === "GCash" && files.length == 0){
-                    alert('Please upload your requirements.');
-                    return false;
                 }
+            }if(form_requirements == 1){
+                alert('Please upload your requirements.');
+                return false;
             }
 
             if(appointment_date === undefined || appointment_date === null){

@@ -1,5 +1,5 @@
 .homepage-cover {
-    background-image: url("http://127.0.0.1:8000/images/registrar05.jpg");
+    background-image: url("/images/registrar05.jpg");
     background-position: center;
     background-size: cover;
     position: relative;
@@ -111,7 +111,7 @@ p {
     height: auto;
 }
 .about-image {
-    background-image: url("http://127.0.0.1:8000/images/registrar02.jpg");
+    background-image: url("/images/registrar02.jpg");
     background-position: center;
     background-size: cover;
     position: relative;
@@ -139,7 +139,8 @@ p {
     padding: 5%;
     background-color: #1e1e1e;
     box-shadow: 0 0 10px rgba(0, 0, 0, 0.5);
-}.border-custom{
+}
+.border-custom {
     height: 150px;
     width: 0;
     border: 1px solid white;
