@@ -122,7 +122,7 @@
                                 </div>
                                 <div class="col-md-5">
                                     <input type="password" class="form-control settings-input" id="add_admin_pass" name="add_admin_pass" placeholder="Password" required>
-                                    <span class="text-danger">@error('add_admin_pass'){{ $message }}@enderror</span>
+                                    <span class="text-danger" id="pass_admin_error">@error('add_admin_pass'){{ $message }}@enderror</span>
                                 </div>
                             </div>
                             <div class="mb-2 d-flex flex-row row align-items-center">
@@ -187,7 +187,7 @@
                                 </div>
                                 <div class="col-md-5">
                                     <input type="password" class="form-control settings-input" id="edit_admin_pass" name="edit_admin_pass" placeholder="Password" autocomplete="off">
-                                    <span class="text-danger">@error('edit_admin_pass'){{ $message }}@enderror</span>
+                                    <span class="text-danger" id="edit_pass_admin_error">@error('edit_admin_pass'){{ $message }}@enderror</span>
                                 </div>
                             </div>
                             <div class="mb-2 d-flex flex-row row align-items-center">
@@ -203,7 +203,7 @@
                                 </div>
                             </div>
                             <div class="mt-2 d-flex flex-row justify-content-end">
-                                <button class="btn w-auto settings-btn" type="submit" id="add_admin_account_submit">
+                                <button class="btn w-auto settings-btn" type="submit" id="edit_admin_account_submit">
                                     Save
                                 </button>
                             </div>
@@ -360,6 +360,7 @@
                 @endforeach
             </div>
         </div>
+        <!-- todo hompeage-content images -->
         <div id="settings_homepage-content" class="font-nun">
             <div class="d-flex flex-column" style="padding: 0 10%;">
                 <div class="d-flex flex-row align-items-center" style="flex: 1;">
@@ -370,22 +371,29 @@
                     <h5 class="font-bold">Website Main Cover</h5>
                     <div class="d-flex flex-row flex-wrap">
                         <div class="settings-web-img me-4">
-                            <img src="/images/registrar01.jpg" alt="homepage cover">
+                            @foreach($web_image as $image)
+                            @if($image->id == 1)
+                            <img src="{{ url('').'/'.$image->file_name }}" alt="homepage cover">
+                            @endif
+                            @endforeach
                         </div>
                         <div class="d-flex flex-column justify-content-end" style="flex: 1;">
                             <small class="p-0 m-0 mb-3 w-75"><i>
                                 For optimal image quality, we recommend using or uploading images with a minimum size of 1920 x 1080 pixels for better resolution.
                             </i></small>
-                            <div class="d-flex flex-row justify-content-start flex-wrap">
-                                <div class="mb-2 d-flex flex-row align-items-center">
-                                    <input class="form-control" id="upload_staff_img" type="file" accept=".jpg,.png,.jpeg,.svg" required>
+                            <form action="{{ route('updateImage', ['id' => 1]) }}" method="POST" enctype="multipart/form-data">
+                                @csrf
+                                <div class="d-flex flex-row justify-content-start flex-wrap">
+                                    <div class="mb-2 d-flex flex-row align-items-center">
+                                        <input class="form-control" id="upload_web_image" name="upload_web_image" type="file" accept=".jpg,.png,.jpeg,.svg" required>
+                                    </div>
                                 </div>
-                            </div>
-                            <div class="mt-2 d-flex flex-row justify-content-start">
-                                <button class="btn w-auto settings-btn" type="submit" id="add_admin_staff_submit">
-                                    Save Changes
-                                </button>
-                            </div>
+                                <div class="mt-2 d-flex flex-row justify-content-start">
+                                    <button class="btn w-auto settings-btn" type="submit" id="add_admin_staff_submit">
+                                        Save Changes
+                                    </button>
+                                </div>
+                            </form>
                         </div>
                     </div>
                 </div>
@@ -394,22 +402,29 @@
                     <h5 class="font-bold">FAQ and Announcement Page Header Cover</h5>
                     <div class="d-flex flex-row flex-wrap">
                         <div class="settings-web-img me-4">
-                            <img src="/images/registrar.png" alt="homepage cover">
+                            @foreach($web_image as $image)
+                            @if($image->id == 2)
+                            <img src="{{ url('').'/'.$image->file_name }}" alt="FAQs and Announcement">
+                            @endif
+                            @endforeach
                         </div>
                         <div class="d-flex flex-column justify-content-end" style="flex: 1;">
                             <small class="p-0 m-0 mb-3 w-75"><i>
                                 For optimal image quality, we recommend using or uploading images with a minimum size of 1920 x 1080 pixels for better resolution.
                             </i></small>
-                            <div class="d-flex flex-row justify-content-start flex-wrap">
-                                <div class="mb-2 d-flex flex-row align-items-center">
-                                    <input class="form-control" id="upload_staff_img" type="file" accept=".jpg,.png,.jpeg,.svg" required>
+                            <form action="{{ route('updateImage', ['id' => 2]) }}" method="POST" enctype="multipart/form-data">
+                                @csrf
+                                <div class="d-flex flex-row justify-content-start flex-wrap">
+                                    <div class="mb-2 d-flex flex-row align-items-center">
+                                        <input class="form-control" id="upload_web_image" name="upload_web_image" type="file" accept=".jpg,.png,.jpeg,.svg" required>
+                                    </div>
                                 </div>
-                            </div>
-                            <div class="mt-2 d-flex flex-row justify-content-start">
-                                <button class="btn w-auto settings-btn" type="submit" id="add_admin_staff_submit">
-                                    Save Changes
-                                </button>
-                            </div>
+                                <div class="mt-2 d-flex flex-row justify-content-start">
+                                    <button class="btn w-auto settings-btn" type="submit" id="add_admin_staff_submit">
+                                        Save Changes
+                                    </button>
+                                </div>
+                            </form>
                         </div>
                     </div>
                 </div>
@@ -418,22 +433,29 @@
                     <h5 class="font-bold">About Section Image</h5>
                     <div class="d-flex flex-row flex-wrap">
                         <div class="settings-web-img me-4">
-                            <img src="/images/registrar02.jpg" alt="homepage cover">
+                            @foreach($web_image as $image)
+                            @if($image->id == 3)
+                            <img src="{{ url('').'/'.$image->file_name }}" alt="homepage cover">
+                            @endif
+                            @endforeach
                         </div>
                         <div class="d-flex flex-column justify-content-end" style="flex: 1;">
                             <small class="p-0 m-0 mb-3 w-75"><i>
                                 For optimal image quality, we recommend using or uploading images with a minimum size of 1920 x 1080 pixels for better resolution.
                             </i></small>
-                            <div class="d-flex flex-row justify-content-start flex-wrap">
-                                <div class="mb-2 d-flex flex-row align-items-center">
-                                    <input class="form-control" id="upload_staff_img" type="file" accept=".jpg,.png,.jpeg,.svg" required>
+                            <form action="{{ route('updateImage', ['id' => 3]) }}" method="POST" enctype="multipart/form-data">
+                                @csrf
+                                <div class="d-flex flex-row justify-content-start flex-wrap">
+                                    <div class="mb-2 d-flex flex-row align-items-center">
+                                        <input class="form-control" id="upload_web_image" name="upload_web_image" type="file" accept=".jpg,.png,.jpeg,.svg" required>
+                                    </div>
                                 </div>
-                            </div>
-                            <div class="mt-2 d-flex flex-row justify-content-start">
-                                <button class="btn w-auto settings-btn" type="submit" id="add_admin_staff_submit">
-                                    Save Changes
-                                </button>
-                            </div>
+                                <div class="mt-2 d-flex flex-row justify-content-start">
+                                    <button class="btn w-auto settings-btn" type="submit" id="add_admin_staff_submit">
+                                        Save Changes
+                                    </button>
+                                </div>
+                            </form>
                         </div>
                     </div>
                 </div>

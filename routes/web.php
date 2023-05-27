@@ -16,6 +16,7 @@ use App\Http\Controllers\formController;
 use App\Http\Controllers\MessageController;
 use App\Http\Controllers\UserController;
 use App\Http\Controllers\SettingsController;
+use App\Http\Controllers\WebsiteImageContentController;
 use App\Http\Middleware\AlreadyLoggedIn;
 use App\Http\Middleware\SubAdminView;
 use App\Http\Controllers\AppointmentSlotController;
@@ -64,6 +65,7 @@ Route::middleware([AuthCheck::class, AdminCheck::class])->prefix('dashboard-admi
     Route::get('/user/{id}/pending',[adminController::class,'pendingUserRegistration'])->name('user-pending'); 
     Route::get('/user-pending-count', [adminController::class,'pendingUserCount'])->name('user-pending-count');
     Route::get('/messages/{id}', [MessageController::class, 'messageViewRequest']);
+    Route::post('/settings/update-image/{id}', [WebsiteImageContentController::class, 'updateImage'])->name('updateImage');
     
     //Admin Pages
     Route::any('config',[formController::class,'viewForm'])->name('config');
