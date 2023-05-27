@@ -3,7 +3,7 @@
 @section('content')
     <!-- HOMEPAGE SECTION -->
 
-    <div class="homepage-cover" style="background-image: url('{{ $about_page_file ? asset($main_page_file) : '/images/registrar05.jpg' }}');">
+    <div class="homepage-cover" style="background-image: url('{{ $main_page_file ? asset($main_page_file) : '/images/registrar05.jpg' }}');">
         <div class="row w-100">
             <nav class="navbar navbar-expand-md navbar-dark" id="usernav">
                 <div class="container-fluid">
@@ -71,7 +71,7 @@
 
     <div class="row w-100 faq-login-sect" id="login-register">
         <div class="row w-100 faq-login-card p-0 d-flex align-items-center">
-            <div class="col-md-6 faq-sect"  style="background-image: url('{{ asset($faq_ann_page_file) }}');">
+            <div class="col-md-6 faq-sect" style="background-image: url('{{ $faq_ann_page_file ? asset($faq_ann_page_file) : '/images/registrar05.jpg' }}');">
                 <div class="faq-sect-body">
                     <div class="faq-sect-head d-flex flex-row align-items-center">
                         <div class="msat-logo"><img src="/images/msat-logo.png" alt="MSAT logo"></div>
@@ -329,7 +329,7 @@
                 </p>
             </div>
         </div>
-        <div class="col-md-6 about-image"  style="background-image: url('{{ asset($about_page_file) }}');">
+        <div class="col-md-6 about-image" style="background-image: url('{{ $about_page_file ? asset($about_page_file) : '/images/registrar05.jpg' }}');">
         </div>
     </div>
 
