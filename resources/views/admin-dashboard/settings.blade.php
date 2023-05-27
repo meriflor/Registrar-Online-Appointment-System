@@ -90,7 +90,7 @@
         <div id="settings_admin-add" class="font-nun">
             <div class="d-flex flex-column" style="padding: 0 10%;">
                 <div class="d-flex flex-row align-items-center" style="flex: 1;">
-                    <h5 class="m-0 font-bold me-2">Admin Accounts</h5>
+                    <h5 class="m-0 font-bold me-2">Standard User</h5>
                     <hr class="m-0" style="flex: 1;">
                 </div>
                 <div class="d-flex flex-row px-5 justify-content-end">
