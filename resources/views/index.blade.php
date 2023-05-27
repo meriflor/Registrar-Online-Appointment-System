@@ -2,7 +2,8 @@
 
 @section('content')
     <!-- HOMEPAGE SECTION -->
-    <div class="homepage-cover">
+
+    <div class="homepage-cover" style="background-image: url('{{ $about_page_file ? asset($main_page_file) : '/images/registrar05.jpg' }}');">
         <div class="row w-100">
             <nav class="navbar navbar-expand-md navbar-dark" id="usernav">
                 <div class="container-fluid">
@@ -70,7 +71,7 @@
 
     <div class="row w-100 faq-login-sect" id="login-register">
         <div class="row w-100 faq-login-card p-0 d-flex align-items-center">
-            <div class="col-md-6 faq-sect">
+            <div class="col-md-6 faq-sect"  style="background-image: url('{{ asset($faq_ann_page_file) }}');">
                 <div class="faq-sect-body">
                     <div class="faq-sect-head d-flex flex-row align-items-center">
                         <div class="msat-logo"><img src="/images/msat-logo.png" alt="MSAT logo"></div>
@@ -174,7 +175,7 @@
                             <div class="col-lg-6">
                                 <label for="inputCpNo">Cellphone No.</label>
                                 <input type="text" class="form-control" name="cell_no" id="inputCpNo" placeholder="Cellphone No." required>
-                                <span class="text-danger">@error('cell_no'){{ $message }} @enderror </span>
+                                <span class="text-danger" id="phoneNumberError">@error('cell_no'){{ $message }} @enderror </span>
                             </div>
                             <div class="col-lg-6">
                                 <label for="inputEmail">Email</label>
@@ -215,22 +216,6 @@
                             </div>
                             @if(isset($courses) && count($courses) > 0)
                             <div class="col-lg-9">
-                                {{-- <label for="inputCourse">Course</label>
-                                <select class="form-control" name="course" value="{{ old('course') }}" id="inputCourse" required>
-                                    <option value="">Choose...</option>
-                                    <option value="Secondary High School / Senior High School">Secondary ( High School / Senior High School )</option>
-                                    <option value="Bachelor of Science in Computer Science">Bachelor of Science in Computer Science</option>
-                                    <option value="Bachelor of Technology and Livelihood Education">Bachelor of Technology and Livelihood Education</option>
-                                    <option value="Bachelor of Technical-Vocational Teacher Education">Bachelor of Technical-Vocational Teacher Education</option>
-                                    <option value="Bachelor of Science in Hospitality Management">Bachelor of Science in Hospitality Management</option>
-                                    <option value="Bachelor of Industrial Technology Major in Drafting">Bachelor of Industrial Technology Major in Drafting</option>
-                                    <option value="Bachelor of Industrial Technology Major in Garments Fashion and Design">Bachelor of Industrial Technology Major in Garments Fashion and Design</option>
-                                    <option value="Bachelor of Industrial Technology Major in Mechanical Technology">Bachelor of Industrial Technology Major in Mechanical Technology</option>
-                                    <option value="Bachelor of Industrial  Technology Major in Food and Service Management">Bachelor of Industrial  Technology Major in Food and Service Management</option>
-                                    <option value="Bachelor of Industrial Technology Major in Electrical Technology">Bachelor of Industrial Technology Major in Electrical Technology</option>
-                                    <option value="Bachelor of Industrial Technology Major in Automotive Technology">Bachelor of Industrial Technology Major in Automotive Technology</option>
-                                  </select>
-                                  <span class="text-danger">@error('course'){{ $message }} @enderror </span> --}}
                                   <label for="inputCourse">Course</label>
                                     <select class="form-control" id="inputCourse" name="course" required>
                                         <option value="">Choose..</option>
@@ -304,7 +289,14 @@
                             <div class="col-lg-12">
                                 <label for="inputPassword">Password</label>
                                 <input type="password" name="password" class="form-control" id="inputPassword" placeholder="Password" required>
-                                <span class="text-danger">@error('password'){{ $message }} @enderror </span>
+                                <span class="text-danger" id="passwordError"></span>
+                            </div>
+                        </div>
+                        <div class="form-group row mt-3">
+                            <div class="col-lg-12">
+                                <label for="inputPassword">Retype-Password</label>
+                                <input type="password" id="confirmPassword"  class="form-control" name="confirmPassword" required>
+                                <span class="text-danger" id="confirm_passwordError"></span>
                             </div>
                         </div>
                         <div class="form-group d-flex flex-row justify-content-center mt-3">
@@ -316,7 +308,7 @@
                             </div>
                         </div>
                         <div class="row d-flex flex-row justify-content-end my-3">
-                            <button type="submit" class="btn btn-login-register font-mont font-body">Register</button>
+                            <button type="submit" class="btn btn-login-register font-mont font-body" id="register_btn">Register</button>
                         </div>
                     </form>
                     <div class="register-sect-footer d-flex flex-row justify-content-center font-mont font-body">
@@ -337,7 +329,7 @@
                 </p>
             </div>
         </div>
-        <div class="col-md-6 about-image">
+        <div class="col-md-6 about-image"  style="background-image: url('{{ asset($about_page_file) }}');">
         </div>
     </div>
 
@@ -362,6 +354,70 @@
     @include('layout.modal.contact-us')
 
     <script>
+        $(document).ready(function() {
+            // Add an event listener to the password field
+            $('#inputPassword').keyup(function() {
+                var password = $(this).val();
+                var hasUppercase = /[A-Z]/.test(password); // Check for uppercase letter
+                var hasNumber = /\d/.test(password); // Check for number
+
+                // Check password length and display appropriate error message
+                if (password.length < 8 ){
+                    $('#passwordError').text('The password must be at least 8 characters.').show();
+                    $('#register_btn').hide();
+                } else if (!hasUppercase) {
+                    $('#passwordError').text('Your password must contain an uppercase letter.').show();
+                    $('#register_btn').hide();
+                } else if (!hasNumber) {
+                    $('#passwordError').text('Your password must contain a number.').show();
+                    $('#register_btn').hide();
+                } else {
+                // Clear error message and show submit button
+                    $('#passwordError').hide();
+                    $('#register_btn').show();
+                }
+            });
+            // Add event listeners to the password fields
+            $('#inputPassword, #confirmPassword').keyup(function() {
+                var password = $('#inputPassword').val();
+                var confirmPassword = $('#confirmPassword').val();
+
+                // Check if the passwords match
+                if (password !== confirmPassword) {
+                $('#confirm_passwordError').text('Passwords do not match.').show();
+                $('#register_btn').hide();
+                } else {
+                // Clear error message and show submit button
+                $('#confirm_passwordError').hide();
+                $('#register_btn').show();
+                }
+            });
+              // Add an event listener to the phone number field
+            $('#inputCpNo').keyup(function() {
+                var phoneNumber = $(this).val();
+
+                // Check if the phone number contains non-digit characters
+                if (!/^\d+$/.test(phoneNumber)) {
+                $('#phoneNumberError').text('The phone number must be a number or digit.').show();
+                $('#register_btn').hide();
+                }
+                // Check if the phone number has exactly 11 digits
+                else if (phoneNumber.length !== 11) {
+                $('#phoneNumberError').text('The phone number must be 11 digits.').show();
+                $('#register_btn').hide();
+                }
+                // Check if the phone number starts with 09
+                else if (phoneNumber.substr(0, 2) !== '09') {
+                $('#phoneNumberError').text('The phone number must start with "09".').show();
+                $('#register_btn').hide();
+                } else {
+                // Clear error message and show submit button
+                $('#phoneNumberError').hide();
+                $('#register_btn').show();
+                }
+            });
+        });
+
         var courseSelect = document.getElementById("inputCourse");
         var otherCourseInput = document.getElementById("otherCourseInput");
     
@@ -372,8 +428,7 @@
                 otherCourseInput.style.display = "none";
             }
         });
-    </script>
-    <script>
+        
         document.getElementById("inputAcadYear").addEventListener("change", function() {
             var otherYearInput = document.getElementById("inputOtherYear");
             if (this.value === "other") {
@@ -384,8 +439,7 @@
                 otherYearInput.removeAttribute("required");
             }
         });
-    </script>
-    <script>
+        
         document.getElementById("inputGradYearSelect").addEventListener("change", function() {
             var otherYearInput = document.getElementById("inputGradYearInput");
             if (this.value === "other") {

@@ -10,6 +10,7 @@ use App\Models\Form;
 use App\Models\Appointment;
 use App\Models\Course;
 use App\Models\Booking;
+use App\Models\WebsiteImageContent;
 use Illuminate\Support\Facades\Auth;
 use GrahamCampbell\ResultType\Success;
 use Illuminate\Support\Facades\Hash;
@@ -20,9 +21,24 @@ class announcementController extends Controller
 {
     public function showAnnouncement(Request $request)
     {
+        $main_page_file = null;
+        $faq_ann_page_file = null;
+        $about_page_file = null;
+
         $courses = Course::all();
         $announcements = Announcement::orderBy('created_at', 'desc')->take(2)->get();
-        return view('index', compact('announcements','courses'));
+        $main_page = WebsiteImageContent::all();
+        foreach ($main_page as $image) {
+            if ($image->id == 1) {
+                $main_page_file = $image->file_name;
+            } elseif ($image->id == 2) {
+                $faq_ann_page_file = $image->file_name;
+            } elseif ($image->id == 3) {
+                $about_page_file = $image->file_name;
+            }
+        }
+        
+        return view('index', compact('announcements','courses', 'main_page_file', 'faq_ann_page_file', 'about_page_file'));
     }
 
     public function viewAnnouncementAdmin(){

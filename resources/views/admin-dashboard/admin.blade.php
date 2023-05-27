@@ -133,6 +133,7 @@
         <script src="{{ asset('js/admin/faq-config.js') }}"></script>
 
         <script src="{{ asset('js/subadmin-cashier/approve-incomplete.js') }}"></script>
+        <script src="{{ asset('js/admin/functions/password-validation.js') }}"></script>
 
         <script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.24.0/moment.min.js"></script>
         <script src="https://cdnjs.cloudflare.com/ajax/libs/fullcalendar/3.10.2/fullcalendar.min.js"></script>

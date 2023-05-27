@@ -11,6 +11,7 @@ use App\Models\Appointment;
 use App\Models\Booking;
 use App\Models\Requirement;
 use App\Models\RegistrarStaff;
+use App\Models\WebsiteImageContent;
 use Carbon\Carbon;
 use Illuminate\Support\Facades\Auth;
 use GrahamCampbell\ResultType\Success;
@@ -254,13 +255,14 @@ class adminController extends Controller
         $admin_email = $user->email;
         $admin_cell_no = $user->cell_no;
         $admin_id = $user->id;
+        $web_image = WebsiteImageContent::all();
 
         $admins = User::where('role', 2)
                         ->orWhere('role', 3)
                         ->orderBy('created_at', 'ASC')
                         ->get();
 
-        return view('admin-dashboard.settings', compact('staffs', 'admin_email', 'admin_cell_no', 'admin_id', 'admins'));
+        return view('admin-dashboard.settings', compact('staffs', 'admin_email', 'admin_cell_no', 'admin_id', 'admins', 'web_image'));
     }
 
     public function viewUserRegistration(Request $request){
