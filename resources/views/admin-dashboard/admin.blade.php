@@ -138,6 +138,7 @@
         <script src="https://cdnjs.cloudflare.com/ajax/libs/fullcalendar/3.10.2/fullcalendar.min.js"></script>
         <script src="https://cdn.datatables.net/1.13.4/js/jquery.dataTables.js"></script>
         <script src="https://cdn.datatables.net/responsive/2.4.1/js/dataTables.responsive.min.js"></script>
+        <script src="https://cdn.jsdelivr.net/npm/file-saver@2.0.5/dist/FileSaver.min.js"></script>
 
         <script>        
             $.ajaxSetup({
@@ -328,6 +329,7 @@
         <script>
             //sorting datable
             $(document).ready(function() {
+                // $('#appointmentRecords').DataTable();
                 $('#appointmentRecords').DataTable();
                 $('#appointmentRequests').DataTable();
                 $('#claimedDocuments').DataTable();
@@ -369,20 +371,60 @@
                 });
             } );
 
-            //export appointment records to excel
-            $('#export-app-records').on('click', function() {
-                // Get HTML table data
+            // export appointment records to excel
+            // $('#export-app-records').on('click', function() {
+            //     // Get HTML table data
+            //     var table = document.getElementById("appointmentRecords");
+            //     // Remove the last column from the table
+            //     var rows = table.rows;
+            //     for (var i = 0; i < rows.length; i++) {
+            //         rows[i].deleteCell(-1);
+            //     }
+            //     // Convert table data to workbook
+            //     var wb = XLSX.utils.table_to_book(table);
+            //     // Save data to Excel file
+            //     XLSX.writeFile(wb, "appointment-records.xlsx");
+            // });
+            // $('#export-app-records').on('click', function () {
+            //     var table = document.getElementById("appointmentRecords");
+            //     var wb = XLSX.utils.table_to_book(table, { sheet: "Sheet 1", raw: true });
+            //     var csv = XLSX.utils.sheet_to_csv(wb.Sheets["Sheet 1"]);
+            //     var blob = new Blob([csv], { type: "text/csv;charset=utf-8" });
+            //     saveAs(blob, "appointment-records.csv");
+            // });
+            $('#export-app-records').on('click', function () {
                 var table = document.getElementById("appointmentRecords");
-                // Remove the last column from the table
-                var rows = table.rows;
-                for (var i = 0; i < rows.length; i++) {
-                    rows[i].deleteCell(-1);
+
+                // Clone the table and modify the date format
+                var clonedTable = table.cloneNode(true);
+                var rows = clonedTable.getElementsByTagName("tr");
+                for (var i = 1; i < rows.length; i++) {
+                    var dateCell = rows[i].getElementsByTagName("td")[5]; // Assuming the date is in the 6th column (index 5)
+                    var dateString = dateCell.innerText;
+                    var date = new Date(dateString);
+                    var formattedDate = formatDate(date); // Format the date using the desired format
+                    dateCell.innerText = formattedDate;
                 }
-                // Convert table data to workbook
-                var wb = XLSX.utils.table_to_book(table);
-                // Save data to Excel file
-                XLSX.writeFile(wb, "appointment-records.xlsx");
+
+                // Remove the last column (View column) from the cloned table
+                var headerRow = clonedTable.getElementsByTagName("tr")[0];
+                headerRow.removeChild(headerRow.lastElementChild);
+                for (var i = 1; i < rows.length; i++) {
+                    rows[i].removeChild(rows[i].lastElementChild);
+                }
+
+                // Convert the modified table to workbook and export as CSV
+                var wb = XLSX.utils.table_to_book(clonedTable, { sheet: "Sheet 1", raw: true });
+                var csv = XLSX.utils.sheet_to_csv(wb.Sheets["Sheet 1"]);
+                var blob = new Blob([csv], { type: "text/csv;charset=utf-8" });
+                saveAs(blob, "appointment-records.csv");
             });
+
+            // Function to format the date as 'M d, Y h:i A'
+            function formatDate(date) {
+                var options = { month: 'short', day: 'numeric', year: 'numeric', hour: 'numeric', minute: 'numeric', hour12: true };
+                return date.toLocaleDateString('en-US', options);
+            }
 
             const backToTopBtn = document.querySelector("#back-to-top-btn");
 
