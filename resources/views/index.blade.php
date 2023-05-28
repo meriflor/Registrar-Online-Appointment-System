@@ -214,24 +214,24 @@
                                 </select>
                                 <span class="text-danger">@error('gender'){{ $message }} @enderror </span>
                             </div>
-                            @if(isset($courses) && count($courses) > 0)
                             <div class="col-lg-9">
                                   <label for="inputCourse">Course</label>
                                     <select class="form-control" id="inputCourse" name="course" required>
                                         <option value="">Choose..</option>
+                                        @if(count($courses) > 0)
                                         @foreach($courses as $course)
                                             <option value="{{ $course->course_name }}">{{ $course->course_name }}</option>
                                         @endforeach
                                         <option value="other">Other (please specify)...</option>
+                                        @else
+                                        <option value="other">Other (please specify)...</option>
+                                        @endif
                                     </select>
                                     <div id="otherCourseInput" style="display:none;">
                                         <label for="inputOtherCourse">Other Course</label>
                                         <input type="text" class="form-control" id="inputOtherCourse" name="course_name">
                                     </div>
                             </div>
-                            @else
-                                <p>No courses found.</p>
-                            @endif
                         </div>
                         <div class="form-group row mt-3">
                             <div class="col-lg-3">
@@ -256,7 +256,7 @@
                                         <option value="">Select Academic Year</option>
                                         <?php
                                         $currentYear = date("Y");
-                                        for ($year = 2001; $year <= $currentYear + 1; $year++) {
+                                        for ($year = 1951; $year <= $currentYear + 1; $year++) {
                                             $nextYear = $year + 1;
                                             $selected = ($year == $currentYear) ? "selected" : "";
                                             echo "<option value=\"$year-$nextYear\" $selected>$year-$nextYear</option>";
@@ -264,7 +264,10 @@
                                         ?>
                                           <option value="other">Other</option>
                                     </select>
-                                    <input type="text" name="other_year" class="form-control" id="inputOtherYear" placeholder="Enter Custom Year" style="display: none;">
+                                    <div id="inputOtherYear" style="display: none;">
+                                        <label for="inputOtherYear">Academic Year</label>
+                                        <input type="text" name="input_other_acad_year" class="form-control" id="inputOtherYear" placeholder="ex. YYYY - YYYY">
+                                    </div>
                                 </div>
                                 
                                 <div id="reg-input-gradYear" style="display:block;">
@@ -281,7 +284,10 @@
                                         ?>
                                         <option value="other">Other</option>
                                     </select>
-                                    <input type="text" name="other_year" class="form-control" id="inputGradYearInput" placeholder="Enter Custom Year" style="display: none;">
+                                    <div id="inputGradYearInput" style="display: none;">
+                                        <label for="inputOtherYear">Year Graduated</label>
+                                        <input type="text" name="input_other_grad_year" class="form-control" id="inputGradYearInput" placeholder="ex. YYYY - YYYY">
+                                    </div>
                                 </div>
                             </div>
                         </div>

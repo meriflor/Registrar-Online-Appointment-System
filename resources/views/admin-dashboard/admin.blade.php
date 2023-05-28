@@ -26,6 +26,7 @@
         <link rel="stylesheet" href="{{ asset('css/admin/settings.css') }}" />
         <link rel="stylesheet" href="{{ asset('css/defaultcss/pagination.css') }}" />
         <link rel="stylesheet" href="{{ asset('css/defaultcss/calendar.css') }}" />
+        <link rel="stylesheet" href="{{ asset('css/defaultcss/scrollbar.css') }}">
         <link
             href="https://cdnjs.cloudflare.com/ajax/libs/fullcalendar/3.10.2/fullcalendar.min.css"
             rel="stylesheet"

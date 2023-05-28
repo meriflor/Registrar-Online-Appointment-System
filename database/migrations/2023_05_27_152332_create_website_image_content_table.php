@@ -6,11 +6,7 @@ use Illuminate\Support\Facades\Schema;
 
 class CreateWebsiteImageContentTable extends Migration
 {
-    /**
-     * Run the migrations.
-     *
-     * @return void
-     */
+    
     public function up()
     {
         Schema::create('website_image_content', function (Blueprint $table) {
@@ -21,11 +17,6 @@ class CreateWebsiteImageContentTable extends Migration
         });
     }
 
-    /**
-     * Reverse the migrations.
-     *
-     * @return void
-     */
     public function down()
     {
         Schema::dropIfExists('website_image_content');
