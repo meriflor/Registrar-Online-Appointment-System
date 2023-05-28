@@ -57,9 +57,9 @@
                                     <li class="nav-item">
                                         <a href="/dashboard" class="nav-link {{ Request::is('dashboard') ? 'active' : '' }}">Dashboard</a>
                                     </li>
-                                    <li class="nav-item">
+                                    {{-- <li class="nav-item">
                                         <a href="/faqs" class="nav-link">FAQs</a>
-                                    </li> 
+                                    </li>  --}}
                                     <li class="nav-item">
                                         <a href="/appointment-records" class="nav-link {{ Request::is('appointment-records') ? 'active' : '' }}">Appointments</a>
                                     </li>
