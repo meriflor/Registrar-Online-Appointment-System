@@ -55,10 +55,22 @@ class CustomAuthController extends Controller
             $user->status = $request->input('status');
             if ($user->status === "High School Graduate (Before K-12)" || $user->status === "Senior High School Graduate" || $user->status === "College Graduate" || $user->status === "Master's Degree Graduate") {
                   $user->acadYear = null;
-                  $user->gradYear = $request->input('grad_year');
+                  // $user->gradYear = $request->input('grad_year');
+                  $gradYear = $request->input('grad_year');
+                  if($gradYear === "other"){
+                        $user->gradYear = $request->input('input_other_grad_year');
+                  }else{
+                        $user->gradYear = $gradYear;
+                  }
             } else {
-                  $user->acadYear = $request->input('acad_year');
+                  // $user->acadYear = $request->input('acad_year');
+                  $acadYear = $request->input('acad_year');
                   $user->gradYear = null;
+                  if($acadYear === "other"){
+                        $user->acadYear = $request->input('input_other_acad_year');
+                  }else{
+                        $user->acadYear = $acadYear;
+                  }
             }
             $user->gender = $request->input('gender');
             // $user->course = $request->input('course');

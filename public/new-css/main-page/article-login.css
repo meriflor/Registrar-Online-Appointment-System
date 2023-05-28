@@ -74,6 +74,8 @@ img {
 .btn-login-register:hover {
     color: white;
     background-color: maroon;
+}.btn-login-register:active {
+    border: 3px solid maroon !important;
 }
 .forgot-pass-link {
     float: right;

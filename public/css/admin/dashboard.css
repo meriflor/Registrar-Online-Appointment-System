@@ -72,27 +72,27 @@ body {
 }
 
 /* Set the width and height of the scrollbar------------------------- */
-::-webkit-scrollbar {
+/* ::-webkit-scrollbar {
     width: 7px;
     height: 10px;
-}
+} */
 
 /* Track */
-::-webkit-scrollbar-track {
+/* ::-webkit-scrollbar-track {
     background: #888;
     border-radius: 10px;
-}
+} */
 
 /* Handle */
-::-webkit-scrollbar-thumb {
+/* ::-webkit-scrollbar-thumb {
     background: #1e1e1e;
     border-radius: 10px;
-}
+} */
 
 /* Handle on hover */
-::-webkit-scrollbar-thumb:hover {
+/* ::-webkit-scrollbar-thumb:hover {
     background: #3e3e3e;
-}
+} */
 
 .appointment-records {
     background-color: white;

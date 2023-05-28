@@ -71,7 +71,7 @@ class SubadminCashierController extends Controller
 
             $notif_type = "Approved Payment";
             $remarks = "
-            <pre class='font-mont p-5'>
+            <pre class='font-mont p-3'>
                 We are pleased to inform you that your payment for the requested document has been successfully approved.</br>
                 Now that your payment has been approved, we would like to inform you that the next step in the document request process will be handled by the Registrar's Office. They will carefully process your request and work towards fulfilling it as soon as possible. Kindly note that further notices and updates regarding your document will be provided by the Registrar's Office.</br>
                 In the meantime, we kindly request your patience and understanding. The Registrar's Office will keep you informed about the progress of your document request. Should you have any questions or require any assistance, please feel free to reach out to the Registrar's Office.</br>
