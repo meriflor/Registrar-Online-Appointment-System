@@ -96,6 +96,7 @@
                                     data-form-id="{{ $form->id }}" 
                                     data-form-name="{{ $form->name }}" 
                                     data-form-fee="{{ $form->fee }}" 
+                                    data-form-pages="{{ $form->pages }}"
                                     data-form-acad_year="{{ $form->acad_year }}"
                                     data-form-requirements="{{ $form->requirements }}">
                                 Book Appoint

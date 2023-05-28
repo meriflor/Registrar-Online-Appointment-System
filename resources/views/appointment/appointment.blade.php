@@ -344,6 +344,7 @@
             var form_id = $(this).data('form-id');
             var form_name = $(this).data('form-name');
             var form_fee = $(this).data('form-fee');
+            var form_pages = $(this).data('form-pages');
             var form_max_time = $(this).data('form-max-time');
             var form_acad_year = $(this).data('form-acad_year');
             var form_requirements = $(this).data('form-requirements');
@@ -363,17 +364,34 @@
                 $('#requirements_section').hide();
             }
             
+            if(form_pages > 1){
+                var total = form_fee * form_pages;
+                modal.find('#doc_fee').text("PHP "+total+".00");
+            }else{
+                modal.find('#doc_fee').text("PHP "+form_fee+".00");
+            }
+            
+
             if(form_fee == 0){
                 modal.find('#payment_section').hide();
             }else{
                 modal.find('#payment_section').show();
+                $('#num_copies').on('change', function() {
+                    var copies = $(this).val();
+                    if(copies > 1){
+                        var total = form_fee * form_pages * copies;
+                        modal.find('#doc_fee').text("PHP "+total+".00");
+                    }else{
+                        var total = form_fee * copies;
+                        modal.find('#doc_fee').text("PHP "+total+".00");
+                    }
+                });
             }
             modal.find('#exp_date').text(form_max_time);
             modal.find('#form-name').text(form_name);
             modal.find('#form_name').text(form_name);
             modal.find('#form_acad_year').text(form_acad_year);
             modal.find('#form_requirements').text(form_requirements);
-            modal.find('#doc_fee').text("PHP "+form_fee+".00");
             modal.find('#form_fee_val').val(form_fee);
             modal.find('#form_id').val(form_id);
             modal.find('#accordion_id').val(accordion_id);
@@ -397,6 +415,7 @@
             appointment_date = null;
             $('#app_date').text('Select a date first.');
             $('.fc-selected-date').removeClass('fc-selected-date');
+            $('#gcash-sect').hide();
         });
 // review
         $('#proceedButton').on('click', function(event) {
