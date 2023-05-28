@@ -60,8 +60,8 @@
 </div>
 
 
-<div class="modal fade" id="delete-modal" tabindex="-1" role="dialog" aria-labelledby="delete-modal-title" aria-hidden="true">
-    <div class="modal-dialog" role="document">
+<div class="modal fade" id="delete-modal"  tabindex="-1" role="dialog" aria-labelledby="delete-modal-title" aria-hidden="true">
+    <div class="modal-dialog modal-lg modal-dialog-scrollable  modal-dialog-centered">
         <div class="modal-content">
             <div class="modal-header">
                 <h5 class="modal-title" id="delete-modal-title">Confirmation</h5>
@@ -73,8 +73,8 @@
                 <p>Are you sure you want to delete this message?</p>
             </div>
             <div class="modal-footer">
-                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancel</button>
-                <button type="button" class="btn btn-danger" id="confirm-delete-btn">Delete</button>
+                <button type="button"  class="btn btn-custom" data-bs-dismiss="modal">Cancel</button>
+                <button type="button" class="btn btn-custom ms-3" id="confirm-delete-btn">Delete</button>
             </div>
         </div>
     </div>

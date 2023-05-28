@@ -295,7 +295,7 @@
                         <div class="form-group row mt-3">
                             <div class="col-lg-12">
                                 <label for="inputPassword">Retype-Password</label>
-                                <input type="password" id="confirmPassword"  class="form-control" name="confirmPassword" required>
+                                <input type="password" id="confirmPassword"  class="form-control" name="confirmPassword" placeholder="Confirm Password"required>
                                 <span class="text-danger" id="confirm_passwordError"></span>
                             </div>
                         </div>
