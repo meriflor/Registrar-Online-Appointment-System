@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: May 28, 2023 at 05:08 AM
+-- Generation Time: May 28, 2023 at 07:10 AM
 -- Server version: 10.4.28-MariaDB
 -- PHP Version: 8.2.4
 
@@ -455,7 +455,15 @@ INSERT INTO `users` (`id`, `firstName`, `lastName`, `middleName`, `suffix`, `add
 (2, 'Jeanlou', 'Dongon', 'O.', '', 'Tubod Lanao Del Norte', 1009450, '09367102372', 'Single', 'jeanloudongon13@gmail.com', '2001-09-07', 'College Undergraduate', 'Female', 'Bachelor of Science in Hospitality Management', '$2y$10$pIlYEtVj4a3hVZUDvZK5duUnQOxBZl1ZyVWldLRaM.hmqAokDdsGK', '2022-2023', NULL, 'Approved', NULL, '2023-05-27 00:12:51', '2023-05-27 00:10:19', '2023-05-27 00:12:51', 0),
 (3, 'Admin', 'Admin', NULL, NULL, 'Admin', 2023090209, 'admin-2023-05-27 09:02:09', NULL, 'cashier@gmail.com', NULL, NULL, NULL, NULL, '$2y$10$PpaYEg4TxuSuktaaTB1eD.V60ywZpSq819/apDW/2T1qe7A.WkS26', NULL, NULL, 'Approved', NULL, NULL, '2023-05-27 01:02:09', '2023-05-27 01:02:09', 3),
 (4, 'Admin', 'Admin', NULL, NULL, 'Admin', 2023090228, 'admin-2023-05-27 09:02:28', NULL, 'handler@gmail.com', NULL, NULL, NULL, NULL, '$2y$10$qOHBH5uzhTdH9RoWEdL2ceSe3rVPgwBgltpukKBOtmyjaSLWBFbjm', NULL, NULL, 'Approved', NULL, NULL, '2023-05-27 01:02:28', '2023-05-27 01:02:28', 2),
-(9, 'Olympio', 'Sumbilon', NULL, NULL, 'TCES', 109941, '09357258656', 'Single', 'olympiosumbilon17@gmail.com', '2000-08-17', 'College Undergraduate', 'Male', 'Bachelor of Science in Computer Science', '$2y$10$bpN9MJlznQGPOUIP7GIZD.bTXhnUPgVk6ebImxgpRUoyYbrsWLIma', '2017-2018', NULL, 'Approved', NULL, '2023-05-27 14:38:14', '2023-05-27 14:34:10', '2023-05-27 14:38:14', 0);
+(9, 'Olympio', 'Sumbilon', NULL, NULL, 'TCES', 109941, '09357258656', 'Single', 'olympiosumbilon17@gmail.com', '2000-08-17', 'College Undergraduate', 'Male', 'Bachelor of Science in Computer Science', '$2y$10$bpN9MJlznQGPOUIP7GIZD.bTXhnUPgVk6ebImxgpRUoyYbrsWLIma', '2017-2018', NULL, 'Approved', NULL, '2023-05-27 14:38:14', '2023-05-27 14:34:10', '2023-05-27 14:38:14', 0),
+(10, 'Khent', 'Lopez', 'T.', NULL, 'Maigo Lanao Del Norte', 1009992, '09485599913', 'Single', 'khentacas987@gmail.com', '1999-10-09', 'College Undergraduate', 'Male', 'Bachelor of Science in Computer Science', '$2y$10$JA9ZgkrpXE3rXz7Bme9xhOjlFjNmx8Se8EYKq122uTNfpJAv.8Zwu', '2022-2023', NULL, 'Pending', NULL, NULL, '2023-05-28 03:50:39', '2023-05-28 04:19:25', 0),
+(11, 'Nhor Jahded', 'Balindong', 'S', NULL, 'River side, Kolambugan Lanao Del Norte', 1009428, '09753214203', 'Single', 'nhor.codaye43@gmail.com', '2000-08-16', 'College Undergraduate', 'Male', 'Bachelor of Science in Computer Science', '$2y$10$dicOHmi97B9nrmmSzmltMeqwbJd2ZxKZMqMfMi/xTK0JMxNEKJMqS', '2022-2023', NULL, 'Pending', NULL, NULL, '2023-05-28 03:58:43', '2023-05-28 04:16:23', 0),
+(12, 'Rotsen', 'Baroquillo', 'V', NULL, 'River side, Kolambugan Lanao Del Norte', 1009973, '09169160191', 'Single', 'rbaroquillo3@gmail.com', '2001-06-14', 'College Undergraduate', 'Male', 'Bachelor of Science in Computer Science', '$2y$10$LY05HcaSFRfmu/RJNHq8F.muxTx8vpw65CBtKn85lkXDDzpghu0Fu', '2022-2023', NULL, 'Pending', NULL, NULL, '2023-05-28 04:01:16', '2023-05-28 04:18:26', 0),
+(13, 'Rodinel', 'Bergado', 'I', '', 'Bacolod Lanao del Norte', 1010069, '09518405805', 'Single', 'rodinelbergado3@gmail.com', '2000-05-07', 'College Undergraduate', 'Male', 'Bachelor of Science in Computer Science', '$2y$10$14d.nhABxa2pf6LtvumM7eYxlcybpcYg0DOXgpWqpBjsUOmA1c0xW', '2022-2023', NULL, 'Pending', NULL, NULL, '2023-05-28 04:05:10', '2023-05-28 04:05:10', 0),
+(14, 'Marjie', 'Betacura', 'C', '', 'Maigo Lanao Del Norte', 1009463, '09389812861', 'Single', 'mar.betacura@gmail.com', '2000-07-12', 'College Undergraduate', 'Female', 'Bachelor of Science in Computer Science', '$2y$10$DpOvuwJVJf3VkEOCKm6xsuWGqwFPvxE4J3l2/5xx7rSGYR8ya/HNa', '2022-2023', NULL, 'Pending', NULL, NULL, '2023-05-28 04:10:41', '2023-05-28 04:10:41', 0),
+(15, 'Jhon Carlo', 'Cabug', 'G', '', 'Maigo Lanao Del Norte', 1005262, '09361768927', 'Single', 'johncarlocabug.03@gmail.com', '2000-07-02', 'College Undergraduate', 'Male', 'Bachelor of Science in Computer Science', '$2y$10$cbV6NQRq47J35M6HCqJciuLTSg3Sm09o.BX9kro4Vz6avgBUsTo9G', '2022-2023', NULL, 'Pending', NULL, NULL, '2023-05-28 04:13:42', '2023-05-28 04:13:42', 0),
+(16, 'Meriflor', 'Gonoy', 'N', '', 'Kolambugan Lanao del Norte', 1009974, '09559381788', 'Single', 'mgonoy13@gmail.com', '2000-11-19', 'College Undergraduate', 'Female', 'Bachelor of Science in Computer Science', '$2y$10$eA91qCRZTarHOCVie.kwteBq4M3IwjV2nAUeeLyyj2XnSplZpi9yu', '2022-2023', NULL, 'Pending', NULL, NULL, '2023-05-28 04:22:48', '2023-05-28 04:22:48', 0),
+(17, 'Bryan', 'Ladion', 'B', '', 'Bacolod Lanao del Norte', 1009932, '09264117628', 'Single', 'ladionbryan19@gmail.com', '2000-12-19', 'College Undergraduate', 'Male', 'Bachelor of Science in Computer Science', '$2y$10$RVH65xQcWH/CsS0kAlJhyeabbO/h3uEkw6gnluenRYsAWKIKsfRFi', '2022-2023', NULL, 'Pending', NULL, NULL, '2023-05-28 04:25:59', '2023-05-28 04:25:59', 0);
 
 -- --------------------------------------------------------
 
@@ -476,9 +484,9 @@ CREATE TABLE `website_image_content` (
 --
 
 INSERT INTO `website_image_content` (`id`, `image_name`, `file_name`, `created_at`, `updated_at`) VALUES
-(1, 'Main Page', 'images/websiteImage/1685232642_349448544_1220864038632072_6552086879919087646_n.jpg', '2023-05-27 23:54:02', '2023-05-28 00:10:42'),
-(2, 'Faqs and Announcement', 'images/websiteImage/1685232889_350084576_273348405152204_296191546863319905_n.jpg', '2023-05-27 23:56:31', '2023-05-28 00:14:49'),
-(3, 'About', 'images/websiteImage/1685232907_349438170_3527118887503573_7952445425840737124_n.jpg', '2023-05-27 23:58:29', '2023-05-28 00:15:07');
+(1, 'Main Page', 'images/websiteImage/1685250397_registrar07.jpg', '2023-05-27 23:54:02', '2023-05-28 05:06:37'),
+(2, 'Faqs and Announcement', 'images/websiteImage/1685250436_registrar05.jpg', '2023-05-27 23:56:31', '2023-05-28 05:07:16'),
+(3, 'About', 'images/websiteImage/1685250470_registrar06.jpg', '2023-05-27 23:58:29', '2023-05-28 05:07:50');
 
 --
 -- Indexes for dumped tables
@@ -684,7 +692,7 @@ ALTER TABLE `registrar_staffs`
 -- AUTO_INCREMENT for table `users`
 --
 ALTER TABLE `users`
-  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=10;
+  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=18;
 
 --
 -- AUTO_INCREMENT for table `website_image_content`
