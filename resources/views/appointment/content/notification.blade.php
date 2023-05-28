@@ -174,7 +174,7 @@
         @endif
     @endforeach
 @else
-    <div>You have no notifications of now.</div>
+    <div>You have no notifications as of now.</div>
 @endif
 
 <script>

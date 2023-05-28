@@ -167,6 +167,7 @@
                 events:'/appointment_slots',
                 selectable:true,
                 selectHelper: true,
+                longPressDelay: 0,
                 select: function(date, jsEvent, view, event){
                     //review =============================Code for not disabled day=========================================
                     var events = $('#calendar').fullCalendar('clientEvents');
@@ -300,6 +301,7 @@
                             $('#onProcess-text').text("");
                             $('#readyToClaim-text').text("");
                             $('#claimed-text').text("");
+                            $('#gcash-sect').hide();
                         });
                     }
                 },

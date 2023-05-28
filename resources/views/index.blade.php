@@ -111,9 +111,9 @@
                             <input class="form-control form-control-lg"  name="password" type="password" placeholder="Password" aria-label="default input example">
                             <span class="text-danger">@error('password'){{ $message }} @enderror </span> 
                         </div>
-                        <div class="row">
+                        {{-- <div class="row">
                             <a href="#" class="forgot-pass-link mb-3 font-este d-flex flex-row justify-content-end">Forgot Password?</a>
-                        </div>  
+                        </div>   --}}
                         <div class="row d-flex flex-row justify-content-end mb-3">
                             <button type="submit" class="btn btn-login-register font-mont font-body">Sign In</button>
                         </div>   
@@ -291,20 +291,38 @@
                                 </div>
                             </div>
                         </div>
-                        <div class="form-group row mt-3">
-                            <div class="col-lg-12">
-                                <label for="inputPassword">Password</label>
-                                <input type="password" name="password" class="form-control" id="inputPassword" placeholder="Password" required>
-                                <span class="text-danger" id="passwordError"></span>
+
+                        <div class="container">
+                            <div class="form-group row mt-3">
+                                <div class="col-lg-12">
+                                    <label for="inputPassword">Password</label>
+                                    <div class="input-group">
+                                        <input type="password" name="password" class="form-control" id="inputPassword" placeholder="Password" required>
+                                        <div class="input-group-append d-flex flex-row align-items-center">
+                                            <span class="input-group-text" id="togglePassword">
+                                                <i class="fas fa-eye-slash" id="passwordToggleIcon"></i>
+                                            </span>
+                                        </div>
+                                    </div>
+                                    <span class="text-danger" id="passwordError"></span>
+                                </div>
+                            </div>
+                            <div class="form-group row mt-3">
+                                <div class="col-lg-12">
+                                    <label for="inputPassword">Retype Password</label>
+                                    <div class="input-group">
+                                        <input type="password" id="confirmPassword"  class="form-control" name="confirmPassword" placeholder="Confirm Password" required>
+                                        <div class="input-group-append d-flex flex-row align-items-center">
+                                            <span class="input-group-text" id="toggleConfirmPassword">
+                                                <i class="fas fa-eye-slash" id="confirmPasswordToggleIcon"></i>
+                                            </span>
+                                        </div>
+                                    </div>
+                                    <span class="text-danger" id="confirm_passwordError"></span>
+                                </div>
                             </div>
                         </div>
-                        <div class="form-group row mt-3">
-                            <div class="col-lg-12">
-                                <label for="inputPassword">Retype-Password</label>
-                                <input type="password" id="confirmPassword"  class="form-control" name="confirmPassword" placeholder="Confirm Password"required>
-                                <span class="text-danger" id="confirm_passwordError"></span>
-                            </div>
-                        </div>
+
                         <div class="form-group d-flex flex-row justify-content-center mt-3">
                             <div class="check-custom">
                                 <div class="form-check">
@@ -359,6 +377,7 @@
     @include('layout.modal.data-privacy')
     @include('layout.modal.contact-us')
 
+    
     <script>
         $(document).ready(function() {
             // Add an event listener to the password field
@@ -457,4 +476,34 @@
             }
         });
     </script>
+<script>
+    $(document).ready(function() {
+        $("#togglePassword").click(function() {
+            var passwordInput = $("#inputPassword");
+            var toggleIcon = $("#passwordToggleIcon");
+
+            if (passwordInput.attr("type") === "password") {
+                passwordInput.attr("type", "text");
+                toggleIcon.removeClass("fa-eye-slash").addClass("fa-eye");
+            } else {
+                passwordInput.attr("type", "password");
+                toggleIcon.removeClass("fa-eye").addClass("fa-eye-slash");
+            }
+        });
+
+        $("#toggleConfirmPassword").click(function() {
+            var confirmPasswordInput = $("#confirmPassword");
+            var toggleIcon = $("#confirmPasswordToggleIcon");
+
+            if (confirmPasswordInput.attr("type") === "password") {
+                confirmPasswordInput.attr("type", "text");
+                toggleIcon.removeClass("fa-eye-slash").addClass("fa-eye");
+            } else {
+                confirmPasswordInput.attr("type", "password");
+                toggleIcon.removeClass("fa-eye").addClass("fa-eye-slash");
+            }
+        });
+    });
+</script>
+   
 @endsection
