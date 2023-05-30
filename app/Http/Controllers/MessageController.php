@@ -17,18 +17,18 @@ class MessageController extends Controller
         $message->email = $request->input('email');
         $message->message = $request->input('message');
         $message->save();
-        
+
         return redirect()->back()->with('success', 'Message sent successfully!');
     }
 
     public function viewMessage(){
-        $messages = Message::all();
+        $messages = Message::orderBy('created_at', 'desc')->get();
         return view('admin-dashboard.message', compact('messages'));
     }
 
     public function messageViewRequest($id)
     {
-        
+
         $message = Message::find($id);
         dd($message);
         return response()->json([

@@ -79,13 +79,13 @@
                     </div>
                     <div class="article-list d-flex flex-column mt-3">
                         <div class="article">
-                            <p>How to make an Appointment?</p><button class="btn"><a href="{{ route('faqs') }}" class="nav-link">>></a></button>
+                            <p>Is my personal information safe when using the online appointment system?</p><button class="btn"><a href="{{ route('faqs') }}" class="nav-link">>></a></button>
                         </div>
                         <div class="article">
-                            <p>What are the requirements?</p><button class="btn"><a href="{{ route('faqs') }}" class="nav-link">>></a></button>
+                            <p>What services can I book an appointment for using the online appointment system?</p><button class="btn"><a href="{{ route('faqs') }}" class="nav-link">>></a></button>
                         </div>
                         <div class="article">
-                            <p>Document Fees.</p><button class="btn"><a href="{{ route('faqs') }}" class="nav-link">>></a></button>
+                            <p>What should I do if I have a question or concern that is not addressed in the FAQs?</p><button class="btn"><a href="{{ route('faqs') }}" class="nav-link">>></a></button>
                         </div>
                     </div>
                 </div>
@@ -359,6 +359,7 @@
 
     <div class="space"></div>
     <!-- <div class="footer"></div> -->
+
 
     <!-- CONTACT US SECTION floating button-->
     <div class="fixed-bottom" id="contactus">

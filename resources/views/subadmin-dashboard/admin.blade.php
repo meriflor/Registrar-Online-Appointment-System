@@ -50,7 +50,7 @@
                     />
                 </div>
                 <p class="text-wrap fs-6 font-corm font-white ps-3 m-0">
-                    University Registrar 
+                    University Registrar Handler
                 </p>
             </div>
             <ul class="navbar-nav d-flex flex-column mt-3 w-100">

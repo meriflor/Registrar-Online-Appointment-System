@@ -3,6 +3,7 @@
 <script src="js/form.js"></script>
 <script src="js/clear-inputs.js"></script>
 <script src="js/documents.js"></script>
+<script src="js/staffcards.js"></script>
 <script src="new-js/article-login.js"></script>
  {{-- <script>
     var dpModal = new bootstrap.Modal(document.getElementById('data-privacy-modal'));

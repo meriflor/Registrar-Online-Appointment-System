@@ -23,6 +23,7 @@
     <!-- homepage -->
     <link rel="stylesheet" href="css/homepage/homepage.css">
     <link rel="stylesheet" href="css/homepage/breakpoints.css">
+    <link rel="stylesheet" href="css/homepage/staffcards.css">
     <link rel="stylesheet" href="css/admin/fonts.css">
 
     <!-- others, modal and id="appointment01" -->
@@ -33,6 +34,8 @@
     <!--Eye fafash-->
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/5.1.0/css/bootstrap.min.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+
+    <!--cards-->    
 
     <script src="https://kit.fontawesome.com/7856143440.js" crossorigin="anonymous"></script>
     <script src="https://code.jquery.com/jquery-3.6.1.min.js"></script>

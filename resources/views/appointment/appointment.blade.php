@@ -382,7 +382,7 @@
                         var total = form_fee * form_pages * copies;
                         modal.find('#doc_fee').text("PHP "+total+".00");
                     }else{
-                        var total = form_fee * copies;
+                        var total = form_fee * form_pages;
                         modal.find('#doc_fee').text("PHP "+total+".00");
                     }
                 });
