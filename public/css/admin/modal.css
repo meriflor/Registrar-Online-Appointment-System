@@ -1,97 +1,111 @@
-.app-slot-modal{
+.app-slot-modal {
     background-color: black;
     padding: 5%;
-}.btn-slot{
+}
+.btn-slot {
     background-color: white !important;
     color: black !important;
 }
 
 /* view request modal in dashboard ---------------------------- */
-.view-request-modal{
+.view-request-modal {
     background-color: white;
     padding: 3% 5% !important;
-}.profile-pic{
+}
+.profile-pic {
     width: 60px;
     height: 60px;
-}.profile-pic img{
+}
+.profile-pic img {
     width: 100%;
     height: 100%;
-}.info-title{
+}
+.info-title {
     font-weight: bold;
     padding: 0;
     margin: 0;
     color: #888;
     font-size: 0.8rem;
-}.info-content{
+}
+.info-content {
     font-weight: bold;
     padding: 0;
     margin: 0;
     font-size: 0.9rem;
     color: #131313;
-}.p-info{
+}
+.p-info {
     background-color: white;
     box-shadow: 0 0 7px rgba(0, 0, 0, 0.25);
     padding: 3%;
     border-radius: 10px;
-}.p-info-pay{
+}
+.p-info-pay {
     background-color: #131313;
     box-shadow: 0 0 5px rgba(0, 0, 0, 0.25);
     padding: 3%;
     border-radius: 10px;
-}.p-info-pay .p-info-head p{
+}
+.p-info-pay .p-info-head p {
     color: white;
-}.p-info-pay .info-content{
+}
+.p-info-pay .info-content {
     color: white;
-}.logo{
+}
+.logo {
     width: 30px;
     height: 30px;
-}.logo img{
+}
+.logo img {
     width: 100%;
     height: 100%;
     object-fit: cover;
-}.payment-method img {
+}
+.payment-method img {
     max-width: 100%;
     height: auto;
-}.btn-dark{
+}
+.btn-dark {
     background-color: #131313;
     color: white;
     font-size: 0.9rem;
     border: 2px solid #131313;
-}.btn-dark:hover{
+}
+.btn-dark:hover {
     background-color: white;
     color: #131313;
     border: 2px solid #131313;
 }
 
-#addFormModal .modal-content, 
-#editFormModal .modal-content, 
-#deleteFormModal .modal-content, 
-#addCourseModal .modal-content, 
-#editCourseModal .modal-content, 
-#deleteCourseModal .modal-content, 
-#appointment_slot_modal .modal-content, 
-#addAnnouncementModal .modal-content, 
-#editAnnouncementModal .modal-content, 
-#deleteAnnouncementModal .modal-content, 
-#addFaqsModal .modal-content, 
-#editFaqsModal .modal-content, 
-#deleteFaqsModal .modal-content, 
-
+#addFormModal .modal-content,
+#editFormModal .modal-content,
+#deleteFormModal .modal-content,
+#addCourseModal .modal-content,
+#editCourseModal .modal-content,
+#deleteCourseModal .modal-content,
+#appointment_slot_modal .modal-content,
+#addAnnouncementModal .modal-content,
+#editAnnouncementModal .modal-content,
+#deleteAnnouncementModal .modal-content,
+#addFaqsModal .modal-content,
+#editFaqsModal .modal-content,
+#deleteFaqsModal .modal-content,
 #status_appointment_modal .modal-content,
 #remarks_modal .modal-content,
-
 #approve_payment_modal .modal-content,
 #incomplete_payment_modal .modal-content,
 #proof_of_payment_modal .modal-content,
-#incomplete_remarks_modal .modal-content{
+#incomplete_remarks_modal .modal-content,
+#delete-modal .modal-content {
     background-color: white;
     color: #131313;
-}#addFormModal, 
-#editFormModal, 
-#deleteFormModal, 
-#addCourseModal, 
-#editCourseModal, 
-#deleteCourseModal, 
+}
+#addFormModal,
+#editFormModal,
+#deleteFormModal,
+#addCourseModal,
+#editCourseModal,
+#deleteCourseModal,
 #appointment_slot_modal,
 #addAnnouncementModal,
 #editAnnouncementModal,
@@ -99,35 +113,48 @@
 #addFaqsModal,
 #editFaqsModal,
 #deleteFaqsModal,
-
 #status_appointment_modal,
 #remarks_modal,
-
 #approve_payment_modal,
 #incomplete_payment_modal,
 #proof_of_payment_modal,
-#incomplete_remarks_modal{
+#incomplete_remarks_modal,
+#delete-modal {
     --bs-modal-header-border-color: none;
     --bs-modal-footer-border-color: none;
     /* color: #131313 !important; */
-}#addFormModal input, #addFormModal textarea,
-#editFormModal input, #editFormModal textarea,
-#addCourseModal input, #addCourseModal textarea,
-#editCourseModal input, #editCourseModal textarea,
-#appointment_slot_modal input, #appointment_slot_modal textarea,
-#addAnnouncementModal input, #addAnnouncementModal textarea,
-#editAnnouncementModal input, #editAnnouncementModal textarea,
-#addFaqsModal input, #addFaqsModal textarea,
-#editFaqsModal input, #editFaqsModal textarea,
-#remarks_modal input, #remarks_modal textarea,
-
-#approve_payment_modal input, #approve_payment_modal textarea,
-#incomplete_payment_modal input, #incomplete_payment_modal textarea
-{
+}
+#addFormModal input,
+#addFormModal textarea,
+#editFormModal input,
+#editFormModal textarea,
+#addCourseModal input,
+#addCourseModal textarea,
+#editCourseModal input,
+#editCourseModal textarea,
+#appointment_slot_modal input,
+#appointment_slot_modal textarea,
+#addAnnouncementModal input,
+#addAnnouncementModal textarea,
+#editAnnouncementModal input,
+#editAnnouncementModal textarea,
+#addFaqsModal input,
+#addFaqsModal textarea,
+#editFaqsModal input,
+#editFaqsModal textarea,
+#remarks_modal input,
+#remarks_modal textarea,
+#approve_payment_modal input,
+#approve_payment_modal textarea,
+#incomplete_payment_modal input,
+#incomplete_payment_modal textarea,
+#delete-modal input,
+#incomplete_payment_modal textarea {
     background-color: #f3f3f3;
     border: 0;
     border-bottom: 2px solid #131313;
-}#addFormModal .modal-header,
+}
+#addFormModal .modal-header,
 #editFormModal .modal-header,
 #deleteFormModal .modal-header,
 #addCourseModal .modal-header,
@@ -140,16 +167,16 @@
 #addFaqsModal .modal-header,
 #editFaqsModal .modal-header,
 #deleteFaqsModal .modal-header,
-
 #status_appointment_modal .modal-header,
 #remarks_modal .modal-header,
-
 #approve_payment_modal .modal-header,
 #incomplete_payment_modal .modal-header,
 #proof_of_payment_modal .modal-header,
-#incomplete_remarks_modal .modal-header{
+#incomplete_remarks_modal .modal-header,
+#delete-modal .modal-header {
     background-color: #131313;
-}#addFormModal .btn-custom,
+}
+#addFormModal .btn-custom,
 #editFormModal .btn-custom,
 #deleteFormModal .btn-custom,
 #addCourseModal .btn-custom,
@@ -162,14 +189,13 @@
 #addFaqsModal .btn-custom,
 #editFaqsModal .btn-custom,
 #deleteFaqsModal .btn-custom,
-
 #status_appointment_modal .btn-custom,
 #remarks_modal .btn-custom,
-
 #approve_payment_modal .btn-custom,
 #incomplete_payment_modal .btn-custom,
 #proof_of_payment_modal .btn-custom,
-#incomplete_remarks_modal .btn-custom{
+#incomplete_remarks_modal .btn-custom,
+#delete-modal .btn-custom {
     border: 2px solid #131313;
     font-weight: bold;
 }
